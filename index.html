@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>APAC Program Hub · May–June 2026</title>
+<title id="page-title">APAC Program Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -19,12 +19,14 @@
   --c-ptnr:#D84315; --l-ptnr:#FBE9E7; --t-ptnr:#7D2000;
   --gray-bg:#F0F4F5; --gray-b:#D5E1E4; --gray-l:#EBF0F2;
   --gray-t:#4A6268;  --gray-m:#8BA6AA; --text:#1A2B2E;
+  --gold:#F59E0B; --gold-l:#FFFBEB; --gold-d:#92400E;
+  --od-bg:#F8F4FF; --od-b:#D4C5F9; --od-t:#4A148C;
 }
 body { font-family:'Outfit',system-ui,sans-serif; background:var(--gray-bg); color:var(--text); -webkit-font-smoothing:antialiased; min-height:100vh; }
 
 /* ── HEADER ── */
 .header { background:var(--teal); padding:0 40px; display:flex; align-items:center; justify-content:space-between; min-height:72px; }
-.hdr-eyebrow { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; opacity:.7; margin-bottom:4px; color:white; }
+.hdr-eyebrow { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; opacity:.7; color:white; margin-bottom:3px; }
 .hdr-title { font-size:20px; font-weight:600; letter-spacing:-.3px; color:white; }
 .logo-wrap { display:flex; align-items:center; gap:10px; }
 .logo-mark { width:32px; height:32px; background:rgba(255,255,255,.2); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; color:white; }
@@ -38,20 +40,23 @@ body { font-family:'Outfit',system-ui,sans-serif; background:var(--gray-bg); col
 .stat-label { font-size:11px; color:rgba(255,255,255,.7); line-height:1.3; }
 
 /* ── MAIN ── */
-.main { max-width:1200px; margin:0 auto; padding:28px 40px 60px; }
+.main { max-width:1220px; margin:0 auto; padding:28px 40px 60px; }
 
-/* ── VIEW TOGGLE + MONTH TABS ── */
-.top-controls { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:24px; }
-.view-toggle { display:flex; background:white; border-radius:10px; padding:4px; border:1.5px solid var(--gray-b); }
-.view-btn { padding:7px 18px; border-radius:7px; font-size:13px; font-weight:500; color:var(--gray-t); cursor:pointer; border:none; background:transparent; font-family:'Outfit',sans-serif; transition:all .15s; }
-.view-btn:hover:not(.active) { color:var(--text); background:var(--gray-l); }
-.view-btn.active { background:var(--teal); color:white; font-weight:600; }
+/* ── CONTROLS ── */
+.top-controls { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:22px; }
+.ctrl-left { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.toggle-group { display:flex; background:white; border-radius:10px; padding:4px; border:1.5px solid var(--gray-b); }
+.toggle-btn { padding:7px 18px; border-radius:7px; font-size:13px; font-weight:500; color:var(--gray-t); cursor:pointer; border:none; background:transparent; font-family:'Outfit',sans-serif; transition:all .15s; }
+.toggle-btn:hover:not(.active) { color:var(--text); background:var(--gray-l); }
+.toggle-btn.active { background:var(--teal); color:white; font-weight:600; }
 .month-tabs { display:flex; background:white; border-radius:10px; padding:4px; border:1.5px solid var(--gray-b); }
 .month-btn { padding:7px 20px; border-radius:7px; font-size:13px; font-weight:500; color:var(--gray-t); cursor:pointer; border:none; background:transparent; font-family:'Outfit',sans-serif; transition:all .15s; display:flex; align-items:center; gap:7px; }
 .month-btn:hover:not(.active) { color:var(--text); background:var(--gray-l); }
 .month-btn.active { background:var(--teal); color:white; font-weight:600; }
-.month-btn-count { width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; background:rgba(255,255,255,.25); color:white; }
-.month-btn:not(.active) .month-btn-count { background:var(--gray-l); color:var(--gray-m); }
+.month-btn.archived { opacity:.6; }
+.month-btn.archived.active { background:#78909C; opacity:1; }
+.mc { width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; background:rgba(255,255,255,.25); color:white; }
+.month-btn:not(.active) .mc { background:var(--gray-l); color:var(--gray-m); }
 .updated-label { font-size:12px; color:var(--gray-m); }
 .updated-label strong { color:var(--gray-t); }
 
@@ -59,56 +64,94 @@ body { font-family:'Outfit',system-ui,sans-serif; background:var(--gray-bg); col
 .panel { display:none; }
 .panel.active { display:block; }
 
-/* ── LEGEND ── */
-.legend-bar { display:flex; gap:12px; flex-wrap:wrap; align-items:center; padding:11px 16px; background:white; border-radius:10px; border:1.5px solid var(--gray-b); margin-bottom:20px; font-size:12px; color:var(--gray-t); }
-.legend-title { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; color:var(--gray-m); }
-.leg { display:flex; align-items:center; gap:5px; }
-.leg-dot { width:8px; height:8px; border-radius:2px; flex-shrink:0; }
-
 /* ── FILTERS ── */
-.filters-row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:24px; padding:12px 16px; background:white; border-radius:10px; border:1.5px solid var(--gray-b); }
-.filter-label { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.7px; color:var(--gray-m); }
-.filter-divider { width:1px; height:18px; background:var(--gray-b); margin:0 2px; }
-.filter-btn { padding:4px 12px; border-radius:20px; font-size:12px; font-weight:500; cursor:pointer; border:1.5px solid var(--gray-b); background:transparent; color:var(--gray-t); transition:all .12s; font-family:'Outfit',sans-serif; }
+.filters-wrap { background:white; border-radius:10px; border:1.5px solid var(--gray-b); margin-bottom:22px; overflow:hidden; }
+.filter-row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:10px 16px; border-bottom:1px solid var(--gray-l); }
+.filter-row:last-child { border-bottom:none; }
+.filter-label { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.7px; color:var(--gray-m); min-width:60px; flex-shrink:0; }
+.filter-btn { padding:4px 12px; border-radius:20px; font-size:12px; font-weight:500; cursor:pointer; border:1.5px solid var(--gray-b); background:transparent; color:var(--gray-t); transition:all .12s; font-family:'Outfit',sans-serif; display:inline-flex; align-items:center; gap:5px; }
+.cc { display:inline-flex; align-items:center; justify-content:center; width:18px; height:14px; border-radius:3px; font-size:8px; font-weight:800; letter-spacing:-.3px; color:white; flex-shrink:0; line-height:1; }
 .filter-btn:hover:not(.active) { border-color:var(--teal); color:var(--teal); }
 .filter-btn.active { background:var(--teal); border-color:var(--teal); color:white; font-weight:600; }
 
-/* ── TEAM SUMMARIES ── */
-.ts-section { margin-bottom:24px; }
-.ts-heading { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; color:var(--gray-m); margin-bottom:10px; }
-.ts-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; }
-.ts-card { background:white; border-radius:10px; border:1.5px solid var(--gray-b); border-left:3px solid #ccc; padding:12px 14px; }
-.ts-badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; margin-bottom:6px; }
-.ts-count { font-size:13px; font-weight:600; color:var(--text); margin-bottom:4px; }
-.ts-desc { font-size:11.5px; color:var(--gray-t); line-height:1.45; }
-.ts-tbc-badge { background:#FFF3E0; color:#8D4300; }
+/* ── LEGEND ── */
+.legend-bar { display:flex; gap:14px; flex-wrap:wrap; align-items:center; padding:10px 16px; background:white; border-radius:10px; border:1.5px solid var(--gray-b); margin-bottom:20px; font-size:12px; color:var(--gray-t); }
+.leg-title { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; color:var(--gray-m); }
+.leg { display:flex; align-items:center; gap:5px; }
+.leg-dot { width:8px; height:8px; border-radius:2px; flex-shrink:0; }
+.leg-sep { width:1px; height:14px; background:var(--gray-b); margin:0 2px; }
+
+/* ── FEATURED SECTION ── */
+.featured-section { margin-bottom:24px; }
+.featured-label { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; color:var(--gold-d); margin-bottom:10px; display:flex; align-items:center; gap:6px; }
+.featured-label::before { content:''; display:block; width:3px; height:14px; background:var(--gold); border-radius:2px; }
+.featured-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(340px,1fr)); gap:12px; }
+.featured-card { background:linear-gradient(135deg,#FFFBEB 0%,#FEF3C7 100%); border:2px solid #FCD34D; border-radius:14px; padding:18px 20px 16px; cursor:pointer; transition:transform .15s, box-shadow .15s; position:relative; overflow:hidden; }
+.featured-card::before { content:''; position:absolute; top:0; right:0; width:80px; height:80px; background:radial-gradient(circle at top right, rgba(245,158,11,.15), transparent 70%); }
+.featured-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(245,158,11,.2); }
+.feat-badge { display:inline-flex; align-items:center; gap:5px; font-size:10.5px; font-weight:700; color:var(--gold-d); background:rgba(245,158,11,.15); padding:3px 9px; border-radius:20px; margin-bottom:10px; }
+.feat-title { font-size:15px; font-weight:700; color:var(--text); line-height:1.35; margin-bottom:10px; }
+.feat-meta { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.feat-date { font-size:12px; font-weight:600; color:var(--teal-d); }
+.feat-area { font-size:11px; color:var(--gray-t); }
+.view-details-link { font-size:11px; color:var(--teal); font-weight:600; margin-top:10px; display:block; }
+
+/* ── ON DEMAND SECTION ── */
+.od-section { margin-bottom:28px; }
+.od-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+.od-label { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; color:var(--od-t); display:flex; align-items:center; gap:6px; }
+.od-label::before { content:''; display:block; width:3px; height:14px; background:var(--c-mkt); border-radius:2px; }
+.od-subtitle { font-size:12px; color:var(--gray-m); }
+.od-shelf { display:flex; gap:12px; overflow-x:auto; padding-bottom:6px; scrollbar-width:thin; scrollbar-color:var(--gray-b) transparent; }
+.od-shelf::-webkit-scrollbar { height:4px; }
+.od-shelf::-webkit-scrollbar-track { background:transparent; }
+.od-shelf::-webkit-scrollbar-thumb { background:var(--gray-b); border-radius:2px; }
+.od-card { background:var(--od-bg); border:1.5px solid var(--od-b); border-radius:12px; padding:16px 18px; min-width:240px; max-width:260px; cursor:pointer; flex-shrink:0; transition:transform .15s, box-shadow .15s; position:relative; }
+.od-card:hover { transform:translateY(-2px); box-shadow:0 6px 16px rgba(74,20,140,.1); }
+.od-badge { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:700; color:var(--od-t); text-transform:uppercase; letter-spacing:.4px; margin-bottom:8px; }
+.od-title { font-size:13px; font-weight:600; color:var(--text); line-height:1.4; margin-bottom:10px; }
+.od-meta { font-size:11px; color:var(--gray-t); margin-bottom:12px; line-height:1.4; }
+.od-cta { display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:600; color:white; background:var(--c-mkt); padding:6px 12px; border-radius:6px; text-decoration:none; transition:background .12s; }
+.od-cta:hover { background:var(--t-mkt); }
 
 /* ── SECTION HEADERS ── */
-.section-hdr { display:flex; align-items:center; gap:10px; margin-bottom:12px; margin-top:4px; }
-.section-icon { width:26px; height:26px; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
-.si-done { background:var(--l-ppl); } .si-up { background:var(--teal-l); } .si-tbc-s { background:#FFF3E0; }
-.section-hdr-text h3 { font-size:14px; font-weight:600; }
-.section-hdr-text p { font-size:12px; color:var(--gray-m); margin-top:1px; }
+.sec-hdr { display:flex; align-items:center; gap:10px; margin-bottom:12px; margin-top:4px; }
+.sec-icon { width:26px; height:26px; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
+.si-done { background:var(--l-ppl); }
+.si-up   { background:var(--teal-l); }
+.si-tbc  { background:#FFF3E0; }
+.sec-hdr-text h3 { font-size:14px; font-weight:600; }
+.sec-hdr-text p  { font-size:12px; color:var(--gray-m); margin-top:1px; }
+
+/* ── TEAM SUMMARIES ── */
+.ts-wrap { margin-bottom:22px; }
+.ts-label { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; color:var(--gray-m); margin-bottom:10px; }
+.ts-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
+.ts-card { background:white; border-radius:10px; border:1.5px solid var(--gray-b); border-left:3px solid; padding:12px 14px; }
+.ts-team { font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px; display:inline-block; margin-bottom:5px; }
+.ts-count { font-size:13px; font-weight:600; color:var(--text); margin-bottom:3px; }
+.ts-desc { font-size:11.5px; color:var(--gray-t); line-height:1.4; }
 
 /* ── CARDS ── */
-.cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(288px,1fr)); gap:12px; margin-bottom:28px; }
-.card { background:white; border-radius:12px; padding:16px 18px 14px; border:1.5px solid var(--gray-b); cursor:pointer; transition:transform .15s, box-shadow .15s, border-color .15s; position:relative; }
+.cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(284px,1fr)); gap:12px; margin-bottom:26px; }
+.card { background:white; border-radius:12px; padding:16px 18px 14px; border:1.5px solid var(--gray-b); cursor:pointer; transition:transform .15s, box-shadow .15s, border-color .15s; }
 .card:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,.08); border-color:var(--teal-m); }
 .card.completed-card { background:#FAFEFE; }
 .card.tbc-card { border-left:3.5px solid #D84315; padding-left:15px; }
-.card-top { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:10px; }
-.card-badge { display:inline-flex; align-items:center; font-size:10.5px; font-weight:600; padding:3px 8px; border-radius:20px; white-space:nowrap; flex-shrink:0; }
+.card.hidden { display:none; }
+.card-top { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:9px; }
+.card-badge { display:inline-flex; align-items:center; gap:4px; font-size:10.5px; font-weight:600; padding:3px 8px; border-radius:20px; white-space:nowrap; }
 .b-done { background:var(--l-ppl); color:var(--c-ppl); }
-.b-up { background:var(--teal-l); color:var(--teal-d); }
-.b-tbc { background:#FFF3E0; color:#D84315; animation:tbcpulse 2.5s ease-in-out infinite; }
+.b-up   { background:var(--teal-l); color:var(--teal-d); }
+.b-tbc  { background:#FFF3E0; color:#D84315; animation:tbcpulse 2.5s ease-in-out infinite; }
 @keyframes tbcpulse { 0%,100%{opacity:1} 50%{opacity:.6} }
-.card-date { font-size:11.5px; font-weight:600; color:var(--teal-d); white-space:nowrap; flex-shrink:0; }
+.card-date { font-size:11.5px; font-weight:600; color:var(--teal-d); white-space:nowrap; }
 .card-date.tbc-d { color:#D84315; }
 .card-title { font-size:14px; font-weight:600; color:var(--text); line-height:1.4; margin-bottom:10px; }
 .card-divider { height:1px; background:var(--gray-l); margin:9px 0; }
 .card-meta { display:flex; flex-direction:column; gap:4px; }
 .meta-row { display:flex; align-items:flex-start; gap:7px; }
-.meta-key { min-width:46px; font-size:10.5px; font-weight:600; text-transform:uppercase; letter-spacing:.4px; color:var(--gray-m); padding-top:1px; flex-shrink:0; }
+.meta-key { min-width:52px; font-size:10.5px; font-weight:600; text-transform:uppercase; letter-spacing:.4px; color:var(--gray-m); padding-top:1px; flex-shrink:0; }
 .meta-val { font-size:12px; color:var(--gray-t); line-height:1.4; flex:1; }
 .chip-row { display:flex; gap:4px; flex-wrap:wrap; }
 .chip { display:inline-block; padding:2px 7px; border-radius:4px; font-size:11px; font-weight:600; line-height:1.6; }
@@ -119,29 +162,56 @@ body { font-family:'Outfit',system-ui,sans-serif; background:var(--gray-bg); col
 .chip-exec { background:var(--l-exec); color:var(--t-exec); }
 .chip-cult { background:var(--l-cult); color:var(--t-cult); }
 .chip-ptnr { background:var(--l-ptnr); color:var(--t-ptnr); }
-.type-chip { display:inline-block; padding:2px 7px; border-radius:4px; font-size:11px; font-weight:500; background:var(--gray-l); color:var(--gray-t); border:1px solid var(--gray-b); }
-.view-details { font-size:11px; color:var(--teal); font-weight:600; margin-top:10px; display:block; }
-.card.hidden { display:none; }
+.type-icon { display:inline-flex; align-items:center; gap:4px; font-size:11px; color:var(--gray-t); background:var(--gray-l); border:1px solid var(--gray-b); padding:2px 7px; border-radius:4px; }
+.vd-link { font-size:11px; color:var(--teal); font-weight:600; margin-top:8px; display:block; }
 .tbc-callout { background:#FFF8E1; border:1.5px solid #FFCC80; border-radius:10px; padding:12px 16px; font-size:13px; color:#5D3A00; line-height:1.5; margin-bottom:14px; }
 
-/* ── CALENDAR ── */
-.cal-month-wrap { margin-bottom:32px; }
-.cal-month-hdr { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:10px; }
-.cal-month-title { font-size:20px; font-weight:700; letter-spacing:-.4px; }
+/* ── CALENDAR VIEW ── */
+.cal-controls { background:white; border-radius:10px; border:1.5px solid var(--gray-b); padding:14px 18px; margin-top:20px; }
+.cal-ctrl-row { display:flex; gap:0; flex-wrap:wrap; }
+.cal-ctrl-row > div { flex:1; min-width:240px; }
+.cal-ctrl-divider { width:1px; background:var(--gray-b); margin:0 20px; flex:0 0 1px; align-self:stretch; }
+.cal-ctrl-label { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.7px; color:var(--gray-m); margin-bottom:8px; }
+.cal-team-toggles { display:flex; gap:8px; flex-wrap:wrap; }
+.cal-team-toggle { display:flex; align-items:center; gap:5px; padding:5px 12px; border-radius:20px; font-size:12px; font-weight:600; cursor:pointer; border:2px solid; transition:all .12s; font-family:'Outfit',sans-serif; user-select:none; }
+.cal-team-toggle.on { color:white; }
+.cal-team-toggle.off { background:white!important; }
+
+.cal-month-wrap { margin-bottom:4px; }
+.cal-month-hdr { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:8px; }
+.cal-month-title { font-size:18px; font-weight:700; letter-spacing:-.4px; }
 .cal-month-sub { font-size:12px; color:var(--gray-m); }
-.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); border:1.5px solid var(--gray-b); border-radius:12px; overflow:hidden; background:var(--gray-b); gap:1px; }
-.cal-dow { background:var(--gray-l); padding:7px 5px; text-align:center; font-size:10.5px; font-weight:700; color:var(--gray-m); text-transform:uppercase; letter-spacing:.5px; }
-.cal-cell { background:white; padding:7px 5px; min-height:96px; display:flex; flex-direction:column; gap:2px; }
-.cal-cell.empty { background:#F7F9FA; }
-.cal-cell.cal-weekend { background:#FAFBFC; }
+.cal-month-wrap.archived .cal-month-title { color:var(--gray-m); }
+.cal-month-wrap.archived .cal-month-sub { color:#B0BEC5; }
+
+/* Mon-Fri 5-col calendar */
+.cal-mf { border:1.5px solid var(--gray-b); border-radius:12px; overflow:hidden; }
+.cal-mf-head { display:grid; grid-template-columns:repeat(5,1fr); background:var(--gray-l); border-bottom:1px solid var(--gray-b); }
+.cal-mf-head.archived { background:#F5F6F7; }
+.cal-dow { padding:7px 5px; text-align:center; font-size:10.5px; font-weight:700; color:var(--gray-m); text-transform:uppercase; letter-spacing:.5px; }
+.cal-mf.archived .cal-dow { color:#B0BEC5; }
+.week-row { display:grid; grid-template-columns:repeat(5,1fr); border-bottom:1px solid var(--gray-b); }
+.week-row:last-child { border-bottom:none; }
+.week-row.current-week { background:#F0FAFC; }
+.week-row.current-week .cal-cell { background:transparent; }
+.cal-cell { padding:7px 5px; min-height:94px; display:flex; flex-direction:column; gap:2px; border-right:1px solid var(--gray-b); }
+.cal-cell:last-child { border-right:none; }
+.cal-cell.empty { background:#F7F9FA; min-height:94px; }
 .cal-cell.cal-past { background:#FAFBFB; }
-.cal-cell.cal-today { background:#F0FAFC; }
-.day-n { font-size:12px; font-weight:600; color:var(--gray-t); width:20px; height:20px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; margin-bottom:3px; flex-shrink:0; }
+.cal-mf.archived .cal-cell { background:#F8F9FA; }
+.cal-mf.archived .cal-cell.empty { background:#F3F4F5; }
+.day-n-wrap { margin-bottom:3px; flex-shrink:0; }
+.day-n { font-size:12px; font-weight:600; color:var(--gray-t); width:20px; height:20px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; }
+.day-n-wrap.featured-day { display:inline-flex; align-items:center; gap:4px; }
+.day-n-wrap.featured-day .day-n { background:var(--gold); color:white; font-weight:700; }
+.day-n-wrap.featured-day::after { content:"⭐"; font-size:9px; line-height:1; }
 .day-n.today-n { background:var(--teal); color:white; font-weight:700; }
 .cal-cell.cal-past .day-n { color:#BCC8CB; }
-.cal-ev { font-size:10px; font-weight:500; padding:2px 4px; border-radius:3px; color:white; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:pointer; flex-shrink:0; transition:filter .1s; }
+.cal-mf.archived .day-n { color:#C0CBD0; }
+.cal-ev { font-size:10px; font-weight:500; padding:2px 4px; border-radius:3px; color:white; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:pointer; flex-shrink:0; transition:filter .1s, opacity .15s; }
 .cal-ev:hover { filter:brightness(1.12); }
-.cal-ev.ev-done { opacity:.52; }
+.cal-ev.ev-done { opacity:.45; }
+.cal-mf.archived .cal-ev { filter:grayscale(75%) !important; opacity:.5; }
 .cal-pe   { background:var(--c-pe); }
 .cal-re   { background:var(--c-re); }
 .cal-mkt  { background:var(--c-mkt); }
@@ -149,56 +219,60 @@ body { font-family:'Outfit',system-ui,sans-serif; background:var(--gray-bg); col
 .cal-exec { background:var(--c-exec); }
 .cal-cult { background:var(--c-cult); }
 .cal-ptnr { background:var(--c-ptnr); }
-.cal-tbc-section { margin-top:8px; margin-bottom:32px; }
+.cal-ev.team-hidden { display:none !important; }
+.ph-row { display:flex; flex-wrap:wrap; gap:2px; margin-top:auto; padding-top:2px; }
+.ph-tag { font-size:9px; color:var(--gray-m); line-height:1.3; white-space:nowrap; }
+.cal-mf.archived .ph-tag { color:#C5CFD2; }
+.cal-tbc-section { margin-top:20px; margin-bottom:32px; }
 .cal-tbc-title { font-size:14px; font-weight:600; margin-bottom:8px; }
-.cal-tbc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:10px; }
+.cal-tbc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
 .cal-tbc-card { background:white; border-radius:10px; border:1.5px solid var(--gray-b); border-left:3px solid #D84315; padding:12px 14px; cursor:pointer; transition:box-shadow .15s; }
 .cal-tbc-card:hover { box-shadow:0 4px 12px rgba(0,0,0,.08); }
 .cal-tbc-flag { font-size:10px; font-weight:700; color:#D84315; text-transform:uppercase; letter-spacing:.4px; margin-bottom:5px; }
 .cal-tbc-name { font-size:13px; font-weight:600; color:var(--text); margin-bottom:6px; line-height:1.35; }
-.cal-section-divider { height:1px; background:var(--gray-b); margin:4px 0 28px; }
+.cal-sec-divider { height:1px; background:var(--gray-b); margin:20px 0 28px; }
+.cal-archive-note { display:flex; align-items:center; gap:8px; font-size:12px; color:var(--gray-m); margin-bottom:10px; padding:8px 12px; background:var(--gray-l); border-radius:8px; }
 
 /* ── MODAL ── */
 .modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,.48); z-index:1000; display:none; align-items:center; justify-content:center; padding:24px; backdrop-filter:blur(2px); }
 .modal-backdrop.open { display:flex; }
-.modal { background:white; border-radius:16px; width:100%; max-width:560px; max-height:88vh; overflow-y:auto; position:relative; box-shadow:0 24px 60px rgba(0,0,0,.22); animation:modalIn .18s ease; }
-@keyframes modalIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+.modal { background:white; border-radius:16px; width:100%; max-width:560px; max-height:88vh; overflow-y:auto; position:relative; box-shadow:0 24px 60px rgba(0,0,0,.22); animation:mIn .18s ease; }
+@keyframes mIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
 .modal-close { position:absolute; top:14px; right:16px; width:30px; height:30px; border-radius:50%; border:none; background:var(--gray-l); color:var(--gray-t); font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-family:'Outfit',sans-serif; transition:background .12s; z-index:1; }
-.modal-close:hover { background:var(--gray-b); color:var(--text); }
+.modal-close:hover { background:var(--gray-b); }
 .modal-hdr { padding:24px 24px 0; }
 .modal-badges { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
 .modal-status { display:inline-flex; align-items:center; font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; }
-.modal-date-badge { font-size:12px; font-weight:600; color:var(--teal-d); }
-.modal-date-badge.tbc { color:#D84315; }
+.modal-date-lbl { font-size:12px; font-weight:600; color:var(--teal-d); }
+.modal-date-lbl.tbc { color:#D84315; }
 .modal-title { font-size:20px; font-weight:700; color:var(--text); letter-spacing:-.3px; line-height:1.3; margin-bottom:12px; padding-right:32px; }
-.modal-chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:0; }
+.modal-chips { display:flex; flex-wrap:wrap; gap:6px; }
 .modal-body { padding:20px 24px 24px; }
-.modal-divider { height:1px; background:var(--gray-l); margin:16px 0; }
-.modal-section-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.7px; color:var(--gray-m); margin-bottom:8px; }
+.modal-div { height:1px; background:var(--gray-l); margin:16px 0; }
+.modal-sec-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.7px; color:var(--gray-m); margin-bottom:8px; }
 .modal-desc { font-size:14px; color:var(--gray-t); line-height:1.65; }
 .modal-meta-grid { display:grid; grid-template-columns:auto 1fr; gap:5px 12px; font-size:13px; }
-.modal-meta-k { color:var(--gray-m); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.3px; padding-top:2px; }
-.modal-meta-v { color:var(--gray-t); }
+.modal-mk { color:var(--gray-m); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.3px; padding-top:2px; }
+.modal-mv { color:var(--gray-t); }
 .modal-links-list { display:flex; flex-direction:column; gap:8px; }
 .modal-link-btn { display:inline-flex; align-items:center; gap:7px; padding:9px 14px; background:var(--teal-l); color:var(--teal-deep); border-radius:8px; text-decoration:none; font-size:13px; font-weight:600; transition:background .12s; }
 .modal-link-btn:hover { background:var(--teal-m); }
-.modal-link-btn svg { flex-shrink:0; }
 .modal-no-links { font-size:13px; color:var(--gray-m); padding:12px 14px; background:var(--gray-l); border-radius:8px; line-height:1.5; }
-.modal-no-links code { font-size:11px; background:var(--gray-b); padding:2px 5px; border-radius:3px; font-family:monospace; color:var(--gray-t); }
+.modal-no-links code { font-size:11px; background:var(--gray-b); padding:2px 5px; border-radius:3px; font-family:monospace; }
 
 /* ── FOOTER ── */
 .footer { text-align:center; padding:18px; background:white; border-top:1px solid var(--gray-b); font-size:12px; color:var(--gray-m); }
 .footer strong { color:var(--teal-d); }
 
 /* ── RESPONSIVE ── */
-@media(max-width:700px) {
-  .header,.stats-bar,.main { padding-left:16px; padding-right:16px; }
-  .top-controls { flex-direction:column; align-items:flex-start; }
-  .stats-bar { height:auto; padding:10px 16px; flex-wrap:wrap; gap:10px; }
-  .stat-item { padding:0 14px 0 0; border-right:none; }
-  .cal-cell { min-height:72px; padding:4px 3px; }
-  .cal-ev { font-size:9px; padding:1px 3px; }
-  .day-n { font-size:10px; width:16px; height:16px; }
+@media(max-width:700px){
+  .header,.stats-bar,.main{padding-left:16px;padding-right:16px}
+  .top-controls{flex-direction:column;align-items:flex-start}
+  .stats-bar{height:auto;padding:10px 16px;flex-wrap:wrap;gap:10px}
+  .stat-item{padding:0 14px 0 0;border-right:none}
+  .cal-cell{min-height:72px;padding:4px 3px}
+  .cal-ev{font-size:9px;padding:1px 3px}
+  .day-n{font-size:10px;width:16px;height:16px}
 }
 </style>
 </head>
@@ -208,7 +282,7 @@ body { font-family:'Outfit',system-ui,sans-serif; background:var(--gray-bg); col
 <div class="header">
   <div>
     <div class="hdr-eyebrow">Meltwater · APAC Enablement</div>
-    <div class="hdr-title">Program Hub — May &amp; June 2026</div>
+    <div class="hdr-title">Program Hub — <span id="hdr-months"></span></div>
   </div>
   <div class="logo-wrap">
     <div class="logo-mark">M</div>
@@ -218,35 +292,39 @@ body { font-family:'Outfit',system-ui,sans-serif; background:var(--gray-bg); col
 
 <!-- STATS BAR -->
 <div class="stats-bar">
-  <div class="stat-item"><div class="stat-num">15</div><div class="stat-label">May<br>programs</div></div>
-  <div class="stat-item"><div class="stat-num">8</div><div class="stat-label">Completed<br>in May</div></div>
-  <div class="stat-item"><div class="stat-num">15</div><div class="stat-label">June<br>programs</div></div>
-  <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">June<br>TBC</div></div>
+  <div class="stat-item"><div class="stat-num" id="st-m1-total">-</div><div class="stat-label" id="st-m1-lbl">Month 1<br>programs</div></div>
+  <div class="stat-item"><div class="stat-num" id="st-m1-done">-</div><div class="stat-label">Completed</div></div>
+  <div class="stat-item"><div class="stat-num" id="st-m2-total">-</div><div class="stat-label" id="st-m2-lbl">Month 2<br>programs</div></div>
+  <div class="stat-item"><div class="stat-num" id="st-m2-tbc">-</div><div class="stat-label">TBC</div></div>
+  <div class="stat-item"><div class="stat-num" id="st-od">-</div><div class="stat-label">On Demand<br>available</div></div>
 </div>
 
-<!-- MAIN -->
 <div class="main">
 
   <!-- CONTROLS -->
   <div class="top-controls">
-    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-      <div class="view-toggle">
-        <button class="view-btn active" onclick="switchView('list',this)">📋 List View</button>
-        <button class="view-btn" onclick="switchView('cal',this)">📅 Calendar View</button>
+    <div class="ctrl-left">
+      <div class="toggle-group">
+        <button class="toggle-btn active" onclick="switchView('list',this)">📋 List View</button>
+        <button class="toggle-btn" onclick="switchView('cal',this)">📅 Calendar View</button>
       </div>
       <div class="month-tabs" id="month-tabs-wrap">
-        <button class="month-btn active" onclick="switchMonth(5,this)">May 2026 <span class="month-btn-count" id="mc-may">15</span></button>
-        <button class="month-btn" onclick="switchMonth(6,this)">June 2026 <span class="month-btn-count" id="mc-june">15</span></button>
+        <button class="month-btn active" id="btn-m1" onclick="switchMonth(1,this)">
+          <span id="lbl-m1-tab">Month 1</span> <span class="mc" id="mc-m1">-</span>
+        </button>
+        <button class="month-btn archived" id="btn-m2" onclick="switchMonth(2,this)">
+          <span id="lbl-m2-tab">Month 2</span> <span class="mc" id="mc-m2">-</span>
+        </button>
       </div>
     </div>
-    <div class="updated-label">Last updated: <strong>26 May 2026</strong></div>
+    <div class="updated-label">Last updated: <strong id="lbl-updated"></strong></div>
   </div>
 
-  <!-- ════ LIST VIEW ════ -->
+  <!-- ══════════ LIST VIEW ══════════ -->
   <div id="view-list" class="panel active">
 
     <div class="legend-bar">
-      <span class="legend-title">Team</span>
+      <span class="leg-title">Organised by</span>
       <div class="leg"><div class="leg-dot" style="background:var(--c-pe)"></div>Product Enablement</div>
       <div class="leg"><div class="leg-dot" style="background:var(--c-re)"></div>Role Excellence</div>
       <div class="leg"><div class="leg-dot" style="background:var(--c-ptnr)"></div>Partnerships</div>
@@ -254,50 +332,72 @@ body { font-family:'Outfit',system-ui,sans-serif; background:var(--gray-bg); col
       <div class="leg"><div class="leg-dot" style="background:var(--c-ppl)"></div>People Team</div>
       <div class="leg"><div class="leg-dot" style="background:var(--c-exec)"></div>Executive</div>
       <div class="leg"><div class="leg-dot" style="background:var(--c-cult)"></div>Culture</div>
-      <div class="leg" style="margin-left:8px;padding-left:12px;border-left:1px solid var(--gray-b)">Click any card to view details</div>
+      <div class="leg-sep"></div>
+      <div class="leg" style="font-size:11px;color:var(--gray-m)">Click any card to view details</div>
     </div>
 
-    <div class="filters-row">
-      <span class="filter-label">Team</span>
-      <button class="filter-btn active" data-ft="all" onclick="applyTeamFilter('all',this)">All</button>
-      <button class="filter-btn" data-ft="Product Enablement" onclick="applyTeamFilter('Product Enablement',this)">Product Enablement</button>
-      <button class="filter-btn" data-ft="Role Excellence" onclick="applyTeamFilter('Role Excellence',this)">Role Excellence</button>
-      <button class="filter-btn" data-ft="APAC Marketing" onclick="applyTeamFilter('APAC Marketing',this)">APAC Marketing</button>
-      <button class="filter-btn" data-ft="People Team" onclick="applyTeamFilter('People Team',this)">People Team</button>
-      <button class="filter-btn" data-ft="Executive" onclick="applyTeamFilter('Executive',this)">Executive</button>
-      <button class="filter-btn" data-ft="Partnerships" onclick="applyTeamFilter('Partnerships',this)">Partnerships</button>
-      <button class="filter-btn" data-ft="Culture" onclick="applyTeamFilter('Culture',this)">Culture</button>
-      <div class="filter-divider"></div>
-      <span class="filter-label">Type</span>
-      <button class="filter-btn" data-ftype="LIVE Session" onclick="applyTypeFilter('LIVE Session',this)">LIVE Session</button>
-      <button class="filter-btn" data-ftype="eLearning" onclick="applyTypeFilter('eLearning',this)">eLearning</button>
-      <button class="filter-btn" data-ftype="Customer Event" onclick="applyTypeFilter('Customer Event',this)">Customer Event</button>
+    <div class="filters-wrap">
+      <div class="filter-row">
+        <span class="filter-label">Area</span>
+        <button class="filter-btn active" data-fa="all" onclick="applyAreaFilter('all',this)">All Areas</button>
+        <button class="filter-btn" data-fa="ALL APAC" onclick="applyAreaFilter('ALL APAC',this)"><span class="cc" style="background:#0097A7">AP</span>ALL APAC</button>
+        <button class="filter-btn" data-fa="Australia" onclick="applyAreaFilter('Australia',this)"><span class="cc" style="background:#1565C0">AU</span>Australia</button>
+        <button class="filter-btn" data-fa="Japan" onclick="applyAreaFilter('Japan',this)"><span class="cc" style="background:#C62828">JP</span>Japan</button>
+        <button class="filter-btn" data-fa="Singapore" onclick="applyAreaFilter('Singapore',this)"><span class="cc" style="background:#2E7D32">SG</span>Singapore</button>
+        <button class="filter-btn" data-fa="China" onclick="applyAreaFilter('China',this)"><span class="cc" style="background:#E65100">CN</span>China</button>
+        <button class="filter-btn" data-fa="Philippines" onclick="applyAreaFilter('Philippines',this)"><span class="cc" style="background:#6A1B9A">PH</span>Philippines</button>
+        <button class="filter-btn" data-fa="India" onclick="applyAreaFilter('India',this)"><span class="cc" style="background:#F57F17;color:#333">IN</span>India</button>
+        <button class="filter-btn" data-fa="Hong Kong" onclick="applyAreaFilter('Hong Kong',this)"><span class="cc" style="background:#37474F">HK</span>Hong Kong</button>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">Division</span>
+        <button class="filter-btn active" data-fd="all" onclick="applyDivFilter('all',this)">All</button>
+        <button class="filter-btn" data-fd="ALL" onclick="applyDivFilter('ALL',this)">All Roles</button>
+        <button class="filter-btn" data-fd="Client Acquisition" onclick="applyDivFilter('Client Acquisition',this)">Client Acquisition</button>
+        <button class="filter-btn" data-fd="Client Success" onclick="applyDivFilter('Client Success',this)">Client Success</button>
+        <button class="filter-btn" data-fd="Enterprise" onclick="applyDivFilter('Enterprise',this)">Enterprise</button>
+        <button class="filter-btn" data-fd="FLM" onclick="applyDivFilter('FLM',this)">FLM & SLM</button>
+        <button class="filter-btn" data-fd="Sales Services" onclick="applyDivFilter('Sales Services',this)">Sales Services</button>
+        <button class="filter-btn" data-fd="External" onclick="applyDivFilter('External',this)">External</button>
+      </div>
     </div>
 
-    <!-- MAY LIST PANEL -->
-    <div id="list-may" class="panel active">
-      <div class="ts-section"><div class="ts-heading">Team overview — May</div><div class="ts-grid" id="ts-may"></div></div>
-      <div class="section-hdr"><div class="section-icon si-done">✓</div><div class="section-hdr-text"><h3>Completed</h3><p id="lbl-done"></p></div></div>
-      <div class="cards-grid" id="grid-done"></div>
-      <div class="section-hdr"><div class="section-icon si-up">⏳</div><div class="section-hdr-text"><h3>Still to go in May</h3><p id="lbl-up"></p></div></div>
-      <div class="cards-grid" id="grid-up"></div>
+    <!-- Month 1 list panel (June — current) -->
+    <div id="list-m1" class="panel active">
+      <div class="featured-section" id="featured-m1"></div>
+      <div class="od-section">
+        <div class="od-header">
+          <div class="od-label">▶ On Demand — Access Anytime</div>
+          <div class="od-subtitle">Self-paced programs available whenever you're ready</div>
+        </div>
+        <div class="od-shelf" id="od-shelf-m1"></div>
+      </div>
+      <div class="ts-wrap"><div class="ts-label">Organised by — overview</div><div class="ts-grid" id="ts-m1"></div></div>
+      <div class="sec-hdr"><div class="sec-icon si-up">📅</div><div class="sec-hdr-text"><h3>Scheduled</h3><p id="lbl-m1-sched"></p></div></div>
+      <div class="cards-grid" id="grid-m1-sched"></div>
+      <div class="sec-hdr"><div class="sec-icon si-tbc">🔔</div><div class="sec-hdr-text"><h3>Date TBC — Confirmed in scope</h3><p>Dates still being locked in — plan ahead</p></div></div>
+      <div class="tbc-callout" id="tbc-callout-m1"></div>
+      <div class="cards-grid" id="grid-m1-tbc"></div>
     </div>
 
-    <!-- JUNE LIST PANEL -->
-    <div id="list-june" class="panel">
-      <div class="ts-section"><div class="ts-heading">Team overview — June</div><div class="ts-grid" id="ts-june"></div></div>
-      <div class="section-hdr"><div class="section-icon si-up">📅</div><div class="section-hdr-text"><h3>Scheduled</h3><p id="lbl-jsched"></p></div></div>
-      <div class="cards-grid" id="grid-jsched"></div>
-      <div class="section-hdr"><div class="section-icon si-tbc-s">🔔</div><div class="section-hdr-text"><h3>Date TBC — Important, Needs Confirmation</h3><p>Confirmed in scope — dates still being locked in</p></div></div>
-      <div class="tbc-callout">⚠️ These <strong>5 programs</strong> are planned and important for June 2026. Dates are still being finalised — shown here so teams can plan ahead. Click any card for details.</div>
-      <div class="cards-grid" id="grid-jtbc"></div>
+    <!-- Month 2 list panel (May — archived) -->
+    <div id="list-m2" class="panel">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;padding:10px 14px;background:#F5F6F7;border-radius:8px;border:1px solid var(--gray-b);">
+        <span style="font-size:16px">📦</span>
+        <span style="font-size:13px;color:var(--gray-t);">This is a <strong>historical archive</strong> for <span id="lbl-m2-archive"></span>. All events are shown for reference.</span>
+      </div>
+      <div class="ts-wrap"><div class="ts-label">Organised by — overview</div><div class="ts-grid" id="ts-m2"></div></div>
+      <div class="sec-hdr"><div class="sec-icon si-done">✓</div><div class="sec-hdr-text"><h3>Completed</h3><p id="lbl-m2-done"></p></div></div>
+      <div class="cards-grid" id="grid-m2-done"></div>
+      <div class="sec-hdr"><div class="sec-icon si-up">⏳</div><div class="sec-hdr-text"><h3>Not completed / unconfirmed</h3><p id="lbl-m2-up"></p></div></div>
+      <div class="cards-grid" id="grid-m2-up"></div>
     </div>
   </div>
 
-  <!-- ════ CALENDAR VIEW ════ -->
+  <!-- ══════════ CALENDAR VIEW ══════════ -->
   <div id="view-cal" class="panel">
-    <div class="legend-bar" style="margin-bottom:24px;">
-      <span class="legend-title">Team</span>
+    <div class="legend-bar" style="margin-bottom:16px">
+      <span class="leg-title">Organised by</span>
       <div class="leg"><div class="leg-dot" style="background:var(--c-pe)"></div>Product Enablement</div>
       <div class="leg"><div class="leg-dot" style="background:var(--c-re)"></div>Role Excellence</div>
       <div class="leg"><div class="leg-dot" style="background:var(--c-ptnr)"></div>Partnerships</div>
@@ -305,55 +405,442 @@ body { font-family:'Outfit',system-ui,sans-serif; background:var(--gray-bg); col
       <div class="leg"><div class="leg-dot" style="background:var(--c-ppl)"></div>People Team</div>
       <div class="leg"><div class="leg-dot" style="background:var(--c-exec)"></div>Executive</div>
       <div class="leg"><div class="leg-dot" style="background:var(--c-cult)"></div>Culture</div>
-      <div class="leg" style="margin-left:8px;padding-left:12px;border-left:1px solid var(--gray-b)"><div style="width:8px;height:8px;border-radius:50%;background:var(--teal);display:inline-block;margin-right:4px;"></div>Today · faded = completed · click events for details</div>
+      <div class="leg-sep"></div>
+      <div class="leg" style="font-size:11px;color:var(--gray-m)"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--teal);margin-right:4px"></span>Today · 🌴 = public holiday · faded = completed · click to view details</div>
     </div>
-    <div class="cal-month-wrap">
-      <div class="cal-month-hdr"><div class="cal-month-title">May 2026</div><div class="cal-month-sub">8 completed · 7 upcoming</div></div>
-      <div class="cal-grid" id="cal-may"></div>
+
+    <!-- June (month 1) — current, full colour -->
+    <div class="cal-month-wrap" id="cal-wrap-m1">
+      <div class="cal-month-hdr">
+        <div class="cal-month-title" id="cal-title-m1"></div>
+        <div class="cal-month-sub" id="cal-sub-m1"></div>
+      </div>
+      <div class="cal-mf" id="cal-mf-m1"></div>
     </div>
-    <div class="cal-section-divider"></div>
-    <div class="cal-month-wrap">
-      <div class="cal-month-hdr"><div class="cal-month-title">June 2026</div><div class="cal-month-sub">10 scheduled · 5 TBC below</div></div>
-      <div class="cal-grid" id="cal-june"></div>
+
+    <div class="cal-sec-divider"></div>
+
+    <!-- May (month 2) — archived, greyed -->
+    <div class="cal-month-wrap archived" id="cal-wrap-m2">
+      <div class="cal-month-hdr">
+        <div class="cal-month-title" id="cal-title-m2"></div>
+        <div class="cal-month-sub" id="cal-sub-m2"></div>
+      </div>
+      <div class="cal-archive-note">📦 Archive — <span id="lbl-m2-cal-note"></span> has passed. Events shown for reference.</div>
+      <div class="cal-mf archived" id="cal-mf-m2"></div>
     </div>
+
+    <!-- TBC -->
     <div class="cal-tbc-section">
-      <div class="section-hdr"><div class="section-icon si-tbc-s">🔔</div><div class="section-hdr-text"><h3>June — Date TBC</h3><p>5 programs confirmed in scope, dates pending</p></div></div>
+      <div class="sec-hdr"><div class="sec-icon si-tbc">🔔</div><div class="sec-hdr-text"><h3>TBC — Date not yet confirmed</h3><p>Confirmed in scope, dates pending</p></div></div>
       <div class="cal-tbc-grid" id="cal-tbc"></div>
     </div>
+
+    <!-- ── CALENDAR FILTER CONTROLS (bottom) ── -->
+    <div class="cal-controls" style="margin-top:24px;">
+      <div class="cal-ctrl-row">
+        <div>
+          <div class="cal-ctrl-label">Show / hide — Organised by</div>
+          <div class="cal-team-toggles" id="cal-team-toggles"></div>
+        </div>
+        <div class="cal-ctrl-divider"></div>
+        <div>
+          <div class="cal-ctrl-label">Show / hide — Area</div>
+          <div class="cal-team-toggles" id="cal-area-toggles"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
-</div><!-- /main -->
+</div>
 
 <!-- MODAL -->
-<div class="modal-backdrop" id="modal-backdrop" onclick="closeModalOutside(event)">
+<div class="modal-backdrop" id="modal-backdrop" onclick="handleBackdropClick(event)">
   <div class="modal" id="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="modal-hdr">
       <div class="modal-badges">
         <span class="modal-status" id="m-status"></span>
-        <span class="modal-date-badge" id="m-date"></span>
+        <span id="m-type-icon"></span>
+        <span class="modal-date-lbl" id="m-date"></span>
       </div>
       <div class="modal-title" id="m-title"></div>
       <div class="modal-chips" id="m-chips"></div>
     </div>
     <div class="modal-body">
-      <div class="modal-divider"></div>
-      <div class="modal-section-title">About this program</div>
+      <div class="modal-div"></div>
+      <div class="modal-sec-title">About this program</div>
       <div class="modal-desc" id="m-desc"></div>
-      <div class="modal-divider"></div>
-      <div class="modal-section-title">Details</div>
+      <div class="modal-div"></div>
+      <div class="modal-sec-title">Details</div>
       <div class="modal-meta-grid" id="m-meta"></div>
-      <div class="modal-divider"></div>
-      <div class="modal-section-title">Resources &amp; Materials</div>
+      <div class="modal-div"></div>
+      <div class="modal-sec-title">Resources &amp; Materials</div>
       <div id="m-links"></div>
     </div>
   </div>
 </div>
 
-<div class="footer">APAC Program Hub 2026 &nbsp;·&nbsp; <strong>Meltwater Enablement</strong> &nbsp;·&nbsp; For internal use only &nbsp;·&nbsp; Updated 26 May 2026</div>
+<div class="footer">APAC Program Hub 2026 &nbsp;·&nbsp; <strong>Meltwater Enablement</strong> &nbsp;·&nbsp; For internal use only &nbsp;·&nbsp; Updated <span id="footer-date"></span></div>
 
 <script>
-/* ── TEAM CONFIG ─────────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════════════
+   ██  MONTHLY CONFIGURATION  — EDIT THIS SECTION EACH MONTH  ██
+   ════════════════════════════════════════════════════════════════════
+
+   STEP 1 — Update CONFIG (months, labels, year, lastUpdated)
+   STEP 2 — Replace EVENTS array with your new month's data
+   STEP 3 — Update ON_DEMAND array if new on-demand programs added
+   STEP 4 — Save and push to GitHub — Vercel auto-deploys
+
+   NOTE on month order: month1 = the CURRENT/upcoming month (shown first,
+   full colour). month2 = the PREVIOUS/archived month (shown second, greyed).
+   ════════════════════════════════════════════════════════════════════ */
+
+const CONFIG = {
+  month1: 6,                          // Current month number (June)
+  month2: 5,                          // Previous/archived month (May)
+  month1Label: "June 2026",
+  month2Label: "May 2026",
+  year: 2026,
+  lastUpdated: "2 June 2026",
+  pageTitle: "APAC Program Hub · Jun–May 2026",
+  organisedByLabel: "Organised by",   // ← label shown in cards (was "Team")
+  stat_m1_total: 15,   // 10 scheduled + 5 TBC
+  stat_m1_done:  0,
+  stat_m2_total: 14,
+  stat_m2_tbc:   0,
+};
+
+/* ════════════════════════════════════════════════════════════════════
+   ██  PUBLIC HOLIDAYS — add/remove per month as needed  ██
+   Format: [month, day, "Office 🌴 Holiday name"]
+   ════════════════════════════════════════════════════════════════════ */
+const PUBLIC_HOLIDAYS = [
+  /* ── MAY (month2 archive) ── */
+  [5,1,  "Shanghai 🌴 Labour Day"],
+  [5,25, "Hong Kong 🌴 Buddha's Birthday"],
+  [5,27, "Singapore 🌴 Hari Raya Haji"],
+  /* ── JUNE (month1 current) ── */
+  [6,1,  "Singapore 🌴 Vesak Day (sub)"],
+  [6,8,  "Melbourne 🌴 Sydney 🌴 King's Birthday"],
+  [6,19, "Shanghai 🌴 Hong Kong 🌴 Dragon Boat Festival"],
+  [6,20, "Shanghai 🌴 Dragon Boat Festival"],
+  /* ── JULY (for future use) ── */
+  [7,1,  "Hong Kong 🌴 SAR Establishment Day"],
+  [7,20, "Tokyo 🌴 Marine Day"],
+  /* ── AUGUST ── */
+  [8,9,  "Singapore 🌴 National Day"],
+  [8,11, "Tokyo 🌴 Mountain Day"],
+  [8,15, "India 🌴 Independence Day"],
+  /* ── SEPTEMBER ── */
+  [9,21, "Tokyo 🌴 Respect for Aged Day"],
+  [9,23, "Tokyo 🌴 Autumnal Equinox"],
+  [9,25, "Melbourne 🌴 AFL Grand Final (TBC)"],
+  [9,25, "Shanghai 🌴 Mid-Autumn Festival"],
+  /* ── OCTOBER ── */
+  [10,1, "Shanghai 🌴 Hong Kong 🌴 National Day / Golden Week"],
+  [10,5, "Sydney 🌴 Labour Day"],
+  [10,12,"Tokyo 🌴 Health & Sports Day"],
+  [10,19,"Hong Kong 🌴 Chung Yeung Festival"],
+  /* ── NOVEMBER ── */
+  [11,3, "Melbourne 🌴 Melbourne Cup"],
+  [11,3, "Tokyo 🌴 Culture Day"],
+  [11,9, "Singapore 🌴 Deepavali (sub)"],
+  [11,23,"Tokyo 🌴 Labour Thanksgiving Day"],
+  /* ── DECEMBER ── */
+  [12,25,"Melbourne 🌴 Sydney 🌴 Singapore 🌴 Tokyo 🌴 Christmas Day"],
+  [12,28,"Melbourne 🌴 Sydney 🌴 Boxing Day (sub)"],
+];
+
+/* ════════════════════════════════════════════════════════════════════
+   ██  ON DEMAND PROGRAMS  ██
+   These appear as a horizontally scrollable shelf on the list view.
+   Set url to the direct access link (Skillshood, Google Doc, etc.)
+   ════════════════════════════════════════════════════════════════════ */
+const ON_DEMAND = [
+  {
+    id:"od1",
+    name:"API eLearning Enablement, Q2",
+    team:"Product Enablement",
+    area:"ALL APAC",
+    aud:"Enterprise, Client Acquisition, Client Success",
+    desc:"Self-paced eLearning on Meltwater's API product — what it is, how to position it, and how to have confident conversations with technical buyers. A solid foundation for everything MCP-related.",
+    url:"http://meltwater.skillshood.com/paths/43506",
+    urlLabel:"Start on Skillshood"
+  },
+  {
+    id:"od2",
+    name:"Klear Enablement, Q2",
+    team:"Product Enablement",
+    area:"ALL APAC",
+    aud:"ALL / ANY",
+    desc:"Self-paced eLearning modules on Klear's influencer intelligence platform — features, use cases, and how to position Klear in client conversations across all APAC roles.",
+    url:"",
+    urlLabel:"Coming soon"
+  },
+  {
+    id:"od3",
+    name:"Blackbird.AI Session, May",
+    team:"Partnerships",
+    area:"ALL APAC",
+    aud:"ALL / ANY",
+    desc:"Recording of the May Blackbird.AI enablement session — covering Compass, Rav3n, and Constellation products. Key for Gov, Defence, and high-risk enterprise accounts. Stronger deals: Meltwater (what's happening) + Blackbird (why it matters, who's behind it) = clear differentiation. New buyers: Risk, CISO, Exec teams beyond PR/comms.",
+    url:"https://us-16014.app.gong.io/call?id=9066685818266480496",
+    urlLabel:"Watch Recording (Gong)",
+    links:[
+      {label:"Watch Recording (Gong)", url:"https://us-16014.app.gong.io/call?id=9066685818266480496"},
+      {label:"Slide Deck", url:"https://docs.google.com/presentation/d/12_FwWBYmEgY18HQ5FF0Uz5xf_Lxw87MkNstZCEHZ3LE/edit?usp=sharing"}
+    ]
+  },
+  {
+    id:"od4",
+    name:"Health Score 2.0 | CSMs",
+    team:"Role Excellence",
+    area:"ALL APAC",
+    aud:"Client Success",
+    desc:"On-demand Health Score 2.0 enablement for CSMs — covering the updated account health scoring framework, key signals, and playbooks for proactive account management. Access anytime to get up to speed before the live sessions.",
+    url:"",
+    urlLabel:"Link coming soon"
+  },
+  {
+    id:"od5",
+    name:"RepTrak Partnership Session, May",
+    team:"Partnerships",
+    area:"ALL APAC",
+    aud:"ALL / ANY",
+    desc:"Recording of the RepTrak partnership session — global leader in reputation measurement, entry point ~$60–70K USD. Two motions: two-way referral program and a joint solution in development. Key APAC accounts already using RepTrak: CBA, Qantas, Telstra, Macquarie Bank, Bunnings, Cathay Pacific, Emirates. Watch before your next enterprise client conversation and route referrals through Partnerships.",
+    url:"https://us-16014.app.gong.io/call?id=8413672464131866481",
+    urlLabel:"Watch Recording (Gong)",
+    links:[
+      {label:"Watch Recording (Gong)", url:"https://us-16014.app.gong.io/call?id=8413672464131866481"},
+      {label:"Session Q&A (Google Sheets)", url:"https://docs.google.com/spreadsheets/d/1G5MpJe_Wbm76we5X2Qv9YVGvVeb2TIPv9Noq-r5vaFg/edit?usp=sharing"}
+    ]
+  },
+  {
+    id:"od6",
+    name:"MCP | Pre-launch Release Notes",
+    team:"Product Enablement",
+    area:"ALL APAC",
+    aud:"ALL / ANY",
+    desc:"Resources to get up to speed on what MCP is and how it works while we await official pricing from Product. Highly recommended: start with the API eLearning (60 min) — it gives a solid foundation for everything MCP-related. Pre-launch Slack channel has the latest release notes.",
+    url:"https://meltwater.skillshood.com/paths/43506",
+    urlLabel:"API eLearning (Skillshood)",
+    links:[
+      {label:"API eLearning — Start Here (Skillshood)", url:"https://meltwater.skillshood.com/paths/43506"},
+      {label:"Pre-launch Slack Thread", url:"https://meltwater.slack.com/archives/C010L40UY7N/p1777584952862499"}
+    ]
+  },
+];
+/* ════════════════════════════════════════════════════════════════════
+   ██  EVENT DATA — REPLACE THIS ARRAY EACH MONTH  ██
+   ════════════════════════════════════════════════════════════════════
+
+   Each event object:
+   {
+     id:       <unique number>        ★
+     month:    <matches CONFIG.month1 or month2>  ★
+     day:      <1-31, or 99 for TBC>  ★
+     tbc:      false / true           ★
+     done:     false / true           ★
+     featured: false / true           (set true for highlighted events)
+
+     name:     "Full event name"      ★
+     short:    "Calendar label"       ★  (keep under 22 chars)
+
+     team:     "Product Enablement"   ★  (see valid values in guide)
+     area:     "ALL APAC"             ★
+     aud:      "ALL / ANY"            ★  (audience / division)
+
+     desc:     "About paragraph..."   ★
+     links:    [{label:"...", url:"..."}]
+   }
+   ════════════════════════════════════════════════════════════════════ */
+const EVENTS = [
+  /* ══ JUNE (month1 — current) ════════════════════════════════════ */
+  {id:1, month:6, day:2,  tbc:false, done:false, featured:false,
+   name:"The Art of Delegation — Leaders", short:"Art of Delegation",
+   team:"People Team", area:"ALL APAC", aud:"FLM & SLM",
+   desc:"LifeLabs session for people leaders on mastering the practice of delegation — covering the mindset shifts, practical frameworks, and skill-building needed to develop team capability while freeing up leader bandwidth effectively.",
+   links:[]},
+
+  {id:2, month:6, day:4,  tbc:false, done:false, featured:false,
+   name:"LifeLabs Session 4: Effective 1:1s", short:"LifeLabs: 1:1s",
+   team:"Role Excellence", area:"ALL APAC", aud:"FLM & SLM",
+   desc:"Fourth session in the LifeLabs series for FLMs and SLMs — focused on running effective 1:1 meetings. Covers how to use 1:1s as a strategic tool for coaching, accountability, and building trust with direct reports.",
+   links:[]},
+
+  {id:3, month:6, day:9,  tbc:false, done:false, featured:true,
+   name:"Explore >E+ | Part 1", short:"Explore >E+ Pt 1",
+   team:"Product Enablement", area:"ALL APAC", aud:"Client Success, Enterprise, Growth Executive, Sales Services",
+   desc:"Part 1 of the Explore to Explore+ enablement series — equipping CS, Enterprise, Growth Executive, and Sales Services teams with the knowledge, messaging, and confidence to drive Explore+ upgrades across their book of business.",
+   links:[]},
+
+  {id:4, month:6, day:11, tbc:false, done:false, featured:false,
+   name:"APAC | Health Score 2.0 | IMs", short:"HS2.0 | IMs",
+   team:"Role Excellence", area:"ALL APAC", aud:"Sales Services",
+   desc:"Health Score 2.0 enablement for Implementation Managers in Sales Services (275 — On-Boarding & Adoption). Covers IM-specific workflows, health signals, and handoff processes within the updated Health Score 2.0 framework.",
+   links:[]},
+
+  {id:5, month:6, day:11, tbc:false, done:false, featured:false,
+   name:"Product Pulse | June", short:"Product Pulse June",
+   team:"Product Enablement", area:"ALL APAC", aud:"ALL / ANY",
+   desc:"Monthly Product Pulse session — a comprehensive overview of all updates and new features released in the past month, expert tips and tricks, an in-depth review of a specific feature, and a sneak peek at the upcoming product roadmap.",
+   links:[]},
+
+  {id:6, month:6, day:12, tbc:false, done:false, featured:true,
+   name:"Explore >E+ | Part 2", short:"Explore >E+ Pt 2",
+   team:"Product Enablement", area:"ALL APAC", aud:"Client Success, Enterprise, Growth Executive, Sales Services",
+   desc:"Part 2 of the Explore to Explore+ enablement series — building on Part 1 with deeper product knowledge, objection handling, and applied deal scenarios to accelerate Explore+ conversion across all relevant segments.",
+   links:[]},
+
+  {id:7, month:6, day:12, tbc:false, done:false, featured:false,
+   name:"The Psychology Behind Saving Money", short:"Psychology: Saving",
+   team:"People Team", area:"ALL APAC", aud:"ALL / ANY",
+   desc:"Wellness session exploring the psychological drivers behind spending and saving habits — covering why some save for tomorrow while others live for today, how to spot unhelpful financial patterns, and seven actionable tools to reshape spending behaviours. No complex formulas — real psychology and practical tips.",
+   links:[{label:"Register (GoToWebinar)", url:"https://attendee.gotowebinar.com/register/768894433080441944"}]},
+
+  {id:8, month:6, day:17, tbc:false, done:false, featured:false,
+   name:"[PH] Marketers Meetup", short:"[PH] Marketers Meetup",
+   team:"APAC Marketing", area:"Philippines", aud:"N/A (External event)",
+   desc:"Customer-facing Marketers Meetup in the Philippines — bringing together local marketing professionals for networking, peer insights, and a showcase of how Meltwater supports modern marketing teams.",
+   links:[]},
+
+  {id:9, month:6, day:18, tbc:false, done:false, featured:false,
+   name:"[PH] Gov Workshop", short:"[PH] Gov Workshop",
+   team:"APAC Marketing", area:"Philippines", aud:"N/A (External event)",
+   desc:"Targeted workshop for Philippine government sector clients and prospects — covering Meltwater solutions relevant to public sector communications, media monitoring, and stakeholder engagement needs.",
+   links:[]},
+
+  {id:10, month:6, day:30, tbc:false, done:false, featured:false,
+   name:"Business Outcomes Certification", short:"Business Outcomes Cert",
+   team:"Role Excellence", area:"ALL APAC", aud:"Client Acquisition, Client Success, Enterprise, Growth Executive",
+   desc:"Role Excellence eLearning certification for Client Acquisition, CS, Enterprise, and Growth Executive roles — focused on articulating and proving business outcomes for clients. Available on Skillshood from 30 June.",
+   links:[]},
+
+  /* JUNE TBC */
+  {id:11, month:6, day:99, tbc:true, done:false, featured:false,
+   name:"Global Cision Take-Down", short:"Cision Take-Down",
+   team:"Role Excellence", area:"ALL APAC", aud:"Client Acquisition, Growth Executive",
+   desc:"Global competitive enablement equipping Client Acquisition and Growth Executive teams with the tools, messaging, and battle cards to actively displace Cision in active deals, renewals, and new business. Date to be confirmed.",
+   links:[]},
+
+  {id:12, month:6, day:99, tbc:true, done:false, featured:false,
+   name:"Query Methodology Kick Off", short:"Query Methodology",
+   team:"Role Excellence", area:"ALL APAC", aud:"Sales Services, Enterprise",
+   desc:"Post-sales enablement on advanced query methodology — covering Boolean best practices, search optimisation, and hands-on techniques for Sales Services and Enterprise teams to deliver maximum value in client delivery. Date TBC.",
+   links:[]},
+
+  {id:13, month:6, day:99, tbc:true, done:false, featured:true,
+   name:"MCP Sales Enablement", short:"MCP Enablement",
+   team:"Product Enablement", area:"ALL APAC", aud:"ALL / ANY",
+   desc:"Product Enablement on Meltwater's MCP (Model Context Protocol) integration — equipping all APAC roles to identify opportunities, articulate value, and confidently discuss MCP with clients and prospects. Date TBC. In the meantime, the On Demand MCP pre-launch release notes are available now.",
+   links:[]},
+
+  {id:14, month:6, day:99, tbc:true, done:false, featured:false,
+   name:"EaaS Sales Enablement", short:"EaaS Enablement",
+   team:"Product Enablement", area:"ALL APAC", aud:"Enterprise",
+   desc:"Product Enablement on Embeddings-as-a-Service (EaaS) — equipping Enterprise teams to identify EaaS-fit accounts, articulate the value proposition, and progress opportunities through the sales cycle. Date TBC.",
+   links:[]},
+
+  {id:15, month:6, day:99, tbc:true, done:false, featured:false,
+   name:"Aus CS Soft Skills — Conflict Resolution", short:"Aus CS Conflict Res",
+   team:"Role Excellence", area:"Australia", aud:"Client Success",
+   desc:"Role Excellence session for Australian Client Success teams focused on conflict resolution — practical techniques for navigating difficult client conversations, de-escalation, and turning challenging situations into stronger relationships. Date TBC.",
+   links:[]},
+
+  /* ══ MAY (month2 — archived) ════════════════════════════════════ */
+  {id:16, month:5, day:4,  tbc:false, done:true, featured:false,
+   name:"LifeLabs Session 2: Feedback", short:"LifeLabs: Feedback",
+   team:"Role Excellence", area:"ALL APAC", aud:"FLM & SLM",
+   desc:"Second session in the LifeLabs series for FLMs and SLMs — focused on giving and receiving effective feedback. Covers the frameworks and muscle-memory needed to make feedback a regular, impactful part of team culture.",
+   links:[]},
+
+  {id:17, month:5, day:5,  tbc:false, done:true, featured:false,
+   name:"Blackbird.AI Enablement Session", short:"Blackbird.AI",
+   team:"Partnerships", area:"ALL APAC", aud:"ALL / ANY",
+   desc:"Reintroduction of Blackbird.AI — covering their narrative and risk intelligence platform, CIB detection capabilities, GTM products, and how APAC teams can engage clients. Particularly relevant for Public Sector, Defence, and BFSI accounts. Organised by Dean Lanauze, Sr Alliance Partnerships Manager. Recording now available on demand.",
+   links:[]},
+
+  {id:18, month:5, day:6,  tbc:false, done:true, featured:false,
+   name:"APAC Town Hall | David Hickey", short:"APAC Town Hall",
+   team:"Executive, People Team", area:"ALL APAC", aud:"ALL / ANY",
+   desc:"All-APAC town hall hosted by David Hickey covering regional business updates, strategic direction for the quarter, key priorities, and open Q&A.",
+   links:[]},
+
+  {id:19, month:5, day:13, tbc:false, done:true, featured:false,
+   name:"Building Your Team Foundation — Leaders", short:"Team Foundation",
+   team:"People Team", area:"ALL APAC", aud:"FLM & SLM",
+   desc:"LifeLabs session for FLMs and SLMs on the core building blocks of high-performing teams — exploring the role of trust, accountability structures, and psychological safety in day-to-day team dynamics.",
+   links:[]},
+
+  {id:20, month:5, day:14, tbc:false, done:false, featured:false,
+   name:"Health Score 2.0 | FLMs", short:"HS2.0 | FLMs",
+   team:"Role Excellence", area:"ALL APAC", aud:"FLM & SLM",
+   desc:"Health Score 2.0 enablement session for FLMs and SLMs — covering the updated framework, what to look for in team accounts, and how to coach ICs on applying the new health signals in their day-to-day work.",
+   links:[]},
+
+  {id:21, month:5, day:15, tbc:false, done:true, featured:false,
+   name:"Deskercise! Taking Care of your Body", short:"Deskercise!",
+   team:"People Team", area:"ALL APAC", aud:"ALL / ANY",
+   desc:"People Team wellbeing session on the physical impact of sedentary work habits — practical desk-friendly exercises and movement strategies to support physical health throughout the workday.",
+   links:[]},
+
+  {id:22, month:5, day:18, tbc:false, done:true, featured:false,
+   name:"LifeLabs Session 3: Productivity", short:"LifeLabs: Productivity",
+   team:"Role Excellence", area:"ALL APAC", aud:"FLM & SLM",
+   desc:"Third session in the LifeLabs series for FLMs and SLMs — focused on productivity frameworks and how people leaders can build high-output habits in themselves and their teams.",
+   links:[]},
+
+  {id:23, month:5, day:19, tbc:false, done:true, featured:false,
+   name:"CAB | Sydney", short:"CAB Sydney (Mira)",
+   team:"Executive", area:"Australia", aud:"N/A (External event)",
+   desc:"Mira Customer Advisory Board at 1 Farrer Place, Sydney — executive-level forum for strategic product feedback and co-creation with key Australian clients. Part of Sydney CAB week 19–20 May.",
+   links:[]},
+
+  {id:24, month:5, day:19, tbc:false, done:true, featured:false,
+   name:"Women in Tech | Q2", short:"Women in Tech Q2",
+   team:"Culture", area:"ALL APAC", aud:"ALL / ANY",
+   desc:"Quarterly Culture initiative for women across APAC — peer learning, open conversation, and community building. Part of the ongoing Women in Tech series supporting inclusion and professional development.",
+   links:[]},
+
+  {id:25, month:5, day:20, tbc:false, done:true, featured:false,
+   name:"CAB | Listening & Monitoring", short:"CAB L&M",
+   team:"Executive", area:"Australia", aud:"N/A (External event)",
+   desc:"ES Listening & Monitoring Customer Advisory Board at 1 Farrer Place, Sydney — focused on the L&M use case with senior client participation. Part of Sydney CAB week 19–20 May.",
+   links:[]},
+
+  {id:26, month:5, day:21, tbc:false, done:true, featured:false,
+   name:"[SG] Campaign360", short:"[SG] Campaign360",
+   team:"APAC Marketing", area:"Singapore", aud:"N/A (External event)",
+   desc:"Customer-facing event in Singapore as part of APAC Marketing's regional activation calendar. Campaign360 brings together marketing leaders to share strategies and how Meltwater supports modern marketing teams.",
+   links:[{label:"Event Page", url:"https://www.campaign360.asia/event/b2002ab5-d2d6-4cac-9949-845dd935f6e6/HOME"}]},
+
+  {id:27, month:5, day:26, tbc:false, done:false, featured:false,
+   name:"Health Score 2.0 | CS Run Through", short:"HS2.0 | CS",
+   team:"Role Excellence", area:"ALL APAC", aud:"Client Success",
+   desc:"Health Score 2.0 run-through for Client Success teams across all sub-divisions (MM, SMB, ES, Renewals, Premium Support, Enterprise Product Support). Covers the updated framework, health signals, and how CS teams should be using it in their daily account management.",
+   links:[]},
+
+  {id:28, month:5, day:26, tbc:false, done:true, featured:false,
+   name:"AI Enablement Part 1: Landscape", short:"AI Enablement Pt 1",
+   team:"Role Excellence", area:"ALL APAC", aud:"ALL / ANY",
+   desc:"FLM-led session recorded by Anthony Cousins — covering the current AI landscape, how it's reshaping client needs, and what it means for Meltwater's positioning. Available and recommended for replay within your office.",
+   links:[
+     {label:"Watch Recording (Zoom)", url:"https://meltwater.zoom.us/rec/share/iV9bVb4lRi6Vwyfx1d6tuq6-F3f-QZyyTKJTsG0KCuDjEf_cxFOX3IwjpzbcZcR2.XtKGhY7mOIXWcfpH"},
+     {label:"Slide Deck (Google Slides)", url:"https://docs.google.com/presentation/d/11rAIsW5DXpvbfp6LjXE6YcK8ajXE9egQTgsd8Ebcmdk/edit?usp=sharing"}
+   ]},
+
+  {id:29, month:5, day:27, tbc:false, done:true, featured:false,
+   name:"[JP] Champion Circle", short:"[JP] Champion Circle",
+   team:"APAC Marketing", area:"Japan", aud:"N/A (External event)",
+   desc:"Japan Customer Advisory event — Champion Circle gathers power users and key client stakeholders for peer learning, product feedback, and community building. Part of APAC Marketing's Japan engagement strategy.",
+   links:[]},
+];
+/* ════════════════════════════════════════════════════════════════════
+   ██  ENGINE — do not edit below unless adding new teams/features  ██
+   ════════════════════════════════════════════════════════════════════ */
+
 const TEAMS = {
   "Product Enablement": {key:"pe",  color:"#0097A7"},
   "Role Excellence":    {key:"re",  color:"#3949AB"},
@@ -363,449 +850,486 @@ const TEAMS = {
   "Culture":            {key:"cult",color:"#AD1457"},
   "Partnerships":       {key:"ptnr",color:"#D84315"}
 };
-function tkey(t){ return (TEAMS[t.trim()]||{key:"pe"}).key; }
-function tcolor(t){ return (TEAMS[t.trim()]||{color:"#0097A7"}).color; }
-function chipHtml(teamStr){
-  return teamStr.split(",").map(t=>`<span class="chip chip-${tkey(t)}">${t.trim()}</span>`).join(" ");
-}
-
-/* ── EVENT DATA ──────────────────────────────────────────────── */
-const EVENTS = [
-  /* ─── MAY ────────────────────────────────────────────────── */
-  {id:1,month:5,day:5,
-   name:"Blackbird.AI Enablement Session",short:"Blackbird.AI",
-   team:"Partnerships",area:"ALL APAC",type:"LIVE Session",aud:"ALL / ANY",
-   done:true,tbc:false,
-   desc:"Reintroduction of Blackbird.AI — well known mainly to the SEA team — covering their disinformation and coordinated inauthentic behaviour (CIB) detection capabilities. The session covered GTM products, recent case studies, and how APAC teams can engage clients. Held Tuesday 5 May, 9am SGT / 11am AEST, in-person in Singapore with virtual attendance for regional teams. Particularly relevant for government-facing accounts in AU and SEA.",
-   links:[]},
-
-  {id:2,month:5,day:6,
-   name:"APAC Town Hall | David Hickey",short:"APAC Town Hall",
-   team:"Executive,People Team",area:"ALL APAC",type:"LIVE Session",aud:"ALL / ANY",
-   done:true,tbc:false,
-   desc:"All-APAC town hall hosted by David Hickey covering regional business updates, strategic direction for the quarter, key priorities, and an open Q&A. An important alignment moment for all APAC functions.",
-   links:[]},
-
-  {id:3,month:5,day:8,
-   name:"APAC API Enablement eLearning",short:"API eLearning",
-   team:"Product Enablement",area:"ALL APAC",type:"eLearning",aud:"Enterprise, Client Acquisition, Client Success",
-   done:true,tbc:false,
-   desc:"Self-paced eLearning covering Meltwater's API product — what it is, how to position it, and how to have confident conversations with technical buyers. Primarily designed for Enterprise, Client Acquisition, and Client Success teams. Available via Skillshood.",
-   links:[{label:"eLearning Path on Skillshood",url:"http://meltwater.skillshood.com/paths/43506"}]},
-
-  {id:4,month:5,day:13,
-   name:"Building Your Team Foundation — Leaders",short:"Team Foundation",
-   team:"People Team",area:"ALL APAC",type:"LIVE Session",aud:"FLM & SLM",
-   done:true,tbc:false,
-   desc:"LifeLabs session for FLMs and SLMs on the core building blocks of high-performing teams — exploring the role of trust, accountability structures, and psychological safety in day-to-day team dynamics.",
-   links:[]},
-
-  {id:5,month:5,day:15,
-   name:"APAC | Klear eLearnings",short:"Klear eLearnings",
-   team:"Product Enablement",area:"ALL APAC",type:"eLearning",aud:"ALL / ANY",
-   done:false,tbc:false,
-   desc:"Self-paced eLearning modules on Klear's influencer intelligence platform, released alongside the product and pricing rollout. Covers key features, use cases, and how to position Klear in client conversations across all APAC roles.",
-   links:[]},
-
-  {id:6,month:5,day:15,
-   name:"APAC IC PATN/Champions Certification",short:"IC Champions Cert",
-   team:"Role Excellence",area:"ALL APAC",type:"eLearning",aud:"Client Acquisition, Client Success, Enterprise, Growth Executive",
-   done:false,tbc:false,
-   desc:"Certification pathway for Individual Contributors to become certified PATN Champions. Covers advanced platform knowledge, best practices, and applied use cases — available via Skillshood for CA, CS, Enterprise, and Growth Executive ICs.",
-   links:[{label:"Certification Path on Skillshood",url:"https://meltwater.skillshood.com/paths/43431?ref=mng"}]},
-
-  {id:7,month:5,day:15,
-   name:"Deskercise! Taking Care of your Body",short:"Deskercise!",
-   team:"People Team",area:"ALL APAC",type:"LIVE Session",aud:"ALL / ANY",
-   done:true,tbc:false,
-   desc:"People Team wellbeing session exploring the physical impact of sedentary work habits. Practical, desk-friendly exercises and movement strategies to support physical health throughout the workday — open to all APAC team members.",
-   links:[]},
-
-  {id:8,month:5,day:19,
-   name:"CAB | Sydney",short:"CAB | Sydney (Mira)",
-   team:"Executive",area:"Australia",type:"Customer Event",aud:"External",
-   done:true,tbc:false,
-   desc:"Mira Customer Advisory Board session held at 1 Farrer Place, Sydney on Tuesday 19 May. Part of the Sydney CAB week (19–20 May) — an executive-level forum for strategic product feedback, deep client relationship building, and co-creation with key Australian clients.",
-   links:[]},
-
-  {id:9,month:5,day:19,
-   name:"Women in Tech | Q2",short:"Women in Tech Q2",
-   team:"Culture",area:"ALL APAC",type:"LIVE Session",aud:"ALL / ANY",
-   done:true,tbc:false,
-   desc:"Quarterly Culture initiative bringing together women across APAC for peer learning, open conversation, and community. Part of an ongoing series supporting inclusion, professional development, and belonging across the region.",
-   links:[]},
-
-  {id:10,month:5,day:20,
-   name:"CAB | Listening & Monitoring",short:"CAB | L&M",
-   team:"Executive",area:"Australia",type:"Customer Event",aud:"External",
-   done:true,tbc:false,
-   desc:"ES Listening & Monitoring Customer Advisory Board session at 1 Farrer Place, Sydney on Wednesday 20 May. Focused on the Listening & Monitoring use case with senior client participation. Part of the Sydney CAB week (19–20 May).",
-   links:[]},
-
-  {id:11,month:5,day:21,
-   name:"[SG] Campaign360",short:"[SG] Campaign360",
-   team:"APAC Marketing",area:"Singapore",type:"Customer Event",aud:"External",
-   done:false,tbc:false,
-   desc:"Customer-facing event in Singapore as part of APAC Marketing's regional activation calendar. Campaign360 brings together marketing leaders to share strategies, trends, and how Meltwater supports modern marketing teams.",
-   links:[{label:"Event Page",url:"https://www.campaign360.asia/event/b2002ab5-d2d6-4cac-9949-845dd935f6e6/HOME"}]},
-
-  {id:12,month:5,day:26,
-   name:"APAC | Health Score 2.0 Program",short:"Health Score 2.0",
-   team:"Role Excellence",area:"ALL APAC",type:"LIVE Session",aud:"Client Success",
-   done:false,tbc:false,
-   desc:"Launch of the Health Score 2.0 program for Client Success teams across APAC. Role Excellence-led enablement equipping CS teams with updated account health scoring frameworks, key signals, and playbooks for proactive account management.",
-   links:[]},
-
-  {id:13,month:5,day:27,
-   name:"[JP] Champion Circle",short:"[JP] Champion Circle",
-   team:"APAC Marketing",area:"Japan",type:"Customer Event",aud:"External",
-   done:false,tbc:false,
-   desc:"Japan Customer Advisory event — Champion Circle gathers power users and key client stakeholders for peer learning, product feedback, and community building. Part of APAC Marketing's Japan engagement strategy.",
-   links:[]},
-
-  {id:14,month:5,day:29,
-   name:"[CN] 1:1 ABM for OPPO",short:"[CN] ABM: OPPO",
-   team:"APAC Marketing",area:"China",type:"Customer Event",aud:"External",
-   done:false,tbc:false,
-   desc:"Account-Based Marketing activation targeting OPPO in China — a 1:1 owned event designed to identify upsell and cross-sell opportunity. Part of APAC Marketing's strategic ABM approach for high-value key accounts.",
-   links:[]},
-
-  {id:15,month:5,day:29,
-   name:"LifeLabs Core Manager Training — FLMs",short:"LifeLabs FLMs",
-   team:"Role Excellence",area:"ALL APAC",type:"LIVE Session",aud:"FLM & SLM",
-   done:false,tbc:false,
-   desc:"Core Manager program from LifeLabs delivered to FLMs and SLMs — grounded in evidence-based management science. Covers feedback frameworks, effective delegation, and performance conversations for people leaders.",
-   links:[]},
-
-  /* ─── JUNE SCHEDULED ────────────────────────────────────── */
-  {id:16,month:6,day:2,
-   name:"The Art of Delegation — Leaders",short:"Art of Delegation",
-   team:"People Team",area:"ALL APAC",type:"LIVE Session",aud:"FLM & SLM",
-   done:false,tbc:false,
-   desc:"LifeLabs session for people leaders on mastering the practice of delegation — covering the mindset shifts, practical frameworks, and skill-building needed to develop team capability while freeing up leader bandwidth effectively.",
-   links:[]},
-
-  {id:17,month:6,day:3,
-   name:"APAC | Explore to Explore+ | SMB & MM",short:"Explore+ SMB & MM",
-   team:"Product Enablement",area:"ALL APAC",type:"LIVE Session",aud:"Client Acquisition, Client Success, Growth Executive",
-   done:false,tbc:false,
-   desc:"Sales enablement equipping Client Acquisition, CS, and Growth Executive teams to confidently position and pitch the upgrade pathway from Explore to Explore+ for SMB and Mid-Market client segments.",
-   links:[]},
-
-  {id:18,month:6,day:3,
-   name:"APAC | Explore to Explore+ | Enterprise",short:"Explore+ Enterprise",
-   team:"APAC Marketing",area:"ALL APAC",type:"LIVE Session",aud:"Enterprise",
-   done:false,tbc:false,
-   desc:"Marketing-led enablement for Enterprise teams on the Explore to Explore+ upgrade — covering the differentiated value proposition, tailored messaging frameworks, and positioning for enterprise-level accounts.",
-   links:[]},
-
-  {id:19,month:6,day:8,
-   name:"Global | Cision Takedown — (Prep)",short:"Cision Prep",
-   team:"Product Enablement",area:"ALL APAC",type:"LIVE Session",aud:"ALL / ANY",
-   done:false,tbc:false,
-   desc:"Internal preparation session ahead of the Cision Takedown live event — aligning APAC teams on competitive messaging, battle card content, objection handling, and go-to-market strategy for displacing Cision.",
-   links:[]},
-
-  {id:20,month:6,day:8,
-   name:"Global | Cision Takedown — Live",short:"Cision Takedown Live",
-   team:"Product Enablement",area:"ALL APAC",type:"LIVE Session",aud:"Client Acquisition, Client Success, Enterprise, Growth Executive",
-   done:false,tbc:false,
-   desc:"Global competitive enablement equipping CA, CS, Enterprise, and Growth Executive teams with the tools and knowledge to actively compete against and displace Cision in active deals, renewals, and new business.",
-   links:[]},
-
-  {id:21,month:6,day:11,
-   name:"[CN] Meltwater @ China Retail Summit",short:"[CN] China Summit",
-   team:"APAC Marketing",area:"China",type:"Customer Event",aud:"External",
-   done:false,tbc:false,
-   desc:"Meltwater-owned activation at the China Retail Innovation Summit — a high-profile customer engagement event bringing together retail industry leaders and decision-makers in the Chinese market.",
-   links:[{label:"Event Info",url:"https://www.shine-consultant.com/prod_view.aspx?TypeId=33&Id=445&FId=t3:33:3#xn_c_prodv_565_wrap"}]},
-
-  {id:22,month:6,day:11,
-   name:"APAC | Health Score 2.0 | IMs",short:"HS2.0 | IMs",
-   team:"Role Excellence",area:"ALL APAC",type:"LIVE Session",aud:"Sales Services — 275 On-Boarding & Adoption",
-   done:false,tbc:false,
-   desc:"Health Score 2.0 enablement specifically for Implementation Managers in the Sales Services division (subdivision 275 — On-Boarding & Adoption). Covers IM-specific workflows, health signals, and handoff processes within the updated framework.",
-   links:[]},
-
-  {id:23,month:6,day:12,
-   name:"The Psychology Behind Saving Money",short:"Psychology: Saving",
-   team:"People Team",area:"ALL APAC",type:"LIVE Session",aud:"ALL / ANY",
-   done:false,tbc:false,
-   desc:"People Team financial wellbeing session exploring the psychological drivers behind spending and saving habits — with practical strategies for building greater financial resilience and confidence. Open to all APAC team members.",
-   links:[]},
-
-  {id:24,month:6,day:17,
-   name:"[PH] Marketers Meetup",short:"[PH] Marketers Meetup",
-   team:"APAC Marketing",area:"Philippines",type:"Customer Event",aud:"External",
-   done:false,tbc:false,
-   desc:"Customer-facing Marketers Meetup in the Philippines — bringing together local marketing professionals for networking, peer insights, and a showcase of how Meltwater supports modern marketing teams.",
-   links:[]},
-
-  {id:25,month:6,day:18,
-   name:"[PH] Gov Workshop",short:"[PH] Gov Workshop",
-   team:"APAC Marketing",area:"Philippines",type:"Customer Event",aud:"External",
-   done:false,tbc:false,
-   desc:"Targeted workshop for Philippine government sector clients and prospects — covering Meltwater solutions relevant to public sector communications, media monitoring, and stakeholder engagement needs.",
-   links:[]},
-
-  /* ─── JUNE TBC ──────────────────────────────────────────── */
-  {id:26,month:6,day:99,
-   name:"Aus CS Soft Skills Training",short:"Aus CS Soft Skills",
-   team:"Role Excellence",area:"Australia",type:"LIVE Session",aud:"Client Success",
-   done:false,tbc:true,
-   desc:"Planned Role Excellence session for Australian Client Success teams focusing on soft skills development — covering communication techniques, navigating difficult client conversations, and building deeper client empathy. Date to be confirmed.",
-   links:[]},
-
-  {id:27,month:6,day:99,
-   name:"MCP Sales Enablement",short:"MCP Enablement",
-   team:"Product Enablement",area:"ALL APAC",type:"LIVE Session",aud:"ALL / ANY",
-   done:false,tbc:true,
-   desc:"Product Enablement session on Meltwater's MCP (Model Context Protocol) integration capabilities — equipping all APAC roles with the knowledge to identify opportunities, articulate value, and confidently discuss MCP with clients and prospects. Date to be confirmed.",
-   links:[]},
-
-  {id:28,month:6,day:99,
-   name:"Query Enablement (Post Sales)",short:"Query Enablement",
-   team:"Product Enablement",area:"ALL APAC",type:"LIVE Session",aud:"Sales Services",
-   done:false,tbc:true,
-   desc:"Post-sales enablement for CS and implementation teams on advanced Boolean query building and search optimisation — helping teams extract maximum value from Meltwater's search engine for client delivery. Date to be confirmed.",
-   links:[]},
-
-  {id:29,month:6,day:99,
-   name:"EaaS Sales Enablement",short:"EaaS Enablement",
-   team:"Product Enablement",area:"ALL APAC",type:"LIVE Session",aud:"ALL / ANY",
-   done:false,tbc:true,
-   desc:"Product Enablement on Embeddings-as-a-Service (EaaS) — equipping all APAC teams with the knowledge to identify EaaS-fit accounts, articulate the value proposition, and progress opportunities through the sales cycle. Date to be confirmed.",
-   links:[]},
-
-  {id:30,month:6,day:99,
-   name:"GLOBAL | RI Product Enablement",short:"RI Product Enablement",
-   team:"Product Enablement",area:"ALL APAC",type:"LIVE Session",aud:"ALL / ANY",
-   done:false,tbc:true,
-   desc:"Global enablement on Reputation Intelligence — covering Meltwater's RI product suite, value proposition, target ICP, and how to identify RI-fit accounts across all APAC client-facing roles. Date to be confirmed.",
-   links:[]}
-];
-
-/* ── TEAM SUMMARIES ──────────────────────────────────────────── */
 const TEAM_ORDER = ["Product Enablement","Role Excellence","APAC Marketing","People Team","Executive","Partnerships","Culture"];
 
-function buildTeamSummaries(month, containerId) {
+function tkey(t){ return (TEAMS[t.trim()]||{key:"pe"}).key; }
+function tcolor(t){ return (TEAMS[t.trim()]||{color:"#0097A7"}).color; }
+function chipHtml(s){ return s.split(",").map(t=>`<span class="chip chip-${tkey(t)}">${t.trim()}</span>`).join(" "); }
+
+const TYPE_ICON = {
+  "LIVE Session":    "🎙️ LIVE Session",
+  "eLearning":       "🎓 eLearning",
+  "Customer Event":  "🤝 Customer Event",
+  "On Demand":       "▶ On Demand",
+};
+
+/* ── ACTIVE FILTERS ── */
+let activeArea = "all", activeDivision = "all";
+let activeCalTeams = new Set(Object.keys(TEAMS));
+const ALL_AREAS = ["ALL APAC","Australia","Japan","Singapore","China","Philippines","India","Hong Kong"];
+let activeCalAreas = new Set(ALL_AREAS);
+
+/* ── HELPERS ── */
+function phForDay(month, day){
+  return PUBLIC_HOLIDAYS.filter(h=>h[0]===month&&h[1]===day).map(h=>h[2]);
+}
+
+function getCurrentWeekBounds(){
+  const now = new Date();
+  const d   = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const dow = (d.getDay()+6)%7;
+  const mon = new Date(d); mon.setDate(d.getDate()-dow);
+  const fri = new Date(mon); fri.setDate(mon.getDate()+4);
+  return {mon, fri};
+}
+
+function isWeekday(date){ const d=(date.getDay()+6)%7; return d<5; }
+
+/* ── BUILD MON-FRI CALENDAR ── */
+function buildCalMF(containerId, year, month, isArchived){
   const container = document.getElementById(containerId);
   container.innerHTML = "";
-  const confirmed = EVENTS.filter(e => e.month === month && !e.tbc);
-  const byTeam = {};
-  confirmed.forEach(ev => {
-    ev.team.split(",").map(t => t.trim()).forEach(t => {
-      if (!byTeam[t]) byTeam[t] = [];
-      if (!byTeam[t].find(x => x.id === ev.id)) byTeam[t].push(ev);
+  const today = new Date();
+  const todayY = today.getFullYear(), todayM = today.getMonth()+1, todayD = today.getDate();
+  const {mon: wkMon, fri: wkFri} = getCurrentWeekBounds();
+  const daysInMonth = new Date(year, month, 0).getDate();
+
+  // Build event lookup by day
+  const evByDay = {};
+  EVENTS.filter(e=>e.month===month&&!e.tbc).forEach(ev=>{
+    if(!evByDay[ev.day]) evByDay[ev.day]=[];
+    evByDay[ev.day].push(ev);
+  });
+
+  // Header
+  const head = document.createElement("div");
+  head.className = "cal-mf-head" + (isArchived?" archived":"");
+  ["Mon","Tue","Wed","Thu","Fri"].forEach(d=>{
+    const h=document.createElement("div"); h.className="cal-dow"; h.textContent=d; head.appendChild(h);
+  });
+  container.appendChild(head);
+
+  // Determine weeks to show
+  const firstDate = new Date(year, month-1, 1);
+  const firstDOW  = (firstDate.getDay()+6)%7; // 0=Mon
+
+  // Find first Monday (could be before month start)
+  const startMon = new Date(firstDate);
+  startMon.setDate(1 - firstDOW);
+
+  // Find last Friday (after month end)
+  const lastDate = new Date(year, month-1, daysInMonth);
+  const lastDOW  = (lastDate.getDay()+6)%7;
+  const endFri   = new Date(lastDate);
+  endFri.setDate(daysInMonth + (4 - lastDOW));
+
+  // Iterate week by week
+  let cursor = new Date(startMon);
+  while(cursor <= endFri){
+    const weekMon = new Date(cursor);
+    const weekFri = new Date(cursor); weekFri.setDate(cursor.getDate()+4);
+
+    // Is this the current week?
+    const isCurrentWeek = weekMon <= wkFri && weekFri >= wkMon;
+
+    const rowEl = document.createElement("div");
+    rowEl.className = "week-row" + (isCurrentWeek&&!isArchived?" current-week":"");
+
+    for(let d=0; d<5; d++){
+      const cellDate = new Date(cursor); cellDate.setDate(cursor.getDate()+d);
+      const cY=cellDate.getFullYear(), cM=cellDate.getMonth()+1, cD=cellDate.getDate();
+      const inMonth = cM===month && cY===year;
+      const isToday = cY===todayY && cM===todayM && cD===todayD;
+      const isPast  = cellDate < today && !isToday;
+
+      const cell = document.createElement("div");
+      if(!inMonth){
+        cell.className = "cal-cell empty";
+      } else {
+        cell.className = "cal-cell" + (isToday?" cal-today":(isPast?" cal-past":""));
+
+        // Day number — check if any featured event falls on this day
+        const hasFeatured = !isArchived && EVENTS.some(e=>e.month===month&&e.day===cD&&e.featured&&!e.tbc);
+        const dnWrap = document.createElement("div");
+        dnWrap.className = hasFeatured ? "day-n-wrap featured-day" : "day-n-wrap";
+        const dn = document.createElement("span");
+        dn.className = isToday?"day-n today-n":"day-n";
+        dn.textContent = cD;
+        dnWrap.appendChild(dn);
+        cell.appendChild(dnWrap);
+
+        // Events
+        (evByDay[cD]||[]).forEach(ev=>{
+          const e = document.createElement("div");
+          const k = tkey(ev.team.split(",")[0]);
+          e.className = `cal-ev cal-${k}${ev.done?" ev-done":""}${activeCalTeams.has(ev.team.split(",")[0].trim())?"": " team-hidden"}`;
+          e.dataset.teams = ev.team;
+          e.textContent = ev.short;
+          e.title = ev.name+" — "+ev.team;
+          e.dataset.id = ev.id;
+          e.onclick = ()=>openModal(ev.id);
+          cell.appendChild(e);
+        });
+
+        // Public holidays
+        const phs = phForDay(month, cD);
+        if(phs.length){
+          const phRow = document.createElement("div"); phRow.className="ph-row";
+          phs.forEach(ph=>{
+            const tag=document.createElement("div"); tag.className="ph-tag"; tag.textContent=ph; phRow.appendChild(tag);
+          });
+          cell.appendChild(phRow);
+        }
+      }
+      rowEl.appendChild(cell);
+    }
+    container.appendChild(rowEl);
+    cursor.setDate(cursor.getDate()+7);
+  }
+}
+
+/* ── BUILD CALENDAR TBC ── */
+function buildCalTBC(){
+  const c = document.getElementById("cal-tbc"); c.innerHTML="";
+  EVENTS.filter(e=>e.tbc).forEach(ev=>{
+    const card=document.createElement("div"); card.className="cal-tbc-card"; card.onclick=()=>openModal(ev.id);
+    card.innerHTML=`<div class="cal-tbc-flag">📌 Date TBC</div><div class="cal-tbc-name">${ev.name}</div><span class="chip chip-${tkey(ev.team)}">${ev.team}</span>`;
+    c.appendChild(card);
+  });
+}
+
+/* ── BUILD TEAM TOGGLES (calendar) ── */
+function buildTeamToggles(){
+  const c = document.getElementById("cal-team-toggles"); c.innerHTML="";
+  TEAM_ORDER.forEach(team=>{
+    const {key,color} = TEAMS[team];
+    const btn=document.createElement("button");
+    btn.className=`cal-team-toggle on`;
+    btn.style.borderColor=color; btn.style.background=color;
+    btn.textContent=team;
+    btn.dataset.team=team;
+    btn.onclick=function(){
+      if(activeCalTeams.has(team)){
+        activeCalTeams.delete(team);
+        btn.classList.replace("on","off");
+        btn.style.color=color; btn.style.background="white";
+        btn.querySelector("span").style.background=color;
+        btn.querySelector("span").style.color="white";
+      } else {
+        activeCalTeams.add(team);
+        btn.classList.replace("off","on");
+        btn.style.color="white"; btn.style.background=color;
+        btn.querySelector("span").style.background="rgba(255,255,255,.25)";
+        btn.querySelector("span").style.color="white";
+      }
+      document.querySelectorAll(".cal-ev").forEach(el=>{
+        const evId = parseInt(el.getAttribute("data-id"));
+        const ev = EVENTS.find(e=>e.id===evId);
+        if(!ev) return;
+        const primaryTeam = ev.team.split(",")[0].trim();
+        const areaOk = activeCalAreas.has(ev.area) || ev.area==="ALL APAC";
+        el.classList.toggle("team-hidden", !(activeCalTeams.has(primaryTeam)&&areaOk));
+      });
+    };
+    c.appendChild(btn);
+  });
+}
+
+/* ── BUILD AREA TOGGLES (calendar) ── */
+function buildAreaToggles(){
+  const c = document.getElementById("cal-area-toggles"); c.innerHTML="";
+  const AREA_COLORS = {
+    "ALL APAC":"#0097A7","Australia":"#1565C0","Japan":"#C62828",
+    "Singapore":"#2E7D32","China":"#E65100","Philippines":"#6A1B9A",
+    "India":"#F57F17","Hong Kong":"#37474F"
+  };
+  ALL_AREAS.forEach(area=>{
+    const color = AREA_COLORS[area]||"#607D8B";
+    const btn=document.createElement("button");
+    btn.className="cal-team-toggle on";
+    btn.style.borderColor=color; btn.style.background=color; btn.style.color="white";
+    const CC_MAP = {"ALL APAC":"AP","Australia":"AU","Japan":"JP","Singapore":"SG","China":"CN","Philippines":"PH","India":"IN","Hong Kong":"HK"};
+    const cc = CC_MAP[area]||area.slice(0,2).toUpperCase();
+    btn.innerHTML = `<span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:14px;border-radius:3px;font-size:8px;font-weight:800;letter-spacing:-.3px;background:rgba(255,255,255,.25);color:white;margin-right:3px;flex-shrink:0">${cc}</span>${area}`;
+    btn.dataset.area=area;
+    btn.onclick=function(){
+      if(activeCalAreas.has(area)){
+        activeCalAreas.delete(area);
+        btn.classList.replace("on","off");
+        btn.style.color=color; btn.style.background="white";
+        btn.querySelector("span").style.background=color;
+        btn.querySelector("span").style.color="white";
+      } else {
+        activeCalAreas.add(area);
+        btn.classList.replace("off","on");
+        btn.style.color="white"; btn.style.background=color;
+        btn.querySelector("span").style.background="rgba(255,255,255,.25)";
+        btn.querySelector("span").style.color="white";
+      }
+      // Re-evaluate all cal-ev visibility
+      document.querySelectorAll(".cal-ev").forEach(el=>{
+        const evId = parseInt(el.getAttribute("data-id"));
+        const ev = EVENTS.find(e=>e.id===evId);
+        if(!ev) return;
+        const primaryTeam = ev.team.split(",")[0].trim();
+        const teamOk = activeCalTeams.has(primaryTeam);
+        const areaOk = activeCalAreas.has(ev.area) || ev.area==="ALL APAC";
+        el.classList.toggle("team-hidden", !(teamOk&&areaOk));
+      });
+    };
+    c.appendChild(btn);
+  });
+}
+
+/* ── BUILD ON DEMAND SHELF ── */
+function buildODShelf(containerId, month){
+  const c = document.getElementById(containerId); c.innerHTML="";
+  ON_DEMAND.forEach(od=>{
+    const card=document.createElement("div"); card.className="od-card"; card.onclick=()=>openModalOD(od.id);
+    const ctaHtml = od.url
+      ? `<a class="od-cta" href="${od.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${od.urlLabel}</a>`
+      : `<span class="od-cta" style="background:#9E9E9E;cursor:default">⏳ ${od.urlLabel}</span>`;
+    card.innerHTML=`
+      <div class="od-badge">▶ ON DEMAND</div>
+      <div class="od-title">${od.name}</div>
+      <div class="od-meta">${od.area} · ${od.aud}</div>
+      ${ctaHtml}`;
+    c.appendChild(card);
+  });
+}
+
+/* ── BUILD FEATURED SECTION ── */
+function buildFeatured(containerId, month){
+  const c = document.getElementById(containerId); c.innerHTML="";
+  const evs = EVENTS.filter(e=>e.month===month&&e.featured&&!e.tbc);
+  if(!evs.length){ c.style.display="none"; return; }
+  c.style.display="";
+  const label=document.createElement("div"); label.className="featured-label"; label.textContent="Featured this month";
+  const grid=document.createElement("div"); grid.className="featured-grid";
+  evs.forEach(ev=>{
+    const card=document.createElement("div"); card.className="featured-card"; card.onclick=()=>openModal(ev.id);
+    const dateStr = ev.tbc?"TBC":ev.day+" "+(ev.month===CONFIG.month1?CONFIG.month1Label:CONFIG.month2Label);
+    card.innerHTML=`
+      <div class="feat-badge">⭐ Featured</div>
+      <div class="feat-title">${ev.name}</div>
+      <div class="feat-meta">
+        <span class="feat-date">📅 ${dateStr}</span>
+        <span class="feat-area">${ev.area}</span>
+        ${chipHtml(ev.team)}
+      </div>
+      <span class="vd-link">View details →</span>`;
+    grid.appendChild(card);
+  });
+  c.appendChild(label); c.appendChild(grid);
+}
+
+/* ── BUILD TEAM SUMMARIES ── */
+function buildTeamSummaries(containerId, month){
+  const c = document.getElementById(containerId); c.innerHTML="";
+  const scheduled = EVENTS.filter(e=>e.month===month&&!e.tbc);
+  const byTeam={};
+  scheduled.forEach(ev=>{
+    ev.team.split(",").map(t=>t.trim()).forEach(t=>{
+      if(!byTeam[t]) byTeam[t]=[];
+      if(!byTeam[t].find(x=>x.id===ev.id)) byTeam[t].push(ev);
     });
   });
-  TEAM_ORDER.forEach(team => {
-    if (!byTeam[team]) return;
-    const evs = byTeam[team];
-    const shorts = evs.map(e => e.short);
-    let desc = shorts.length === 1 ? shorts[0] : shorts.length === 2 ? shorts[0] + " and " + shorts[1] : shorts.slice(0,-1).join(", ") + ", and " + shorts[shorts.length-1];
-    const key = tkey(team);
-    const color = tcolor(team);
-    const card = document.createElement("div");
-    card.className = "ts-card";
-    card.style.borderLeftColor = color;
-    card.innerHTML = `<div><span class="chip chip-${key} ts-badge">${team}</span></div><div class="ts-count">${evs.length} program${evs.length>1?"s":""} this month</div><div class="ts-desc">${desc}</div>`;
-    container.appendChild(card);
+  TEAM_ORDER.forEach(team=>{
+    if(!byTeam[team]) return;
+    const evs=byTeam[team];
+    const shorts=evs.map(e=>e.short);
+    let desc=shorts.length===1?shorts[0]:shorts.length===2?shorts[0]+" and "+shorts[1]:shorts.slice(0,-1).join(", ")+" and "+shorts[shorts.length-1];
+    const {key,color}=TEAMS[team];
+    const card=document.createElement("div"); card.className="ts-card"; card.style.borderLeftColor=color;
+    card.innerHTML=`<span class="chip chip-${key} ts-team">${team}</span><div class="ts-count">${evs.length} program${evs.length>1?"s":""}</div><div class="ts-desc">${desc}</div>`;
+    c.appendChild(card);
   });
-  if (month === 6) {
-    const tbcEvs = EVENTS.filter(e => e.month === 6 && e.tbc);
-    if (tbcEvs.length) {
-      const card = document.createElement("div");
-      card.className = "ts-card";
-      card.style.borderLeftColor = "#D84315";
-      card.innerHTML = `<div><span class="ts-badge" style="background:#FFF3E0;color:#8D4300;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;">📌 TBC</span></div><div class="ts-count">${tbcEvs.length} programs pending date</div><div class="ts-desc">${tbcEvs.map(e=>e.short).join(", ")}</div>`;
-      container.appendChild(card);
+  // TBC summary for month1
+  if(month===CONFIG.month1){
+    const tbc=EVENTS.filter(e=>e.month===month&&e.tbc);
+    if(tbc.length){
+      const card=document.createElement("div"); card.className="ts-card"; card.style.borderLeftColor="#D84315";
+      card.innerHTML=`<span class="ts-team" style="background:#FFF3E0;color:#8D4300;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;">📌 TBC</span><div class="ts-count">${tbc.length} awaiting date</div><div class="ts-desc">${tbc.map(e=>e.short).join(", ")}</div>`;
+      c.appendChild(card);
     }
   }
 }
 
-/* ── CARD RENDERING ──────────────────────────────────────────── */
-let activeTeam = "all", activeType = null;
-
-function buildCard(ev) {
-  const isTBC = ev.tbc, isDone = ev.done;
-  const badge = isTBC ? '<span class="card-badge b-tbc">📌 Date TBC</span>' : isDone ? '<span class="card-badge b-done">✓ Completed</span>' : '<span class="card-badge b-up">⏳ Upcoming</span>';
-  const dateTxt = isTBC ? "📅 TBC" : "📅 " + ev.day + (ev.month===5?" May":" Jun");
-  const cls = ["card", isTBC?"tbc-card":"", isDone?"completed-card":""].filter(Boolean).join(" ");
-  return `<div class="${cls}" data-teams="${ev.team}" data-type="${ev.type}" onclick="openModal(${ev.id})">
+/* ── BUILD CARD ── */
+function buildCard(ev){
+  const isTBC=ev.tbc, isDone=ev.done;
+  const badge=isTBC?'<span class="card-badge b-tbc">📌 TBC</span>':isDone?'<span class="card-badge b-done">✓ Done</span>':'<span class="card-badge b-up">⏳ Upcoming</span>';
+  const ml=ev.month===CONFIG.month1?CONFIG.month1Label:CONFIG.month2Label;
+  const dateTxt=isTBC?"📅 TBC":"📅 "+ev.day+" "+ml.split(" ")[0];
+  const cls=["card",isTBC?"tbc-card":"",isDone?"completed-card":""].filter(Boolean).join(" ");
+  return `<div class="${cls}" data-area="${ev.area}" data-aud="${ev.aud}" onclick="openModal(${ev.id})">
     <div class="card-top">${badge}<span class="card-date${isTBC?" tbc-d":""}">${dateTxt}</span></div>
     <div class="card-title">${ev.name}</div>
     <div class="card-divider"></div>
     <div class="card-meta">
-      <div class="meta-row"><div class="meta-key">Team</div><div class="meta-val chip-row">${chipHtml(ev.team)}</div></div>
+      <div class="meta-row"><div class="meta-key">${CONFIG.organisedByLabel}</div><div class="meta-val chip-row">${chipHtml(ev.team)}</div></div>
       <div class="meta-row"><div class="meta-key">Area</div><div class="meta-val">${ev.area}</div></div>
       <div class="meta-row"><div class="meta-key">For</div><div class="meta-val">${ev.aud}</div></div>
     </div>
-    <span class="view-details">View details →</span>
+    <span class="vd-link">View details →</span>
   </div>`;
 }
 
-function renderListMonth(month) {
-  if (month === 5) {
-    buildTeamSummaries(5, "ts-may");
-    const done = EVENTS.filter(e=>e.month===5&&e.done).sort((a,b)=>a.day-b.day);
-    const up   = EVENTS.filter(e=>e.month===5&&!e.done).sort((a,b)=>a.day-b.day);
-    document.getElementById("grid-done").innerHTML = done.map(buildCard).join("");
-    document.getElementById("grid-up").innerHTML   = up.map(buildCard).join("");
-    document.getElementById("lbl-done").textContent = done.length + " events delivered this month";
-    document.getElementById("lbl-up").textContent   = up.length + " events remaining this month";
+/* ── RENDER LIST MONTHS ── */
+function renderListM1(){
+  buildFeatured("featured-m1", CONFIG.month1);
+  buildODShelf("od-shelf-m1", CONFIG.month1);
+  buildTeamSummaries("ts-m1", CONFIG.month1);
+  const sched = EVENTS.filter(e=>e.month===CONFIG.month1&&!e.tbc).sort((a,b)=>a.day-b.day);
+  const tbc   = EVENTS.filter(e=>e.month===CONFIG.month1&&e.tbc);
+  document.getElementById("grid-m1-sched").innerHTML = sched.map(buildCard).join("");
+  document.getElementById("grid-m1-tbc").innerHTML   = tbc.map(buildCard).join("");
+  document.getElementById("lbl-m1-sched").textContent = sched.length+" events scheduled";
+  const tbcCallout = document.getElementById("tbc-callout-m1");
+  tbcCallout.innerHTML = `⚠️ These <strong>${tbc.length} programs</strong> are confirmed for ${CONFIG.month1Label} — dates still being finalised. Shown here so teams can plan ahead.`;
+  if(!tbc.length) tbcCallout.style.display="none";
+}
+function renderListM2(){
+  buildTeamSummaries("ts-m2", CONFIG.month2);
+  document.getElementById("lbl-m2-archive").textContent = CONFIG.month2Label;
+  const done = EVENTS.filter(e=>e.month===CONFIG.month2&&e.done).sort((a,b)=>a.day-b.day);
+  const up   = EVENTS.filter(e=>e.month===CONFIG.month2&&!e.done&&!e.tbc).sort((a,b)=>a.day-b.day);
+  document.getElementById("grid-m2-done").innerHTML = done.map(buildCard).join("");
+  document.getElementById("grid-m2-up").innerHTML   = up.map(buildCard).join("");
+  document.getElementById("lbl-m2-done").textContent = done.length+" events delivered";
+  document.getElementById("lbl-m2-up").textContent   = up.length+" not yet confirmed as completed";
+}
+
+/* ── FILTERS ── */
+function applyAreaFilter(area, btn){
+  activeArea=area;
+  document.querySelectorAll("[data-fa]").forEach(b=>b.classList.remove("active")); btn.classList.add("active");
+  applyFilters();
+}
+function applyDivFilter(div, btn){
+  activeDivision=div;
+  document.querySelectorAll("[data-fd]").forEach(b=>b.classList.remove("active")); btn.classList.add("active");
+  applyFilters();
+}
+function applyFilters(){
+  document.querySelectorAll(".card").forEach(c=>{
+    const area=c.dataset.area||"", aud=c.dataset.aud||"";
+    const areaOk = activeArea==="all" || area===activeArea || area==="ALL APAC";
+    const divOk  = activeDivision==="all" || aud.includes(activeDivision) || aud.includes("ALL") || aud.includes("ANY");
+    c.classList.toggle("hidden", !(areaOk&&divOk));
+  });
+  document.getElementById("mc-m1").textContent=document.querySelectorAll("#list-m1 .card:not(.hidden)").length;
+  document.getElementById("mc-m2").textContent=document.querySelectorAll("#list-m2 .card:not(.hidden)").length;
+}
+
+/* ── MODAL ── */
+function openModal(id){
+  const ev=EVENTS.find(e=>e.id===id); if(!ev) return;
+  const isTBC=ev.tbc, isDone=ev.done;
+  const sEl=document.getElementById("m-status");
+  sEl.style.background=isTBC?"#FFF3E0":isDone?"#E8F5E9":"#E0F5F7";
+  sEl.style.color=isTBC?"#D84315":isDone?"#2E7D32":"#00737E";
+  sEl.textContent=isTBC?"📌 Date TBC":isDone?"✓ Completed":"⏳ Upcoming";
+  const ml=ev.month===CONFIG.month1?CONFIG.month1Label:CONFIG.month2Label;
+  const dtEl=document.getElementById("m-date");
+  dtEl.className=isTBC?"modal-date-lbl tbc":"modal-date-lbl";
+  dtEl.textContent=isTBC?"📅 Date TBC":"📅 "+ev.day+" "+ml;
+  document.getElementById("m-title").textContent=ev.name;
+  document.getElementById("m-chips").innerHTML=chipHtml(ev.team);
+  document.getElementById("m-desc").textContent=ev.desc;
+  document.getElementById("m-meta").innerHTML=`
+    <div class="modal-mk">Area</div><div class="modal-mv">${ev.area}</div>
+    <div class="modal-mk">Audience</div><div class="modal-mv">${ev.aud}</div>
+    <div class="modal-mk">${CONFIG.organisedByLabel}</div><div class="modal-mv">${ev.team}</div>`;
+  const linksEl=document.getElementById("m-links");
+  if(ev.links&&ev.links.length){
+    linksEl.innerHTML='<div class="modal-links-list">'+ev.links.map(l=>`<a class="modal-link-btn" href="${l.url}" target="_blank" rel="noopener"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>${l.label}</a>`).join("")+'</div>';
   } else {
-    buildTeamSummaries(6, "ts-june");
-    const sched = EVENTS.filter(e=>e.month===6&&!e.tbc).sort((a,b)=>a.day-b.day);
-    const tbc   = EVENTS.filter(e=>e.month===6&&e.tbc);
-    document.getElementById("grid-jsched").innerHTML = sched.map(buildCard).join("");
-    document.getElementById("grid-jtbc").innerHTML   = tbc.map(buildCard).join("");
-    document.getElementById("lbl-jsched").textContent = sched.length + " events with confirmed dates";
-  }
-}
-
-/* ── CALENDAR RENDERING ──────────────────────────────────────── */
-function buildCalendar(containerId, year, month) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = "";
-  const firstDay = new Date(year, month-1, 1);
-  const total    = new Date(year, month, 0).getDate();
-  const startDow = (firstDay.getDay() + 6) % 7;
-  const TODAY    = new Date(2026, 4, 26);
-  const evByDay  = {};
-  EVENTS.filter(e => e.month === month && !e.tbc).forEach(ev => {
-    if (!evByDay[ev.day]) evByDay[ev.day] = [];
-    evByDay[ev.day].push(ev);
-  });
-  ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].forEach(d => {
-    const h = document.createElement("div"); h.className="cal-dow"; h.textContent=d; container.appendChild(h);
-  });
-  for (let i=0;i<startDow;i++) { const e=document.createElement("div"); e.className="cal-cell empty"; container.appendChild(e); }
-  for (let day=1;day<=total;day++) {
-    const cd = new Date(year,month-1,day);
-    const isToday = year===2026&&month===5&&day===26;
-    const isPast  = cd < TODAY && !isToday;
-    const col     = (startDow+day-1)%7;
-    const cell    = document.createElement("div");
-    cell.className = "cal-cell " + (isToday?"cal-today":isPast?"cal-past":col>=5?"cal-weekend":"");
-    const dn = document.createElement("div");
-    dn.className = isToday ? "day-n today-n" : "day-n";
-    dn.textContent = day;
-    cell.appendChild(dn);
-    (evByDay[day]||[]).forEach(ev => {
-      const e = document.createElement("div");
-      e.className = "cal-ev cal-" + tkey(ev.team) + (ev.done?" ev-done":"");
-      e.textContent = ev.short;
-      e.title = ev.name + " — " + ev.team;
-      e.onclick = () => openModal(ev.id);
-      cell.appendChild(e);
-    });
-    container.appendChild(cell);
-  }
-  const used = startDow + total;
-  const rem  = used % 7;
-  if (rem > 0) for (let i=0;i<7-rem;i++) { const e=document.createElement("div"); e.className="cal-cell empty"; container.appendChild(e); }
-}
-
-function buildCalTBC() {
-  const container = document.getElementById("cal-tbc");
-  EVENTS.filter(e=>e.tbc).forEach(ev => {
-    const c = document.createElement("div");
-    c.className = "cal-tbc-card";
-    c.onclick = () => openModal(ev.id);
-    c.innerHTML = `<div class="cal-tbc-flag">📌 Date TBC</div><div class="cal-tbc-name">${ev.name}</div><span class="chip chip-${tkey(ev.team)}">${ev.team}</span>`;
-    container.appendChild(c);
-  });
-}
-
-/* ── MODAL ───────────────────────────────────────────────────── */
-function openModal(id) {
-  const ev = EVENTS.find(e => e.id === id);
-  if (!ev) return;
-  const isTBC = ev.tbc, isDone = ev.done;
-  const statusBg = isTBC ? "#FFF3E0" : isDone ? "#E8F5E9" : "#E0F5F7";
-  const statusCol = isTBC ? "#D84315" : isDone ? "#2E7D32" : "#00737E";
-  const statusLbl = isTBC ? "📌 Date TBC" : isDone ? "✓ Completed" : "⏳ Upcoming";
-  const sEl = document.getElementById("m-status");
-  sEl.style.background = statusBg; sEl.style.color = statusCol; sEl.textContent = statusLbl;
-  const dateStr = isTBC ? "Date to be confirmed" : ev.day + (ev.month===5?" May 2026":" June 2026");
-  const dateCls = isTBC ? "modal-date-badge tbc" : "modal-date-badge";
-  document.getElementById("m-date").className = dateCls;
-  document.getElementById("m-date").textContent = "📅 " + dateStr;
-  document.getElementById("m-title").textContent = ev.name;
-  document.getElementById("m-chips").innerHTML = chipHtml(ev.team) + ` <span class="type-chip">${ev.type}</span>`;
-  document.getElementById("m-desc").textContent = ev.desc;
-  document.getElementById("m-meta").innerHTML = `
-    <div class="modal-meta-k">Area</div><div class="modal-meta-v">${ev.area}</div>
-    <div class="modal-meta-k">Audience</div><div class="modal-meta-v">${ev.aud}</div>
-    <div class="modal-meta-k">Type</div><div class="modal-meta-v">${ev.type}</div>`;
-  const linksEl = document.getElementById("m-links");
-  if (ev.links && ev.links.length > 0) {
-    linksEl.innerHTML = '<div class="modal-links-list">' + ev.links.map(l =>
-      `<a class="modal-link-btn" href="${l.url}" target="_blank" rel="noopener"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>${l.label}</a>`
-    ).join("") + "</div>";
-  } else {
-    const hint = isDone
-      ? `<div class="modal-no-links">No resources added yet for this event.<br><small>To add links, open this file in a text editor and update the <code>links</code> array for event ID ${ev.id}.</small></div>`
-      : `<div class="modal-no-links">Resources will be added after the session is delivered.</div>`;
-    linksEl.innerHTML = hint;
+    linksEl.innerHTML=isDone
+      ?`<div class="modal-no-links">No resources added yet.<br><small>Add links to this event by updating the <code>links:[]</code> array for event ID ${ev.id} in the template.</small></div>`
+      :`<div class="modal-no-links">Resources will be added once this session has been delivered.</div>`;
   }
   document.getElementById("modal-backdrop").classList.add("open");
-  document.body.style.overflow = "hidden";
+  document.body.style.overflow="hidden";
 }
-function closeModal() {
-  document.getElementById("modal-backdrop").classList.remove("open");
-  document.body.style.overflow = "";
+function openModalOD(id){
+  const od=ON_DEMAND.find(o=>o.id===id); if(!od) return;
+  document.getElementById("m-status").style.background="#F8F4FF";
+  document.getElementById("m-status").style.color=TEAMS["Product Enablement"].color;
+  document.getElementById("m-status").textContent="▶ On Demand";
+  document.getElementById("m-date").className="modal-date-lbl";
+  document.getElementById("m-date").textContent="📅 Available anytime";
+  document.getElementById("m-title").textContent=od.name;
+  document.getElementById("m-chips").innerHTML=`<span class="chip chip-${tkey(od.team)}">${od.team}</span>`;
+  document.getElementById("m-desc").textContent=od.desc;
+  document.getElementById("m-meta").innerHTML=`<div class="modal-mk">Area</div><div class="modal-mv">${od.area}</div><div class="modal-mk">Audience</div><div class="modal-mv">${od.aud}</div>`;
+  const linksEl=document.getElementById("m-links");
+  linksEl.innerHTML=od.url?`<div class="modal-links-list"><a class="modal-link-btn" href="${od.url}" target="_blank" rel="noopener"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>${od.urlLabel}</a></div>`:`<div class="modal-no-links">Link coming soon.</div>`;
+  document.getElementById("modal-backdrop").classList.add("open");
+  document.body.style.overflow="hidden";
 }
-function closeModalOutside(e) { if (e.target === document.getElementById("modal-backdrop")) closeModal(); }
-document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+function closeModal(){ document.getElementById("modal-backdrop").classList.remove("open"); document.body.style.overflow=""; }
+function handleBackdropClick(e){ if(e.target===document.getElementById("modal-backdrop")) closeModal(); }
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeModal(); });
 
-/* ── FILTERS ─────────────────────────────────────────────────── */
-function applyTeamFilter(team, btn) {
-  activeTeam = team;
-  document.querySelectorAll("[data-ft]").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-  applyFilters();
+/* ── VIEW / MONTH SWITCHING ── */
+let curView="list", curMonth=1;
+function switchView(view,btn){
+  curView=view;
+  document.querySelectorAll(".toggle-btn").forEach(b=>b.classList.remove("active")); btn.classList.add("active");
+  document.getElementById("view-list").classList.toggle("active",view==="list");
+  document.getElementById("view-cal").classList.toggle("active",view==="cal");
+  document.getElementById("month-tabs-wrap").style.display=view==="list"?"":"none";
 }
-function applyTypeFilter(type, btn) {
-  if (activeType === type) { activeType = null; btn.classList.remove("active"); }
-  else { activeType = type; document.querySelectorAll("[data-ftype]").forEach(b => b.classList.remove("active")); btn.classList.add("active"); }
-  applyFilters();
-}
-function applyFilters() {
-  document.querySelectorAll(".card").forEach(c => {
-    const ok = (activeTeam==="all"||c.dataset.teams.indexOf(activeTeam)!==-1) && (!activeType||c.dataset.type===activeType);
-    c.classList.toggle("hidden", !ok);
-  });
-  document.getElementById("mc-may").textContent  = document.querySelectorAll("#list-may .card:not(.hidden)").length;
-  document.getElementById("mc-june").textContent = document.querySelectorAll("#list-june .card:not(.hidden)").length;
-}
-
-/* ── VIEW / MONTH SWITCHING ──────────────────────────────────── */
-let curView = "list", curMonth = 5;
-function switchView(view, btn) {
-  curView = view;
-  document.querySelectorAll(".view-btn").forEach(b => b.classList.remove("active")); btn.classList.add("active");
-  document.getElementById("view-list").classList.toggle("active", view==="list");
-  document.getElementById("view-cal").classList.toggle("active",  view==="cal");
-  document.getElementById("month-tabs-wrap").style.display = view==="list" ? "" : "none";
-}
-function switchMonth(month, btn) {
-  curMonth = month;
-  document.querySelectorAll(".month-btn").forEach(b => b.classList.remove("active")); btn.classList.add("active");
-  document.getElementById("list-may").classList.toggle("active",  month===5);
-  document.getElementById("list-june").classList.toggle("active", month===6);
+function switchMonth(m,btn){
+  curMonth=m;
+  document.querySelectorAll(".month-btn").forEach(b=>b.classList.remove("active")); btn.classList.add("active");
+  document.getElementById("list-m1").classList.toggle("active",m===1);
+  document.getElementById("list-m2").classList.toggle("active",m===2);
 }
 
-/* ── INIT ────────────────────────────────────────────────────── */
-renderListMonth(5);
-renderListMonth(6);
-buildCalendar("cal-may",  2026, 5);
-buildCalendar("cal-june", 2026, 6);
-buildCalTBC();
-document.getElementById("mc-may").textContent  = EVENTS.filter(e=>e.month===5).length;
-document.getElementById("mc-june").textContent = EVENTS.filter(e=>e.month===6).length;
+/* ── INIT ── */
+(function init(){
+  // Apply CONFIG to UI
+  document.title=CONFIG.pageTitle;
+  document.getElementById("hdr-months").textContent=CONFIG.month1Label+" & "+CONFIG.month2Label;
+  document.getElementById("lbl-updated").textContent=CONFIG.lastUpdated;
+  document.getElementById("footer-date").textContent=CONFIG.lastUpdated;
+  document.getElementById("lbl-m1-tab").textContent=CONFIG.month1Label;
+  document.getElementById("lbl-m2-tab").textContent=CONFIG.month2Label;
+  document.getElementById("cal-title-m1").textContent=CONFIG.month1Label;
+  document.getElementById("cal-title-m2").textContent=CONFIG.month2Label;
+  document.getElementById("lbl-m2-cal-note").textContent=CONFIG.month2Label;
+  document.getElementById("st-m1-lbl").innerHTML=CONFIG.month1Label+"<br>programs";
+  document.getElementById("st-m2-lbl").innerHTML=CONFIG.month2Label+"<br>programs";
+  document.getElementById("st-m1-total").textContent=CONFIG.stat_m1_total;
+  document.getElementById("st-m1-done").textContent=CONFIG.stat_m1_done;
+  document.getElementById("st-m2-total").textContent=CONFIG.stat_m2_total;
+  document.getElementById("st-m2-tbc").textContent=CONFIG.stat_m2_tbc;
+  document.getElementById("st-od").textContent=ON_DEMAND.length;
 
+  // Month tab initial counts
+  document.getElementById("mc-m1").textContent=EVENTS.filter(e=>e.month===CONFIG.month1).length;
+  document.getElementById("mc-m2").textContent=EVENTS.filter(e=>e.month===CONFIG.month2).length;
+
+  // Render list
+  renderListM1();
+  renderListM2();
+
+  // Build calendars (June first — full colour, May second — archived)
+  buildCalMF("cal-mf-m1", CONFIG.year, CONFIG.month1, false);
+  buildCalMF("cal-mf-m2", CONFIG.year, CONFIG.month2, true);
+  buildCalTBC();
+  buildTeamToggles();
+  buildAreaToggles();
+
+  // Cal subtitles
+  const m1sched=EVENTS.filter(e=>e.month===CONFIG.month1&&!e.tbc).length;
+  const m1tbc=EVENTS.filter(e=>e.month===CONFIG.month1&&e.tbc).length;
+  const m2done=EVENTS.filter(e=>e.month===CONFIG.month2&&e.done).length;
+  document.getElementById("cal-sub-m1").textContent=m1sched+" scheduled · "+m1tbc+" TBC";
+  document.getElementById("cal-sub-m2").textContent=m2done+" completed";
+})();
 </script>
 </body>
 </html>
