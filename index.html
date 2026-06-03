@@ -431,6 +431,17 @@ function renderListM3(){
 
 .org-col-item.hidden { display:none; }
 .org-col.col-empty   { display:none; }
+
+/* ── ON DEMAND CARD — two-column with TL;DR ── */
+.od-list-card { display:flex; gap:0; align-items:stretch; cursor:pointer; }
+.od-card-main { flex:0 0 44%; padding:14px 16px; min-width:0; display:flex; flex-direction:column; gap:6px; }
+.od-card-divider { width:1px; background:var(--od-b); flex-shrink:0; margin:12px 0; }
+.od-card-tldr { flex:1; padding:14px 16px; min-width:0; }
+.od-tldr-hdr { font-size:10px; font-weight:700; color:var(--od-t); text-transform:uppercase; letter-spacing:.6px; margin-bottom:7px; }
+.od-tldr-list { padding-left:14px; margin:0; }
+.od-tldr-list li { font-size:11.5px; color:var(--gray-t); line-height:1.5; margin-bottom:3px; }
+.od-list-title { font-size:13px; font-weight:600; color:var(--text); line-height:1.4; }
+.od-list-meta  { font-size:11px; color:var(--gray-m); flex:1; }
 </style>
 </head>
 <body>
@@ -683,14 +694,14 @@ const CONFIG = {
   month2Label: "May 2026",
   month3Label: "July 2026",
   year: 2026,
-  lastUpdated: "3 June 2026",
+  lastUpdated: "16 June 2026",
   pageTitle: "APAC Program Hub · Jun–Jul 2026",
   organisedByLabel: "Upcoming Training This Month",
   stat_m1_total: 17,   // 11 scheduled + 6 TBC
   stat_m1_done:  0,
   stat_m2_total: 17,   // All completed
   stat_m2_tbc:   0,
-  stat_m3_total: 5,    // July preview
+  stat_m3_total: 9,    // July: 7 scheduled + 2 TBC
 };
 
 /* ════════════════════════════════════════════════════════════════════
@@ -742,9 +753,16 @@ const PUBLIC_HOLIDAYS = [
 const ON_DEMAND = [
   {
     id:"od1", name:"API eLearning Enablement, Q2",
-    team:"Product Enablement", area:"ALL APAC", aud:"Enterprise, Client Acquisition, Client Success",
+    team:"Product Enablement", area:"ALL APAC",
+    aud:"Enterprise, Client Acquisition, Client Success",
     desc:"Self-paced eLearning on Meltwater's API product — what it is, how to position it, and how to have confident conversations with technical buyers. A solid foundation for everything MCP-related.",
     url:"http://meltwater.skillshood.com/paths/43506", urlLabel:"Start on Skillshood",
+    tldr:[
+      "What Meltwater's API is and exactly how it works",
+      "How to position it confidently to technical buyers",
+      "Essential foundation before any MCP conversation",
+      "Designed for Enterprise, CA and CS teams"
+    ],
     links:[{label:"eLearning Path (Skillshood)", url:"http://meltwater.skillshood.com/paths/43506"}]
   },
   {
@@ -752,6 +770,12 @@ const ON_DEMAND = [
     team:"Product Enablement", area:"ALL APAC", aud:"ALL / ANY",
     desc:"Three quick and engaging videos on Klear's influencer intelligence platform — created May 2026. Covers key features, use cases, and how to position Klear in client conversations. Watch all three on Skillshood.",
     url:"https://meltwater.skillshood.com/asset/1871516", urlLabel:"Watch on Skillshood",
+    tldr:[
+      "Three short videos — watchable in under 30 minutes",
+      "Covers Klear's influencer intelligence platform",
+      "Use cases and positioning in client conversations",
+      "Relevant for all APAC roles"
+    ],
     links:[
       {label:"Video 1 — Skillshood", url:"https://meltwater.skillshood.com/asset/1871516"},
       {label:"Video 2 — Skillshood", url:"https://meltwater.skillshood.com/asset/1871518"},
@@ -761,8 +785,14 @@ const ON_DEMAND = [
   {
     id:"od3", name:"Blackbird.AI Session, May",
     team:"Partnerships", area:"ALL APAC", aud:"ALL / ANY",
-    desc:"Recording of the May Blackbird.AI enablement session — covering Compass, Rav3n, and Constellation products. Key for Gov, Defence, and high-risk enterprise accounts. Stronger deals: Meltwater (what's happening) + Blackbird (why it matters). New buyers: Risk, CISO, Exec teams.",
+    desc:"Recording of the May Blackbird.AI enablement session — covering Compass, Rav3n, and Constellation products. Key for Gov, Defence, and high-risk enterprise accounts. Stronger deals: Meltwater (what's happening) + Blackbird (who's behind it). New buyers: Risk, CISO, Exec teams.",
     url:"https://us-16014.app.gong.io/call?id=9066685818266480496", urlLabel:"Watch Recording (Gong)",
+    tldr:[
+      "Covers Compass, Rav3n and Constellation products",
+      "Key for Gov, Defence and high-risk enterprise accounts",
+      "Meltwater tells you what — Blackbird tells you who",
+      "Opens doors to Risk, CISO and Exec buyers"
+    ],
     links:[
       {label:"Watch Recording (Gong)", url:"https://us-16014.app.gong.io/call?id=9066685818266480496"},
       {label:"Slide Deck", url:"https://docs.google.com/presentation/d/12_FwWBYmEgY18HQ5FF0Uz5xf_Lxw87MkNstZCEHZ3LE/edit?usp=sharing"}
@@ -773,6 +803,12 @@ const ON_DEMAND = [
     team:"Role Excellence", area:"ALL APAC", aud:"Client Success",
     desc:"On-demand Health Score 2.0 enablement for CSMs — the updated account health scoring framework, key signals, and playbooks for proactive account management. Recording and slides now available.",
     url:"https://meltwater.zoom.us/rec/share/wc_9A1x1OrbE-HhSexACmvUZU6Ide_Q6FJBcsUAJ86chbPYAT1X91ZIYiz_i73qz.dVeXIBDT5CqQRPAx", urlLabel:"Watch Recording (Zoom)",
+    tldr:[
+      "Updated Health Score 2.0 framework explained",
+      "Key health signals to watch across your accounts",
+      "Playbooks for proactive account management",
+      "Watch before attending live HS2.0 team sessions"
+    ],
     links:[
       {label:"Watch Recording (Zoom)", url:"https://meltwater.zoom.us/rec/share/wc_9A1x1OrbE-HhSexACmvUZU6Ide_Q6FJBcsUAJ86chbPYAT1X91ZIYiz_i73qz.dVeXIBDT5CqQRPAx"},
       {label:"Slide Deck", url:"https://docs.google.com/presentation/d/1k4L8RiPtPy3hopAyVyoSZPlFdSkx8vbYsWHnRpaioF8/edit?usp=sharing"}
@@ -783,6 +819,12 @@ const ON_DEMAND = [
     team:"Partnerships", area:"ALL APAC", aud:"ALL / ANY",
     desc:"Recording of the RepTrak partnership session. Entry ~$60-70K USD. Two motions: referral program and joint solution in development. Key APAC accounts: CBA, Qantas, Telstra, Macquarie Bank, Bunnings, Cathay Pacific, Emirates. Watch before your next enterprise client conversation.",
     url:"https://us-16014.app.gong.io/call?id=8413672464131866481", urlLabel:"Watch Recording (Gong)",
+    tldr:[
+      "Entry price ~$60–70K USD — enterprise deal motion",
+      "Two plays: referral program + joint solution incoming",
+      "Already at CBA, Qantas, Telstra, Macquarie, Bunnings",
+      "Route referrals through the Partnerships team"
+    ],
     links:[
       {label:"Watch Recording (Gong)", url:"https://us-16014.app.gong.io/call?id=8413672464131866481"},
       {label:"Session Q&A (Google Sheets)", url:"https://docs.google.com/spreadsheets/d/1G5MpJe_Wbm76we5X2Qv9YVGvVeb2TIPv9Noq-r5vaFg/edit?usp=sharing"}
@@ -793,12 +835,18 @@ const ON_DEMAND = [
     team:"Product Enablement", area:"ALL APAC", aud:"ALL / ANY",
     desc:"Resources to get up to speed on MCP while official pricing is finalised. Start with the API eLearning (60 min) for a solid foundation. Pre-launch Slack thread has the latest release notes.",
     url:"https://meltwater.skillshood.com/paths/43506", urlLabel:"API eLearning — Start Here",
+    tldr:[
+      "Official pricing still TBC — get ahead now",
+      "Start with API eLearning for foundation (60 min)",
+      "Pre-launch Slack thread has latest release notes",
+      "Full enablement session dropping soon"
+    ],
     links:[
       {label:"API eLearning — Start Here (Skillshood)", url:"https://meltwater.skillshood.com/paths/43506"},
       {label:"Pre-launch Slack Thread", url:"https://meltwater.slack.com/archives/C010L40UY7N/p1777584952862499"}
     ]
-  },
-];/* ════════════════════════════════════════════════════════════════════
+  }
+]/* ════════════════════════════════════════════════════════════════════
    ██  EVENT DATA — REPLACE THIS ARRAY EACH MONTH  ██
    ════════════════════════════════════════════════════════════════════
 
@@ -823,7 +871,7 @@ const ON_DEMAND = [
    }
    ════════════════════════════════════════════════════════════════════ */
 const EVENTS = [
-  /* ══ JUNE (month1 — current) ══════════════════════════════════════ */
+  /* ══ JUNE (month1 — current) ═════════════════════════════════════ */
   {id:1, month:6, day:4,  tbc:false, done:false, featured:false,
    name:"LifeLabs Session 4: Effective 1:1s", short:"LifeLabs: 1:1s",
    team:"Role Excellence", area:"ALL APAC", aud:"FLM & SLM",
@@ -927,11 +975,11 @@ const EVENTS = [
    desc:"Strengths-based development session for the Australian BDR team — exploring how to identify and leverage individual strengths to improve performance, resilience, and team collaboration. Date TBC.",
    links:[]},
 
-  /* ══ JULY (month3 — preview) ════════════════════════════════════= */
+  /* ══ JULY (month3 — preview) ══════════════════════════════════════ */
   {id:40, month:7, day:2,  tbc:false, done:false, featured:false,
    name:"[IN] CMO Circle Mumbai", short:"[IN] CMO Circle",
    team:"APAC Marketing", area:"India", aud:"N/A (External event)",
-   desc:"APAC Marketing's CMO Circle event in Mumbai — a senior-level customer engagement forum bringing together CMOs and marketing leaders in the Indian market to share insights and explore Meltwater solutions.",
+   desc:"APAC Marketing's CMO Circle event in Mumbai — a senior-level customer engagement forum bringing together CMOs and marketing leaders in the Indian market.",
    links:[]},
 
   {id:41, month:7, day:8,  tbc:false, done:false, featured:false,
@@ -943,22 +991,47 @@ const EVENTS = [
   {id:42, month:7, day:10, tbc:false, done:false, featured:false,
    name:"[SG] Gov Workshop", short:"[SG] Gov Workshop",
    team:"APAC Marketing", area:"Singapore", aud:"N/A (External event)",
-   desc:"Government-focused workshop in Singapore — targeting public sector clients and prospects with Meltwater solutions relevant to government communications, media monitoring, and stakeholder engagement.",
+   desc:"Government-focused workshop in Singapore — targeting public sector clients and prospects with Meltwater solutions relevant to government communications and media monitoring.",
    links:[]},
 
-  {id:43, month:7, day:15, tbc:false, done:false, featured:false,
+  {id:43, month:7, day:14, tbc:false, done:false, featured:false,
+   name:"Aus QR", short:"Aus QR",
+   team:"Executive", area:"Australia", aud:"FLM & SLM",
+   desc:"Australia Quarterly Review — executive-level business review covering regional performance, priorities, and strategic focus areas for the Australian market.",
+   links:[]},
+
+  {id:44, month:7, day:15, tbc:false, done:false, featured:false,
+   name:"Japan QR", short:"Japan QR",
+   team:"Executive", area:"Japan", aud:"FLM & SLM",
+   desc:"Japan Quarterly Review — executive-level business review covering regional performance, priorities, and strategic focus areas for the Japan market.",
+   links:[]},
+
+  {id:45, month:7, day:15, tbc:false, done:false, featured:false,
    name:"Life Post LifeLabs: FLM Enablement Track", short:"Post LifeLabs: FLMs",
    team:"Role Excellence", area:"ALL APAC", aud:"FLM & SLM",
-   desc:"A dedicated FLM Enablement Track following the completion of the LifeLabs series — designed to help FLMs and SLMs embed the frameworks from LifeLabs into their day-to-day management practice with structured reinforcement and accountability.",
+   desc:"A dedicated FLM Enablement Track following the completion of the LifeLabs series — designed to help FLMs and SLMs embed the frameworks from LifeLabs into their day-to-day management practice with structured reinforcement.",
    links:[]},
 
-  {id:44, month:7, day:17, tbc:false, done:false, featured:false,
+  {id:46, month:7, day:17, tbc:false, done:false, featured:false,
    name:"Informed or Infirmed?", short:"Informed or Infirmed?",
    team:"People Team", area:"ALL APAC", aud:"ALL / ANY",
    desc:"People Team session — details to be confirmed. Stay tuned for an agenda update closer to the date.",
    links:[]},
 
-  /* ══ MAY (month2 — archive, all completed) ══════════════════════= */
+  /* JULY TBC */
+  {id:47, month:7, day:99, tbc:true, done:false, featured:false,
+   name:"SEA QR", short:"SEA QR",
+   team:"Executive", area:"ALL APAC", aud:"FLM & SLM",
+   desc:"SEA Quarterly Review covering India, Malaysia, Indonesia, Singapore, and Philippines — executive-level business review of regional performance and strategic priorities. Date TBC.",
+   links:[]},
+
+  {id:48, month:7, day:99, tbc:true, done:false, featured:false,
+   name:"China ES QR", short:"China ES QR",
+   team:"Executive", area:"China", aud:"FLM & SLM",
+   desc:"Greater China Quarterly Review — executive-level business review covering performance, priorities, and strategic focus areas for the Greater China region (mainland + HK). Date TBC.",
+   links:[]},
+
+  /* ══ MAY (month2 — archive, all completed) ════════════════════════ */
   {id:50, month:5, day:4,  tbc:false, done:true, featured:false,
    name:"LifeLabs Session 2: Feedback", short:"LifeLabs: Feedback",
    team:"Role Excellence", area:"ALL APAC", aud:"FLM & SLM",
@@ -992,19 +1065,19 @@ const EVENTS = [
   {id:55, month:5, day:15, tbc:false, done:true, featured:false,
    name:"Deskercise! Taking Care of your Body", short:"Deskercise!",
    team:"People Team", area:"ALL APAC", aud:"ALL / ANY",
-   desc:"People Team wellbeing session on the physical impact of sedentary work habits — practical desk-friendly exercises and movement strategies to support physical health throughout the workday.",
+   desc:"People Team wellbeing session on the physical impact of sedentary work habits — practical desk-friendly exercises and movement strategies.",
    links:[]},
 
   {id:56, month:5, day:18, tbc:false, done:true, featured:false,
    name:"LifeLabs Session 3: Productivity", short:"LifeLabs: Productivity",
    team:"Role Excellence", area:"ALL APAC", aud:"FLM & SLM",
-   desc:"Third LifeLabs session for FLMs and SLMs — focused on productivity frameworks and how people leaders can build high-output habits in themselves and their teams.",
+   desc:"Third LifeLabs session for FLMs and SLMs — focused on productivity frameworks and how people leaders can build high-output habits.",
    links:[]},
 
   {id:57, month:5, day:19, tbc:false, done:true, featured:false,
    name:"CAB | Sydney", short:"CAB Sydney (Mira)",
    team:"Executive", area:"Australia", aud:"N/A (External event)",
-   desc:"Mira Customer Advisory Board at 1 Farrer Place, Sydney — executive-level forum for strategic product feedback and co-creation with key Australian clients. Part of Sydney CAB week 19-20 May.",
+   desc:"Mira Customer Advisory Board at 1 Farrer Place, Sydney — executive-level forum for strategic product feedback and co-creation with key Australian clients.",
    links:[]},
 
   {id:58, month:5, day:19, tbc:false, done:true, featured:false,
@@ -1016,19 +1089,19 @@ const EVENTS = [
   {id:59, month:5, day:20, tbc:false, done:true, featured:false,
    name:"CAB | Listening & Monitoring", short:"CAB L&M",
    team:"Executive", area:"Australia", aud:"N/A (External event)",
-   desc:"ES Listening & Monitoring Customer Advisory Board at 1 Farrer Place, Sydney — focused on the L&M use case with senior client participation. Part of Sydney CAB week 19-20 May.",
+   desc:"ES Listening & Monitoring Customer Advisory Board at 1 Farrer Place, Sydney — focused on the L&M use case with senior client participation.",
    links:[]},
 
   {id:60, month:5, day:20, tbc:false, done:true, featured:false,
    name:"Time Management & Prioritization — CS", short:"Time Management CS",
    team:"People Team", area:"Singapore, India", aud:"Client Success",
-   desc:"People Team session for Client Success teams in Singapore and India — practical time management and prioritization frameworks to help CS reps manage growing books of business more effectively.",
+   desc:"People Team session for Client Success teams in Singapore and India — practical time management and prioritization frameworks to help CS reps manage growing books of business.",
    links:[]},
 
   {id:61, month:5, day:21, tbc:false, done:true, featured:false,
    name:"[SG] Campaign360", short:"[SG] Campaign360",
    team:"APAC Marketing", area:"Singapore", aud:"N/A (External event)",
-   desc:"Customer-facing event in Singapore as part of APAC Marketing's regional activation calendar. Campaign360 brings together marketing leaders to share strategies and Meltwater capabilities.",
+   desc:"Customer-facing event in Singapore. Campaign360 brings together marketing leaders to share strategies and Meltwater capabilities.",
    links:[{label:"Event Page", url:"https://www.campaign360.asia/event/b2002ab5-d2d6-4cac-9949-845dd935f6e6/HOME"}]},
 
   {id:62, month:5, day:22, tbc:false, done:true, featured:false,
@@ -1040,7 +1113,7 @@ const EVENTS = [
   {id:63, month:5, day:26, tbc:false, done:true, featured:false,
    name:"Health Score 2.0 | CS Run Through", short:"HS2.0 | CS",
    team:"Role Excellence", area:"ALL APAC", aud:"Client Success",
-   desc:"Health Score 2.0 run-through for Client Success teams — covering the updated account health scoring framework, key signals, and playbooks for proactive account management across all CS sub-divisions.",
+   desc:"Health Score 2.0 run-through for Client Success teams — covering the updated account health scoring framework, key signals, and playbooks for proactive account management.",
    links:[]},
 
   {id:64, month:5, day:26, tbc:false, done:true, featured:false,
@@ -1063,7 +1136,38 @@ const EVENTS = [
    team:"People Team", area:"Japan", aud:"Client Success",
    desc:"Strengths-based development session for Client Success teams in Japan — exploring how to identify and leverage individual strengths to improve client relationships and team performance.",
    links:[]},
-];/* ════════════════════════════════════════════════════════════════════
+
+  /* ══ AUGUST (loaded for next month — not yet displayed) ══════════ */
+  {id:70, month:8, day:7,  tbc:false, done:false, featured:false,
+   name:"[PH] National Retail Conference", short:"[PH] National Retail",
+   team:"APAC Marketing", area:"Philippines", aud:"N/A (External event)",
+   desc:"APAC Marketing activation at the Philippine National Retail Conference — a key customer-facing event in the Philippines retail sector.",
+   links:[]},
+
+  {id:71, month:8, day:12, tbc:false, done:false, featured:false,
+   name:"Session 4: Talent Lifecycle — Multi-gen Workforce", short:"Talent Lifecycle",
+   team:"People Team", area:"ALL APAC", aud:"FLM & SLM",
+   desc:"LifeLabs leaders session 4 on the talent lifecycle in a multi-generational workforce — covering how FLMs and SLMs can lead, develop, and retain talent across different generational styles and expectations.",
+   links:[]},
+
+  {id:72, month:8, day:27, tbc:false, done:false, featured:false,
+   name:"[APAC ex AUNZ] Meltwater Summit on Tour — Asia", short:"Summit on Tour: Asia",
+   team:"APAC Marketing", area:"Singapore", aud:"N/A (External event)",
+   desc:"Meltwater Summit on Tour — Asia edition. A flagship customer event bringing together clients and prospects across APAC (excluding AU/NZ) in Singapore.",
+   links:[]},
+
+  {id:73, month:8, day:28, tbc:false, done:false, featured:false,
+   name:"[CN] 1:1 ABM for OPPO", short:"[CN] ABM: OPPO",
+   team:"APAC Marketing", area:"China", aud:"N/A (External event)",
+   desc:"Account-Based Marketing activation targeting OPPO in China — a 1:1 owned event to identify upsell and cross-sell opportunity.",
+   links:[]},
+
+  {id:74, month:9, day:11, tbc:false, done:false, featured:false,
+   name:"Sleep: An Essential Component of Health & Wellbeing", short:"Sleep & Wellbeing",
+   team:"People Team", area:"ALL APAC", aud:"ALL / ANY",
+   desc:"People Team wellbeing session on the science of sleep — why quality sleep is foundational to performance, mental health, and physical wellbeing, with practical strategies for better rest.",
+   links:[]}
+]/* ════════════════════════════════════════════════════════════════════
    ██  ENGINE — do not edit below unless adding new teams/features  ██
    ════════════════════════════════════════════════════════════════════ */
 
@@ -1512,7 +1616,19 @@ function buildODList(containerId){
     const cta = od.url
       ? `<a class="od-cta" href="${od.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${od.urlLabel}</a>`
       : `<span class="od-cta" style="background:#9E9E9E;cursor:default">⏳ ${od.urlLabel}</span>`;
-    card.innerHTML = `<div class="od-list-badge">▶ ON DEMAND</div><div class="od-list-title">${od.name}</div><div class="od-list-meta">${od.area||"ALL APAC"} · ${od.aud}</div>${cta}`;
+    const tldrHtml = (od.tldr||[]).map(t=>`<li>${t}</li>`).join("");
+    card.innerHTML = `
+      <div class="od-card-main">
+        <div class="od-list-badge">▶ ON DEMAND</div>
+        <div class="od-list-title">${od.name}</div>
+        <div class="od-list-meta">${od.area||"ALL APAC"} · ${od.aud}</div>
+        ${cta}
+      </div>
+      <div class="od-card-divider"></div>
+      <div class="od-card-tldr">
+        <div class="od-tldr-hdr">📝 TL;DR</div>
+        <ul class="od-tldr-list">${tldrHtml}</ul>
+      </div>`;
     c.appendChild(card);
   });
 }
