@@ -683,14 +683,14 @@ const CONFIG = {
   month2Label: "May 2026",
   month3Label: "July 2026",
   year: 2026,
-  lastUpdated: "3 June 2026",
+  lastUpdated: "11 June 2026",
   pageTitle: "APAC Program Hub · Jun–Jul 2026",
   organisedByLabel: "Upcoming Training This Month",
-  stat_m1_total: 17,   // 11 scheduled + 6 TBC
+  stat_m1_total: 18,   // 14 scheduled + 4 TBC
   stat_m1_done:  0,
   stat_m2_total: 17,   // All completed
   stat_m2_tbc:   0,
-  stat_m3_total: 9,    // July preview
+  stat_m3_total: 10,   // July preview
 };
 
 /* ════════════════════════════════════════════════════════════════════
@@ -758,16 +758,7 @@ const ON_DEMAND = [
       {label:"Video 3 — Skillshood", url:"https://meltwater.skillshood.com/asset/1871517"}
     ]
   },
-  {
-    id:"od3", name:"Blackbird.AI Session, May",
-    team:"Partnerships", area:"ALL APAC", aud:"ALL / ANY",
-    desc:"Recording of the May Blackbird.AI enablement session — covering Compass, Rav3n, and Constellation products. Key for Gov, Defence, and high-risk enterprise accounts. Stronger deals: Meltwater (what's happening) + Blackbird (why it matters). New buyers: Risk, CISO, Exec teams.",
-    url:"https://us-16014.app.gong.io/call?id=9066685818266480496", urlLabel:"Watch Recording (Gong)",
-    links:[
-      {label:"Watch Recording (Gong)", url:"https://us-16014.app.gong.io/call?id=9066685818266480496"},
-      {label:"Slide Deck", url:"https://docs.google.com/presentation/d/12_FwWBYmEgY18HQ5FF0Uz5xf_Lxw87MkNstZCEHZ3LE/edit?usp=sharing"}
-    ]
-  },
+
   {
     id:"od4", name:"Health Score 2.0 | CSMs",
     team:"Role Excellence", area:"ALL APAC", aud:"Client Success",
@@ -890,6 +881,18 @@ const EVENTS = [
    desc:"The final certification of the Q1 2026 Business Outcomes Training program — available for CA, CS, Enterprise, and Growth Executive roles on Skillshood. Complete this to formally certify your Business Outcomes skills.",
    links:[{label:"Certification Path (Skillshood)", url:"https://meltwater.skillshood.com/paths/43431?ref=mng"}]},
 
+  {id:18, month:6, day:19, tbc:false, done:false, featured:false,
+   name:"AI Committees | APAC Kick-Off", short:"AI Committees Kick-Off",
+   team:"Role Excellence", area:"ALL APAC", aud:"FLM & SLM",
+   desc:"APAC kick-off session for the AI Committees initiative — equipping FLMs and SLMs to lead structured AI conversations across their teams. Covers the committee framework, roles, and how to drive adoption of AI habits in day-to-day workflows.",
+   links:[]},
+
+  {id:19, month:6, day:23, tbc:false, done:false, featured:false,
+   name:"MCP eLearning | Pre-work", short:"MCP eLearning Pre-work",
+   team:"Product Enablement", area:"ALL APAC", aud:"ALL / ANY",
+   desc:"Pre-work eLearning ahead of the MCP Sales Enablement session — equipping APAC teams with the foundational knowledge of Meltwater's MCP integration before the live enablement session in July.",
+   links:[]},
+
   /* JUNE TBC */
   {id:12, month:6, day:99, tbc:true, done:false, featured:false,
    name:"Global Cision Take-Down", short:"Cision Take-Down",
@@ -897,17 +900,13 @@ const EVENTS = [
    desc:"Global competitive enablement equipping Client Acquisition and Growth Executive teams to actively displace Cision in active deals, renewals, and new business. Led by Johnny Vance's team — SPIFF details to follow. Date TBC.",
    links:[]},
 
-  {id:13, month:6, day:99, tbc:true, done:false, featured:false,
+  {id:13, month:6, day:18, tbc:false, done:false, featured:false,
    name:"Query Methodology Kick Off", short:"Query Methodology",
    team:"Role Excellence", area:"ALL APAC", aud:"Sales Services, Enterprise",
    desc:"Post-sales enablement on advanced query methodology — covering Boolean best practices, search optimisation, and hands-on techniques for Sales Services and Enterprise teams. Date TBC.",
    links:[]},
 
-  {id:14, month:6, day:99, tbc:true, done:false, featured:true,
-   name:"MCP Sales Enablement", short:"MCP Enablement",
-   team:"Product Enablement", area:"ALL APAC", aud:"ALL / ANY",
-   desc:"Product Enablement on Meltwater's MCP (Model Context Protocol) integration — equipping all APAC roles to identify opportunities, articulate value, and discuss MCP with clients. In the meantime, see the On Demand MCP pre-launch release notes. Date TBC.",
-   links:[]},
+
 
   {id:15, month:6, day:99, tbc:true, done:false, featured:false,
    name:"EaaS Sales Enablement", short:"EaaS Enablement",
@@ -947,7 +946,7 @@ const EVENTS = [
    links:[]},
 
   {id:43, month:7, day:15, tbc:false, done:false, featured:false,
-   name:"Life Post LifeLabs: FLM Enablement Track", short:"Post LifeLabs: FLMs",
+   name:"Post-LifeLabs: FLM Enablement Track", short:"Post-LifeLabs: FLMs",
    team:"Role Excellence", area:"ALL APAC", aud:"FLM & SLM",
    desc:"A dedicated FLM Enablement Track following the completion of the LifeLabs series — designed to help FLMs and SLMs embed the frameworks from LifeLabs into their day-to-day management practice with structured reinforcement and accountability.",
    links:[]},
@@ -978,8 +977,14 @@ const EVENTS = [
 
   {id:48, month:7, day:17, tbc:false, done:false, featured:false,
    name:"China ES QR", short:"China ES QR",
-   team:"Executive", area:"Greater China", aud:"FLM & SLM",
+   team:"Executive", area:"China", aud:"FLM & SLM",
    desc:"China Enterprise Solutions Quarterly Review — FLM & SLM session for Greater China. Covers performance review, pipeline health, and strategic priorities for the quarter.",
+   links:[]},
+
+  {id:14, month:7, day:9, tbc:false, done:false, featured:true,
+   name:"MCP Sales Enablement", short:"MCP Enablement",
+   team:"Product Enablement", area:"ALL APAC", aud:"ALL / ANY",
+   desc:"Product Enablement on Meltwater's MCP (Model Context Protocol) integration — equipping all APAC roles to identify opportunities, articulate value, and discuss MCP with clients. Builds on the MCP eLearning pre-work from June.",
    links:[]},
 
   /* ══ AUGUST (month=8 — future, not displayed yet) ══════════════════════= */
@@ -1125,6 +1130,42 @@ const EVENTS = [
    team:"People Team", area:"Japan", aud:"Client Success",
    desc:"Strengths-based development session for Client Success teams in Japan — exploring how to identify and leverage individual strengths to improve client relationships and team performance.",
    links:[]},
+  {
+    id:"od7", name:"Accelerator Series: Partnerships",
+    team:"Product Enablement", area:"ALL APAC", aud:"ALL / ANY",
+    desc:"On-demand Accelerator Series module covering Meltwater's key partnership integrations — what they are, how to position them, and how to bring them into client conversations across all APAC roles.",
+    url:"https://meltwater.skillshood.com/huddle/470497?referrer-page-id=4898", urlLabel:"Watch on Skillshood",
+    links:[{label:"Watch on Skillshood", url:"https://meltwater.skillshood.com/huddle/470497?referrer-page-id=4898"}]
+  },
+  {
+    id:"od8", name:"Accelerator Series: Global Support & Services",
+    team:"Role Excellence", area:"ALL APAC", aud:"ALL / ANY",
+    desc:"On-demand Accelerator Series module on Meltwater's Global Support and Services offering — equipping APAC teams to confidently position support tiers, set client expectations, and leverage services in deals.",
+    url:"https://meltwater.skillshood.com/paths/37650", urlLabel:"Watch on Skillshood",
+    links:[{label:"Watch on Skillshood", url:"https://meltwater.skillshood.com/paths/37650"}]
+  },
+  {
+    id:"od9", name:"Partnerships: Blackbird.AI",
+    team:"Partnerships", area:"ALL APAC", aud:"ALL / ANY",
+    desc:"What matters: Stronger deals = Meltwater (what's happening) + Blackbird (why it matters, who's behind it) — clear differentiation in Gov + high-risk enterprise. New buyers: not just PR/comms → Risk, CISO, Exec teams (new budgets). What to sell: Compass (in Explore, validates narratives in seconds — easy add-on at USD$4K, fast close), Rav3n (10–15 min risk reports, great for outreach/pitches/pilots at USD$4.5K), Constellation (bigger Gov/Defence/enterprise deals at USD$300K+). How to engage: start with Compass/Rav3n for quick wins, loop in Dean/Mark for visibility. For Constellation/complex deals — engage Dean/Mark early for joint sessions.",
+    url:"https://us-16014.app.gong.io/call?id=9066685818266480496", urlLabel:"Watch Recording (Gong)",
+    links:[
+      {label:"APAC Partner Session Recording (Gong)", url:"https://us-16014.app.gong.io/call?id=9066685818266480496"},
+      {label:"Blackbird Enablement Deck — APAC", url:"https://docs.google.com/presentation/d/12_FwWBYmEgY18HQ5FF0Uz5xf_Lxw87MkNstZCEHZ3LE/edit?usp=sharing"}
+    ]
+  },
+  {
+    id:"od10", name:"Partnerships: MyTelescope",
+    team:"Partnerships", area:"ALL APAC", aud:"ALL / ANY",
+    desc:"On-demand enablement for the MyTelescope partnership — covering what MyTelescope is, the GTM motion, and how APAC teams can engage clients across all roles.",
+    url:"https://docs.google.com/document/d/1P_8iWQzJP8i74CQf7nPM2eYQlqJiSrl0wL-9Q-5zMPE/edit?usp=sharing", urlLabel:"What You Need to Know",
+    links:[
+      {label:"MyTelescope: What You Need to Know", url:"https://docs.google.com/document/d/1P_8iWQzJP8i74CQf7nPM2eYQlqJiSrl0wL-9Q-5zMPE/edit?usp=sharing"},
+      {label:"Overview Deck", url:"https://docs.google.com/presentation/d/1mXTvQWiaejsfV8HgoIM0TkYywum7tUPZe-jnPS4g0eM/edit?usp=sharing"},
+      {label:"EMEA/APAC Session Recording", url:"https://drive.google.com/file/d/1FyrbCqFhaVhNJe5Wr_uferUVOMZ-vFtY/view?usp=drive_link"},
+      {label:"NAM Session Recording", url:"https://drive.google.com/file/d/1qP9loWSJjN9ztga6JghSUnc7pV9kb-tn/view?usp=drive_link"}
+    ]
+  },
 ];/* ════════════════════════════════════════════════════════════════════
    ██  ENGINE — do not edit below unless adding new teams/features  ██
    ════════════════════════════════════════════════════════════════════ */
@@ -1252,7 +1293,7 @@ function buildCalMF(containerId, year, month, isArchived){
           const e = document.createElement("div");
           const k = tkey(ev.team.split(",")[0]);
           const calTeamKey = ev.team.split(",")[0].trim();
-          const calAreaOk  = activeCalAreas.has(ev.area)||ev.area==="ALL APAC";
+          const calAreaOk  = ev.area==="ALL APAC"||ev.area.split(",").some(a=>activeCalAreas.has(a.trim()));
           const calRoleOk  = activeCalRole==="all"||ev.aud.includes(activeCalRole)||ev.aud.includes("ALL")||ev.aud.includes("ANY");
           e.className = `cal-ev cal-${k}${ev.done?" ev-done":""}${(calAreaOk&&calRoleOk)?"":" team-hidden"}`;
           e.dataset.teams = ev.team;
@@ -1321,7 +1362,7 @@ function buildTeamToggles(){
         const ev = EVENTS.find(e=>e.id===evId);
         if(!ev) return;
         const primaryTeam = ev.team.split(",")[0].trim();
-        const areaOk = activeCalAreas.has(ev.area) || ev.area==="ALL APAC";
+        const areaOk = ev.area==="ALL APAC"||ev.area.split(",").some(a=>activeCalAreas.has(a.trim()));
         el.classList.toggle("team-hidden", !(activeCalTeams.has(primaryTeam)&&areaOk));
       });
     };
@@ -1367,7 +1408,7 @@ function buildAreaToggles(){
         if(!ev) return;
         const primaryTeam = ev.team.split(",")[0].trim();
         const teamOk = activeCalTeams.has(primaryTeam);
-        const areaOk = activeCalAreas.has(ev.area) || ev.area==="ALL APAC";
+        const areaOk = ev.area==="ALL APAC"||ev.area.split(",").some(a=>activeCalAreas.has(a.trim()));
         el.classList.toggle("team-hidden", !(teamOk&&areaOk));
       });
     };
@@ -1613,7 +1654,7 @@ function refilterCalEvents(){
     const evId=parseInt(el.dataset.id);
     const ev=EVENTS.find(e=>e.id===evId);
     if(!ev){ el.classList.remove("team-hidden"); return; }
-    const areaOk = activeCalAreas.has(ev.area)||ev.area==="ALL APAC";
+    const areaOk = ev.area==="ALL APAC"||ev.area.split(",").some(a=>activeCalAreas.has(a.trim()));
     const roleOk = activeCalRole==="all"||ev.aud.includes(activeCalRole)||ev.aud.includes("ALL")||ev.aud.includes("ANY");
     el.classList.toggle("team-hidden", !(areaOk&&roleOk));
   });
@@ -1673,7 +1714,7 @@ function applyFilters(){
   /* Test a single element against active area + role filters */
   function itemVisible(el){
     const area = el.dataset.area||"", aud = el.dataset.aud||"";
-    const areaOk = activeArea==="all" || area===activeArea || area==="ALL APAC";
+    const areaOk = activeArea==="all" || area.includes(activeArea) || area==="ALL APAC";
     const divOk  = activeDivision==="all"
                    || aud.includes(activeDivision)
                    || aud.includes("ALL")
