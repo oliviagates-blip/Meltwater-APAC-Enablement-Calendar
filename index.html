@@ -431,6 +431,140 @@ function renderListM3(){
 
 .org-col-item.hidden { display:none; }
 .org-col.col-empty   { display:none; }
+
+/* ── ON DEMAND TAB ── */
+#view-od { }
+.od-tab-intro { background:var(--od-bg); border:1.5px solid var(--od-b); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:12px; }
+.od-tab-intro-icon { font-size:22px; flex-shrink:0; }
+.od-tab-intro-text { font-size:13px; color:var(--gray-t); line-height:1.5; }
+.od-tab-intro-text strong { color:var(--od-t); }
+
+.od-tab-filters { background:white; border-radius:10px; border:1.5px solid var(--gray-b); margin-bottom:20px; overflow:hidden; }
+.od-tab-filter-row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:10px 16px; border-bottom:1px solid var(--gray-l); }
+.od-tab-filter-row:last-child { border-bottom:none; }
+.od-tab-filter-lbl { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.7px; color:var(--gray-m); min-width:60px; flex-shrink:0; }
+
+.od-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
+.od-grid-card { background:white; border:1.5px solid var(--od-b); border-radius:14px; padding:18px 20px 16px; cursor:pointer; transition:transform .15s, box-shadow .15s; display:flex; flex-direction:column; position:relative; overflow:hidden; }
+.od-grid-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+.od-grid-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(74,20,140,.12); border-color:var(--c-mkt); }
+.od-grid-card.hidden { display:none; }
+.od-grid-card-top { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:10px; }
+.od-grid-tag { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; padding:3px 8px; border-radius:20px; }
+.od-grid-title { font-size:14px; font-weight:700; color:var(--text); line-height:1.4; margin-bottom:8px; flex:1; }
+.od-grid-desc { font-size:12px; color:var(--gray-t); line-height:1.55; margin-bottom:14px; flex:1; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.od-grid-meta { font-size:11px; color:var(--gray-m); margin-bottom:14px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+.od-grid-links { display:flex; flex-direction:column; gap:7px; margin-top:auto; }
+.od-grid-link { display:inline-flex; align-items:center; gap:6px; padding:7px 12px; border-radius:7px; text-decoration:none; font-size:12px; font-weight:600; transition:background .12s; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.od-grid-link-primary { background:var(--od-t); color:white; }
+.od-grid-link-primary:hover { background:#38006b; }
+.od-grid-link-secondary { background:var(--od-bg); border:1.5px solid var(--od-b); color:var(--od-t); }
+.od-grid-link-secondary:hover { background:#EDE7F6; }
+.od-empty { text-align:center; padding:48px 24px; color:var(--gray-m); font-size:14px; grid-column:1/-1; }
+.od-results-count { font-size:12px; color:var(--gray-m); margin-bottom:14px; }
+.od-results-count strong { color:var(--text); }
+
+
+/* ── PROGRESS TAB ── */
+#view-progress {}
+.prog-intro { background:linear-gradient(135deg,var(--teal-l) 0%,#F0F4F5 100%); border:1.5px solid var(--teal-m); border-radius:12px; padding:16px 20px; margin-bottom:20px; display:flex; align-items:flex-start; gap:14px; }
+.prog-intro-icon { font-size:24px; flex-shrink:0; margin-top:2px; }
+.prog-intro-text { font-size:13px; color:var(--teal-deep); line-height:1.55; }
+.prog-intro-text strong { font-weight:700; }
+
+.prog-filter-bar { background:white; border:1.5px solid var(--gray-b); border-radius:10px; padding:12px 16px; margin-bottom:20px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.prog-filter-lbl { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; color:var(--gray-m); flex-shrink:0; }
+.prog-filter-btns { display:flex; gap:6px; flex-wrap:wrap; }
+.prog-filter-btn { padding:5px 13px; border-radius:20px; font-size:12px; font-weight:500; cursor:pointer; border:1.5px solid var(--gray-b); background:transparent; color:var(--gray-t); transition:all .12s; font-family:'Outfit',sans-serif; }
+.prog-filter-btn:hover:not(.active) { border-color:var(--teal); color:var(--teal); }
+.prog-filter-btn.active { background:var(--teal); border-color:var(--teal); color:white; font-weight:600; }
+
+/* Two-col cert grid */
+.prog-certs-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(540px,1fr)); gap:20px; }
+@media(max-width:700px){ .prog-certs-grid { grid-template-columns:1fr; } }
+
+.cert-card { background:white; border:1.5px solid var(--gray-b); border-radius:14px; overflow:hidden; }
+
+/* Cert header */
+.cert-card-hdr { padding:18px 22px 14px; display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+.cert-hdr-left { flex:1; }
+.cert-card-title { font-size:15px; font-weight:700; color:var(--text); letter-spacing:-.2px; margin-bottom:4px; }
+.cert-card-desc { font-size:12px; color:var(--gray-t); line-height:1.5; }
+.cert-card-link { display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:600; color:white; background:var(--teal); padding:6px 12px; border-radius:7px; text-decoration:none; white-space:nowrap; flex-shrink:0; transition:background .12s; }
+.cert-card-link:hover { background:var(--teal-d); }
+
+/* Aggregate bar */
+.cert-agg { display:flex; align-items:center; gap:16px; padding:12px 22px; background:var(--gray-l); border-top:1px solid var(--gray-b); border-bottom:1px solid var(--gray-b); flex-wrap:wrap; }
+.cert-agg-stat { display:flex; flex-direction:column; align-items:center; min-width:52px; }
+.cert-agg-num { font-size:20px; font-weight:700; color:var(--text); line-height:1; }
+.cert-agg-lbl { font-size:10px; color:var(--gray-m); margin-top:2px; font-weight:500; text-align:center; }
+.cert-agg-divider { width:1px; height:32px; background:var(--gray-b); flex-shrink:0; }
+.cert-agg-bar-wrap { flex:1; min-width:140px; }
+.cert-agg-bar-lbl { display:flex; justify-content:space-between; font-size:11px; color:var(--gray-t); margin-bottom:4px; }
+.cert-agg-bar-lbl strong { color:var(--teal-d); font-weight:700; }
+.cert-agg-bar-track { height:10px; background:var(--gray-b); border-radius:5px; overflow:hidden; }
+.cert-agg-bar-fill { height:100%; background:var(--teal); border-radius:5px; transition:width .5s ease; }
+
+/* Region sections */
+.cert-regions { padding:0 0 4px; }
+
+.cert-region-block { border-bottom:1px solid var(--gray-l); }
+.cert-region-block:last-child { border-bottom:none; }
+
+/* Region header row — clickable to expand/collapse */
+.cert-region-hdr { display:flex; align-items:center; gap:12px; padding:13px 22px; cursor:pointer; user-select:none; transition:background .1s; }
+.cert-region-hdr:hover { background:var(--gray-l); }
+.cert-region-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.cert-region-name { font-size:13px; font-weight:700; color:var(--text); flex:1; }
+.cert-region-stats { font-size:12px; color:var(--gray-t); font-weight:500; flex-shrink:0; }
+.cert-region-pct { font-size:13px; font-weight:700; flex-shrink:0; width:40px; text-align:right; }
+.cert-region-mini-bar { width:80px; height:6px; background:var(--gray-b); border-radius:3px; overflow:hidden; flex-shrink:0; }
+.cert-region-mini-fill { height:100%; border-radius:3px; transition:width .4s; }
+.cert-region-chevron { font-size:11px; color:var(--gray-m); transition:transform .2s; flex-shrink:0; margin-left:4px; }
+.cert-region-hdr.open .cert-region-chevron { transform:rotate(90deg); }
+
+/* FLM accordion body */
+.cert-region-body { display:none; padding:0 22px 12px; }
+.cert-region-body.open { display:block; }
+
+/* FLM row — collapsible */
+.flm-block { margin-bottom:8px; border:1.5px solid var(--gray-b); border-radius:10px; overflow:hidden; }
+.flm-block:last-child { margin-bottom:0; }
+
+.flm-hdr { display:flex; align-items:center; gap:10px; padding:10px 14px; cursor:pointer; background:var(--gray-l); transition:background .1s; user-select:none; }
+.flm-hdr:hover { background:#E8EFF1; }
+.flm-name { font-size:13px; font-weight:700; color:var(--text); flex:1; }
+.flm-nums { font-size:12px; color:var(--gray-t); font-weight:500; flex-shrink:0; }
+.flm-pct-badge { font-size:11px; font-weight:700; padding:2px 8px; border-radius:20px; flex-shrink:0; }
+.flm-mini-bar { width:60px; height:5px; background:var(--gray-b); border-radius:3px; overflow:hidden; flex-shrink:0; }
+.flm-mini-fill { height:100%; border-radius:3px; }
+.flm-chevron { font-size:10px; color:var(--gray-m); transition:transform .2s; flex-shrink:0; }
+.flm-hdr.open .flm-chevron { transform:rotate(90deg); }
+
+/* Rep list inside FLM */
+.flm-body { display:none; padding:8px 14px 10px; background:white; }
+.flm-body.open { display:block; }
+.flm-rep-section-lbl { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--gray-m); margin-bottom:6px; margin-top:8px; }
+.flm-rep-section-lbl:first-child { margin-top:0; }
+.flm-reps { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:4px; }
+.rep-chip { display:inline-flex; align-items:center; gap:4px; font-size:11.5px; padding:3px 9px; border-radius:20px; }
+.rep-chip-done { background:#E8F5E9; color:#2E7D32; font-weight:500; }
+.rep-chip-pending { background:#FFF3E0; color:#BF360C; font-weight:500; }
+.rep-chip-done::before { content:"✓ "; font-size:10px; }
+.rep-chip-pending::before { content:"○ "; font-size:10px; opacity:.7; }
+
+/* Trend chart */
+.cert-chart-wrap { padding:14px 22px 16px; border-top:1px solid var(--gray-l); }
+.cert-chart-hdr { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; color:var(--gray-m); margin-bottom:12px; }
+.cert-chart { display:flex; align-items:flex-end; gap:4px; height:80px; position:relative; padding-top:18px; }
+.chart-bar-wrap { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; }
+.chart-bar { width:100%; background:var(--teal-m); border-radius:3px 3px 0 0; min-height:3px; transition:background .12s; position:relative; }
+.chart-bar:hover { background:var(--teal); }
+.chart-bar-val { position:absolute; top:-16px; left:50%; transform:translateX(-50%); font-size:9px; font-weight:700; color:var(--teal-d); white-space:nowrap; }
+.chart-bar-lbl { font-size:9px; color:var(--gray-m); margin-top:5px; white-space:nowrap; }
+.chart-target-line { position:absolute; left:0; right:0; border-top:2px dashed #D84315; pointer-events:none; }
+.chart-target-lbl { position:absolute; right:0; top:-14px; font-size:9px; font-weight:700; color:#D84315; }
+
 </style>
 </head>
 <body>
@@ -464,6 +598,8 @@ function renderListM3(){
     <div class="toggle-group">
       <button class="toggle-btn active" onclick="switchView('list',this)">📋 List View</button>
       <button class="toggle-btn" onclick="switchView('cal',this)">📅 Calendar View</button>
+      <button class="toggle-btn" onclick="switchView('od',this)">▶ On Demand</button>
+      <button class="toggle-btn" onclick="switchView('progress',this)">📊 Progress</button>
     </div>
     <div class="updated-label">Last updated: <strong id="lbl-updated"></strong></div>
   </div>
@@ -521,16 +657,10 @@ function renderListM3(){
     <!-- ── Month 1: June (current — default active) ── -->
     <div id="list-m1" class="panel active">
       <div id="org-by-m1"></div>
-      <div class="bottom-two-col">
-        <div>
-          <div class="bottom-col-hdr"><span class="bottom-col-hdr-icon">🔔</span> Date TBC — Confirmed in Scope</div>
-          <div class="tbc-callout" id="tbc-callout-m1" style="display:none;margin-bottom:12px;"></div>
-          <div id="grid-m1-tbc"></div>
-        </div>
-        <div>
-          <div class="bottom-col-hdr"><span class="bottom-col-hdr-icon">▶</span> On Demand — Access Anytime</div>
-          <div id="od-list-m1"></div>
-        </div>
+      <div style="margin-top:24px;">
+        <div class="bottom-col-hdr"><span class="bottom-col-hdr-icon">🔔</span> Date TBC — Confirmed in Scope</div>
+        <div class="tbc-callout" id="tbc-callout-m1" style="display:none;margin-bottom:12px;"></div>
+        <div id="grid-m1-tbc"></div>
       </div>
     </div>
 
@@ -540,6 +670,53 @@ function renderListM3(){
       <div id="org-by-m3"></div>
     </div>
 
+  </div>
+
+  <!-- ══════════ PROGRESS TAB ══════════ -->
+  <div id="view-progress" class="panel">
+    <div class="prog-intro">
+      <div class="prog-intro-icon">📊</div>
+      <div class="prog-intro-text"><strong>Certification Progress — APAC</strong><br>Tracking completion across the Mimrah Mahmood, Shasank Mohapatra, Ross Candido, and Masayuki Akada cohorts. Use the filter to view a specific region's teams. Data last updated: <strong>11 June 2026</strong>.</div>
+    </div>
+    <div class="prog-filter-bar">
+      <span class="prog-filter-lbl">🔍 Filter by manager</span>
+      <div class="prog-filter-btns">
+        <button class="prog-filter-btn active" data-prog-region="all"              onclick="applyProgRegion('all',this)">All APAC</button>
+        <button class="prog-filter-btn" data-prog-region="Mimrah Mahmood"          onclick="applyProgRegion('Mimrah Mahmood',this)">Mimrah Mahmood</button>
+        <button class="prog-filter-btn" data-prog-region="Shasank Mohapatra"       onclick="applyProgRegion('Shasank Mohapatra',this)">Shasank Mohapatra</button>
+        <button class="prog-filter-btn" data-prog-region="Ross Candido"            onclick="applyProgRegion('Ross Candido',this)">Ross Candido</button>
+        <button class="prog-filter-btn" data-prog-region="Masayuki Akada"          onclick="applyProgRegion('Masayuki Akada',this)">Masayuki Akada</button>
+      </div>
+    </div>
+    <div class="prog-certs-grid" id="prog-grid"></div>
+  </div>
+
+  <!-- ══════════ ON DEMAND TAB ══════════ -->
+  <div id="view-od" class="panel">
+    <div class="od-tab-intro">
+      <div class="od-tab-intro-icon">▶</div>
+      <div class="od-tab-intro-text"><strong>On Demand library</strong> — recordings, eLearning paths, decks and resources available anytime. Filter by team or role to find what's most relevant to you.</div>
+    </div>
+    <div class="od-tab-filters">
+      <div class="od-tab-filter-row">
+        <span class="od-tab-filter-lbl">Team</span>
+        <button class="filter-btn active" data-od-team="all" onclick="applyODTeamFilter('all',this)">All Teams</button>
+        <button class="filter-btn" data-od-team="Product Enablement" onclick="applyODTeamFilter('Product Enablement',this)"><span class="chip chip-pe">PE</span> Product Enablement</button>
+        <button class="filter-btn" data-od-team="Role Excellence" onclick="applyODTeamFilter('Role Excellence',this)"><span class="chip chip-re">RE</span> Role Excellence</button>
+        <button class="filter-btn" data-od-team="Partnerships" onclick="applyODTeamFilter('Partnerships',this)"><span class="chip chip-ptnr">P</span> Partnerships</button>
+      </div>
+      <div class="od-tab-filter-row">
+        <span class="od-tab-filter-lbl">Role</span>
+        <button class="filter-btn active" data-od-role="all" onclick="applyODRoleFilter('all',this)">Everyone</button>
+        <button class="filter-btn" data-od-role="Client Acquisition" onclick="applyODRoleFilter('Client Acquisition',this)">Client Acquisition</button>
+        <button class="filter-btn" data-od-role="Client Success" onclick="applyODRoleFilter('Client Success',this)">Client Success</button>
+        <button class="filter-btn" data-od-role="Enterprise" onclick="applyODRoleFilter('Enterprise',this)">Enterprise</button>
+        <button class="filter-btn" data-od-role="FLM" onclick="applyODRoleFilter('FLM',this)">FLM & SLM</button>
+        <button class="filter-btn" data-od-role="Sales Services" onclick="applyODRoleFilter('Sales Services',this)">Sales Services</button>
+      </div>
+    </div>
+    <div class="od-results-count" id="od-results-count"></div>
+    <div class="od-grid" id="od-tab-grid"></div>
   </div>
 
   <!-- ══════════ CALENDAR VIEW ══════════ -->
@@ -787,6 +964,42 @@ const ON_DEMAND = [
     links:[
       {label:"API eLearning — Start Here (Skillshood)", url:"https://meltwater.skillshood.com/paths/43506"},
       {label:"Pre-launch Slack Thread", url:"https://meltwater.slack.com/archives/C010L40UY7N/p1777584952862499"}
+    ]
+  },
+  {
+    id:"od7", name:"Accelerator Series: Partnerships",
+    team:"Product Enablement", area:"ALL APAC", aud:"ALL / ANY",
+    desc:"On-demand Accelerator Series module covering Meltwater's key partnership integrations — what they are, how to position them, and how to bring them into client conversations across all APAC roles.",
+    url:"https://meltwater.skillshood.com/huddle/470497?referrer-page-id=4898", urlLabel:"Watch on Skillshood",
+    links:[{label:"Watch on Skillshood", url:"https://meltwater.skillshood.com/huddle/470497?referrer-page-id=4898"}]
+  },
+  {
+    id:"od8", name:"Accelerator Series: Global Support & Services",
+    team:"Role Excellence", area:"ALL APAC", aud:"ALL / ANY",
+    desc:"On-demand Accelerator Series module on Meltwater's Global Support and Services offering — equipping APAC teams to confidently position support tiers, set client expectations, and leverage services in deals.",
+    url:"https://meltwater.skillshood.com/paths/37650", urlLabel:"Watch on Skillshood",
+    links:[{label:"Watch on Skillshood", url:"https://meltwater.skillshood.com/paths/37650"}]
+  },
+  {
+    id:"od9", name:"Partnerships: Blackbird.AI",
+    team:"Partnerships", area:"ALL APAC", aud:"ALL / ANY",
+    desc:"What matters: Stronger deals = Meltwater (what's happening) + Blackbird (why it matters, who's behind it) — clear differentiation in Gov + high-risk enterprise. New buyers: not just PR/comms → Risk, CISO, Exec teams (new budgets). What to sell: Compass (in Explore, validates narratives in seconds — easy add-on at USD$4K, fast close), Rav3n (10–15 min risk reports, great for outreach/pitches/pilots at USD$4.5K), Constellation (bigger Gov/Defence/enterprise deals at USD$300K+). How to engage: start with Compass/Rav3n for quick wins, loop in Dean/Mark for visibility. For Constellation/complex deals — engage Dean/Mark early for joint sessions.",
+    url:"https://us-16014.app.gong.io/call?id=9066685818266480496", urlLabel:"Watch Recording (Gong)",
+    links:[
+      {label:"APAC Partner Session Recording (Gong)", url:"https://us-16014.app.gong.io/call?id=9066685818266480496"},
+      {label:"Blackbird Enablement Deck — APAC", url:"https://docs.google.com/presentation/d/12_FwWBYmEgY18HQ5FF0Uz5xf_Lxw87MkNstZCEHZ3LE/edit?usp=sharing"}
+    ]
+  },
+  {
+    id:"od10", name:"Partnerships: MyTelescope",
+    team:"Partnerships", area:"ALL APAC", aud:"ALL / ANY",
+    desc:"On-demand enablement for the MyTelescope partnership — covering what MyTelescope is, the GTM motion, and how APAC teams can engage clients across all roles.",
+    url:"https://docs.google.com/document/d/1P_8iWQzJP8i74CQf7nPM2eYQlqJiSrl0wL-9Q-5zMPE/edit?usp=sharing", urlLabel:"What You Need to Know",
+    links:[
+      {label:"MyTelescope: What You Need to Know", url:"https://docs.google.com/document/d/1P_8iWQzJP8i74CQf7nPM2eYQlqJiSrl0wL-9Q-5zMPE/edit?usp=sharing"},
+      {label:"Overview Deck", url:"https://docs.google.com/presentation/d/1mXTvQWiaejsfV8HgoIM0TkYywum7tUPZe-jnPS4g0eM/edit?usp=sharing"},
+      {label:"EMEA/APAC Session Recording", url:"https://drive.google.com/file/d/1FyrbCqFhaVhNJe5Wr_uferUVOMZ-vFtY/view?usp=drive_link"},
+      {label:"NAM Session Recording", url:"https://drive.google.com/file/d/1qP9loWSJjN9ztga6JghSUnc7pV9kb-tn/view?usp=drive_link"}
     ]
   },
 ];/* ════════════════════════════════════════════════════════════════════
@@ -1130,42 +1343,7 @@ const EVENTS = [
    team:"People Team", area:"Japan", aud:"Client Success",
    desc:"Strengths-based development session for Client Success teams in Japan — exploring how to identify and leverage individual strengths to improve client relationships and team performance.",
    links:[]},
-  {
-    id:"od7", name:"Accelerator Series: Partnerships",
-    team:"Product Enablement", area:"ALL APAC", aud:"ALL / ANY",
-    desc:"On-demand Accelerator Series module covering Meltwater's key partnership integrations — what they are, how to position them, and how to bring them into client conversations across all APAC roles.",
-    url:"https://meltwater.skillshood.com/huddle/470497?referrer-page-id=4898", urlLabel:"Watch on Skillshood",
-    links:[{label:"Watch on Skillshood", url:"https://meltwater.skillshood.com/huddle/470497?referrer-page-id=4898"}]
-  },
-  {
-    id:"od8", name:"Accelerator Series: Global Support & Services",
-    team:"Role Excellence", area:"ALL APAC", aud:"ALL / ANY",
-    desc:"On-demand Accelerator Series module on Meltwater's Global Support and Services offering — equipping APAC teams to confidently position support tiers, set client expectations, and leverage services in deals.",
-    url:"https://meltwater.skillshood.com/paths/37650", urlLabel:"Watch on Skillshood",
-    links:[{label:"Watch on Skillshood", url:"https://meltwater.skillshood.com/paths/37650"}]
-  },
-  {
-    id:"od9", name:"Partnerships: Blackbird.AI",
-    team:"Partnerships", area:"ALL APAC", aud:"ALL / ANY",
-    desc:"What matters: Stronger deals = Meltwater (what's happening) + Blackbird (why it matters, who's behind it) — clear differentiation in Gov + high-risk enterprise. New buyers: not just PR/comms → Risk, CISO, Exec teams (new budgets). What to sell: Compass (in Explore, validates narratives in seconds — easy add-on at USD$4K, fast close), Rav3n (10–15 min risk reports, great for outreach/pitches/pilots at USD$4.5K), Constellation (bigger Gov/Defence/enterprise deals at USD$300K+). How to engage: start with Compass/Rav3n for quick wins, loop in Dean/Mark for visibility. For Constellation/complex deals — engage Dean/Mark early for joint sessions.",
-    url:"https://us-16014.app.gong.io/call?id=9066685818266480496", urlLabel:"Watch Recording (Gong)",
-    links:[
-      {label:"APAC Partner Session Recording (Gong)", url:"https://us-16014.app.gong.io/call?id=9066685818266480496"},
-      {label:"Blackbird Enablement Deck — APAC", url:"https://docs.google.com/presentation/d/12_FwWBYmEgY18HQ5FF0Uz5xf_Lxw87MkNstZCEHZ3LE/edit?usp=sharing"}
-    ]
-  },
-  {
-    id:"od10", name:"Partnerships: MyTelescope",
-    team:"Partnerships", area:"ALL APAC", aud:"ALL / ANY",
-    desc:"On-demand enablement for the MyTelescope partnership — covering what MyTelescope is, the GTM motion, and how APAC teams can engage clients across all roles.",
-    url:"https://docs.google.com/document/d/1P_8iWQzJP8i74CQf7nPM2eYQlqJiSrl0wL-9Q-5zMPE/edit?usp=sharing", urlLabel:"What You Need to Know",
-    links:[
-      {label:"MyTelescope: What You Need to Know", url:"https://docs.google.com/document/d/1P_8iWQzJP8i74CQf7nPM2eYQlqJiSrl0wL-9Q-5zMPE/edit?usp=sharing"},
-      {label:"Overview Deck", url:"https://docs.google.com/presentation/d/1mXTvQWiaejsfV8HgoIM0TkYywum7tUPZe-jnPS4g0eM/edit?usp=sharing"},
-      {label:"EMEA/APAC Session Recording", url:"https://drive.google.com/file/d/1FyrbCqFhaVhNJe5Wr_uferUVOMZ-vFtY/view?usp=drive_link"},
-      {label:"NAM Session Recording", url:"https://drive.google.com/file/d/1qP9loWSJjN9ztga6JghSUnc7pV9kb-tn/view?usp=drive_link"}
-    ]
-  },
+
 ];/* ════════════════════════════════════════════════════════════════════
    ██  ENGINE — do not edit below unless adding new teams/features  ██
    ════════════════════════════════════════════════════════════════════ */
@@ -1623,7 +1801,6 @@ function buildODList(containerId){
 /* ── RENDER LIST MONTHS ── */
 function renderListM1(){
   buildOrgByGroups("org-by-m1", CONFIG.month1);
-  buildODList("od-list-m1");
   const tbc = EVENTS.filter(e=>e.month===CONFIG.month1&&e.tbc);
   const g = document.getElementById("grid-m1-tbc");
   if(g) g.innerHTML = tbc.map(buildCard).join("");
@@ -1794,12 +1971,519 @@ document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeModal(); });
 
 /* ── VIEW / MONTH SWITCHING ── */
 let curView="list", curMonth=1;
+/* ── ON DEMAND TAB ── */
+let activeODTeam = "all", activeODRole = "all";
+
+function buildODTab(){
+  const grid = document.getElementById("od-tab-grid");
+  if(!grid) return;
+  grid.innerHTML = "";
+  ON_DEMAND.forEach(od=>{
+    const teamKey = (TEAMS[od.team.trim()]||{key:"pe"}).key;
+    const teamColor = (TEAMS[od.team.trim()]||{color:"#0097A7"}).color;
+    // Build links HTML
+    let linksHtml = "";
+    if(od.links && od.links.length){
+      const [first, ...rest] = od.links;
+      linksHtml += `<a class="od-grid-link od-grid-link-primary" href="${first.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${first.label}</a>`;
+      rest.forEach(l=>{
+        linksHtml += `<a class="od-grid-link od-grid-link-secondary" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">↗ ${l.label}</a>`;
+      });
+    } else if(od.url){
+      linksHtml = `<a class="od-grid-link od-grid-link-primary" href="${od.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${od.urlLabel}</a>`;
+    }
+    const card = document.createElement("div");
+    card.className = "od-grid-card";
+    card.dataset.team = od.team;
+    card.dataset.aud = od.aud||"ALL / ANY";
+    card.style.setProperty("--card-team-color", teamColor);
+    card.querySelector = card.querySelector; // noop
+    card.onclick = ()=>openModalOD(od.id);
+    card.innerHTML = `
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${teamColor};border-radius:14px 14px 0 0;"></div>
+      <div class="od-grid-card-top">
+        <span class="od-grid-tag chip chip-${teamKey}">${od.team}</span>
+      </div>
+      <div class="od-grid-title">${od.name}</div>
+      <div class="od-grid-desc">${od.desc}</div>
+      <div class="od-grid-meta">📍 ${od.area||"ALL APAC"} &nbsp;·&nbsp; 👤 ${od.aud||"ALL / ANY"}</div>
+      <div class="od-grid-links">${linksHtml}</div>
+    `;
+    grid.appendChild(card);
+  });
+  applyODFilters();
+}
+
+function applyODFilters(){
+  const cards = document.querySelectorAll(".od-grid-card");
+  let visible = 0;
+  cards.forEach(card=>{
+    const team = card.dataset.team||"" ;
+    const aud  = card.dataset.aud||"";
+    const teamOk = activeODTeam==="all" || team===activeODTeam;
+    const roleOk = activeODRole==="all" || aud.includes(activeODRole) || aud.includes("ALL") || aud.includes("ANY");
+    const show = teamOk && roleOk;
+    card.classList.toggle("hidden", !show);
+    if(show) visible++;
+  });
+  const ct = document.getElementById("od-results-count");
+  if(ct) ct.innerHTML = `Showing <strong>${visible}</strong> of <strong>${cards.length}</strong> resources`;
+  const grid = document.getElementById("od-tab-grid");
+  const existing = grid.querySelector(".od-empty");
+  if(existing) existing.remove();
+  if(visible===0){
+    const emp = document.createElement("div");
+    emp.className="od-empty";
+    emp.textContent="No resources match the selected filters.";
+    grid.appendChild(emp);
+  }
+}
+
+function applyODTeamFilter(team, btn){
+  activeODTeam = team;
+  document.querySelectorAll("[data-od-team]").forEach(b=>b.classList.remove("active")); btn.classList.add("active");
+  applyODFilters();
+}
+function applyODRoleFilter(role, btn){
+  activeODRole = role;
+  document.querySelectorAll("[data-od-role]").forEach(b=>b.classList.remove("active")); btn.classList.add("active");
+  applyODFilters();
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   CERTIFICATION PROGRESS DATA
+   Source: Skillshood exports — last updated 11 June 2026
+   Cohort: Mimrah Mahmood, Shasank Mohapatra, Ross Candido, Masayuki Akada
+   ══════════════════════════════════════════════════════════ */
+const CERTS = [
+  {
+    id: "biz-outcomes",
+    name: "Business Outcomes Certification",
+    desc: "Equips GTM reps to articulate customer business outcomes, align Meltwater value to commercial goals, and approach renewal and expansion conversations with a business-case mindset.",
+    url: "https://meltwater.skillshood.com/paths/44582",
+    urlLabel: "Open on Skillshood",
+    trend: [
+      { week: "Apr 16", cumulative: 2 },
+      { week: "Jun 05", cumulative: 6 },
+      { week: "Jun 10", cumulative: 8 }
+    ],
+    regions: {
+      "Enterprise": {
+        label: "Enterprise", color: "#0097A7",
+        managers: [
+          {
+            name: "Mimrah Mahmood", color: "#0097A7",
+            flms: [
+              { name: "Wee Hong Melvin Chng", done: 0, total: 9,
+                completed: [],
+                pending: ["Christina Yu","Daisy Sun","Denise Choi","Minsi Fan","Senjie Zhu","Timothy Leung","Verena Liu","Vivian Xie","Wee Hong Melvin Chng"] },
+              { name: "Ramnath Bojeesh", done: 2, total: 20,
+                completed: ["Angela Seng","Shobhit Uppal"],
+                pending: ["Abhishek Anand","Akanksha Tripathi","Alicia Chiang","Amanda Lim","Andrei Ona","David Joshua Chen","Gino Dayanghirang","Hui Lin","Jessica Shah","Kimberley Ng","Kiran Moryani","Liza Wee","Rachel Hong","Ramnath Bojeesh","Sanchi Shukla","Sanya Sadique","Vincent Widjaja","Yugal Gautam"] }
+            ]
+          },
+          {
+            name: "Shasank Mohapatra", color: "#3949AB",
+            flms: [
+              { name: "Amanda Shaw", done: 0, total: 6,
+                completed: [],
+                pending: ["Aimi Hatayama","Amanda Shaw","Ankhiyan Ranjan","Hana Yoshida","Jannelle Leong","Ma Concepcion Zapanta"] },
+              { name: "Dipak Mitra", done: 0, total: 6,
+                completed: [],
+                pending: ["Dipak Mitra","Gwen Ang","Iris Berces","Kamya Yadav","Keanna Chang","Patricia Victoria"] },
+              { name: "Joseph Latteri", done: 1, total: 6,
+                completed: ["Joseph Latteri"],
+                pending: ["Enika Liu","Nanami Hase","Shoko Enomoto","Shun Okai","Yuki Hirajo"] },
+              { name: "Hazel Lim", done: 2, total: 4,
+                completed: ["Hazel Lim","Shalini Govindasamy"],
+                pending: ["Ameerah Suhaimi","Renee Ong"] },
+              { name: "Linda Wang", done: 0, total: 16,
+                completed: [],
+                pending: ["Chloe Zhu","Cissie Wu","Clare Le","Claudia Luo","Evan Zhao","Fiona Gu","Jiaxin Deng","Kacey Hu","Kelvin Fok","Levy Li","Linda Wang","Liu Miao","Lucy Li","Natalie Kwok","Sandra Guo","Stella Chu"] }
+            ]
+          }
+        ]
+      },
+      "Japan": {
+        label: "Japan", color: "#AD1457",
+        managers: [
+          {
+            name: "Masayuki Akada", color: "#AD1457",
+            flms: [
+              { name: "Yohei Izumi", done: 1, total: 7,
+                completed: ["Ayumi Mantoku"],
+                pending: ["Gabriel Pradipta David Galvano","Jake Burrows","Kana Harada","Norihide Kaseda","Tomoya Maekawa","Yohei Izumi"] },
+              { name: "Hiroyoshi Nakagawa", done: 0, total: 1, completed: [], pending: ["Hiroyoshi Nakagawa"] },
+              { name: "Iyo Yamasaki",       done: 0, total: 1, completed: [], pending: ["Iyo Yamasaki"] },
+              { name: "Jieun Oh",           done: 0, total: 1, completed: [], pending: ["Jieun Oh"] },
+              { name: "Masanori Uehara",    done: 0, total: 1, completed: [], pending: ["Masanori Uehara"] },
+              { name: "Momo Miyazaki",      done: 1, total: 1, completed: ["Momo Miyazaki"], pending: [] },
+              { name: "Reona Tanaka",       done: 0, total: 1, completed: [], pending: ["Reona Tanaka"] },
+              { name: "Ryo Takahashi",      done: 0, total: 1, completed: [], pending: ["Ryo Takahashi"] },
+              { name: "Ryozo Tanaka",       done: 0, total: 1, completed: [], pending: ["Ryozo Tanaka"] },
+              { name: "Satoru Kamibayashi", done: 0, total: 1, completed: [], pending: ["Satoru Kamibayashi"] },
+              { name: "Shuhei Goto",        done: 0, total: 1, completed: [], pending: ["Shuhei Goto"] },
+              { name: "Takumine Matsuo",    done: 0, total: 1, completed: [], pending: ["Takumine Matsuo"] }
+            ]
+          }
+        ]
+      },
+      "Australia": {
+        label: "Australia", color: "#2E7D32",
+        managers: [
+          {
+            name: "Ross Candido", color: "#2E7D32",
+            flms: [
+              { name: "Mike O'Neill", done: 0, total: 8,
+                completed: [],
+                pending: ["Eimear O'Shea","Graham Paterson","James Skene","Lucy Lawton","Matt Sutherland","Mike O'Neill","Patrick Smith","Xavier Richards"] },
+              { name: "Tim O'Rourke", done: 1, total: 14,
+                completed: ["Rachelle San Pedro"],
+                pending: ["Almog Vernik","Jake Brudenell","Javie Sarmiento","Kieren Strain","Monica Bondoc","Myla Villano","Natalia Ballas","Ryozo Tanaka","Sherries Enriquez","Shivani Saluja","Tess Cullen","Theo McPeake","Tim O'Rourke"] }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    id: "api-foundations",
+    name: "API Foundations: Understanding the Framework",
+    desc: "Builds foundational knowledge of Meltwater's API offering — what it is, how clients use it, and how to identify and progress API-related opportunities across all GTM roles.",
+    url: "https://meltwater.skillshood.com/paths/43506",
+    urlLabel: "Open on Skillshood",
+    trend: null,
+    regions: {
+      "Enterprise": {
+        label: "Enterprise", color: "#0097A7",
+        managers: [
+          {
+            name: "Mimrah Mahmood", color: "#0097A7",
+            flms: [
+              { name: "Wee Hong Melvin Chng", done: 1, total: 8,
+                completed: ["Vivian Xie"],
+                pending: ["Christina Yu","Daisy Sun","Denise Choi","Minsi Fan","Senjie Zhu","Verena Liu","Wee Hong Melvin Chng"] },
+              { name: "Ramnath Bojeesh", done: 3, total: 20,
+                completed: ["Kiran Moryani","Rachel Hong","Shobhit Uppal"],
+                pending: ["Abhishek Anand","Akanksha Tripathi","Alicia Chiang","Amanda Lim","Andrei Ona","Angela Seng","David Joshua Chen","Gino Dayanghirang","Hui Lin","Jessica Shah","Kimberley Ng","Liza Wee","Ramnath Bojeesh","Sanchi Shukla","Sanya Sadique","Vincent Widjaja","Yugal Gautam"] }
+            ]
+          },
+          {
+            name: "Shasank Mohapatra", color: "#3949AB",
+            flms: [
+              { name: "Amanda Shaw", done: 0, total: 2,
+                completed: [],
+                pending: ["Amanda Shaw","Ankhiyan Ranjan"] },
+              { name: "Dipak Mitra", done: 3, total: 7,
+                completed: ["Gwen Ang","Iris Berces","Keanna Chang"],
+                pending: ["Dipak Mitra","Kamya Yadav","Patricia Victoria","Yashasvi Tandon"] },
+              { name: "Joseph Latteri", done: 0, total: 6,
+                completed: [],
+                pending: ["Enika Liu","Joseph Latteri","Nanami Hase","Shoko Enomoto","Shun Okai","Yuki Hirajo"] },
+              { name: "Hazel Lim", done: 0, total: 4,
+                completed: [],
+                pending: ["Hazel Lim","Renee Ong","Shalini Govindasamy","Yuan Pancho"] },
+              { name: "Linda Wang", done: 1, total: 15,
+                completed: ["Evan Zhao"],
+                pending: ["Chloe Zhu","Cissie Wu","Clare Le","Fiona Gu","Jiaxin Deng","Kacey Hu","Kelvin Fok","Levy Li","Linda Wang","Liu Miao","Lucy Li","Natalie Kwok","Sandra Guo","Stella Chu"] }
+            ]
+          }
+        ]
+      },
+      "Japan": {
+        label: "Japan", color: "#AD1457",
+        managers: [
+          {
+            name: "Masayuki Akada", color: "#AD1457",
+            flms: [
+              { name: "Yohei Izumi", done: 1, total: 6,
+                completed: ["Tomoya Maekawa"],
+                pending: ["Ayumi Mantoku","Gabriel Pradipta David Galvano","Jake Burrows","Kana Harada","Norihide Kaseda"] },
+              { name: "Hiroyoshi Nakagawa", done: 0, total: 1, completed: [], pending: ["Hiroyoshi Nakagawa"] },
+              { name: "Iyo Yamasaki",       done: 1, total: 1, completed: ["Iyo Yamasaki"], pending: [] },
+              { name: "Jieun Oh",           done: 0, total: 1, completed: [], pending: ["Jieun Oh"] },
+              { name: "Masanori Uehara",    done: 1, total: 1, completed: ["Masanori Uehara"], pending: [] },
+              { name: "Momo Miyazaki",      done: 1, total: 1, completed: ["Momo Miyazaki"], pending: [] },
+              { name: "Reona Tanaka",       done: 0, total: 1, completed: [], pending: ["Reona Tanaka"] },
+              { name: "Ryo Takahashi",      done: 1, total: 1, completed: ["Ryo Takahashi"], pending: [] },
+              { name: "Ryozo Tanaka",       done: 0, total: 1, completed: [], pending: ["Ryozo Tanaka"] },
+              { name: "Satoru Kamibayashi", done: 0, total: 1, completed: [], pending: ["Satoru Kamibayashi"] },
+              { name: "Takumine Matsuo",    done: 0, total: 1, completed: [], pending: ["Takumine Matsuo"] }
+            ]
+          }
+        ]
+      },
+      "Australia": {
+        label: "Australia", color: "#2E7D32",
+        managers: [
+          {
+            name: "Ross Candido", color: "#2E7D32",
+            flms: [
+              { name: "Mike O'Neill", done: 1, total: 6,
+                completed: ["Eimear O'Shea"],
+                pending: ["Graham Paterson","Lucy Lawton","Matt Sutherland","Patrick Smith","Xavier Richards"] },
+              { name: "Tim O'Rourke", done: 0, total: 13,
+                completed: [],
+                pending: ["Almog Vernik","Chloe Gouesclou","Jake Brudenell","Javie Sarmiento","Kieren Strain","Monica Bondoc","Myla Villano","Natalia Ballas","Rachelle San Pedro","Ryozo Tanaka","Sherries Enriquez","Shivani Saluja","Theo McPeake"] }
+            ]
+          }
+        ]
+      }
+    }
+  }
+];
+
+/* ── PROGRESS TAB ── */
+let activeProgRegion = "all";
+
+function buildProgressTab(){
+  const grid = document.getElementById("prog-grid");
+  if(!grid) return;
+  grid.innerHTML = "";
+  CERTS.forEach(cert => grid.appendChild(buildCertCard(cert)));
+}
+
+function getRegionKeys(cert){
+  return activeProgRegion === "all"
+    ? Object.keys(cert.regions)
+    : Object.keys(cert.regions).filter(k => {
+        // filter by manager name or region label
+        const reg = cert.regions[k];
+        return reg.managers.some(m => m.name === activeProgRegion) || k === activeProgRegion;
+      });
+}
+
+function buildCertCard(cert){
+  const regionKeys = getRegionKeys(cert);
+
+  // Aggregate across shown regions
+  let dispDone = 0, dispTotal = 0;
+  regionKeys.forEach(rk => {
+    cert.regions[rk].managers.forEach(mgr => {
+      // filter by active region (manager name)
+      if(activeProgRegion !== "all" && mgr.name !== activeProgRegion && cert.regions[rk].managers.length > 1){
+        // if filtering by specific manager, only count that manager
+        if(mgr.name === activeProgRegion){
+          mgr.flms.forEach(f => { dispDone += f.done; dispTotal += f.total; });
+        }
+      } else {
+        mgr.flms.forEach(f => { dispDone += f.done; dispTotal += f.total; });
+      }
+    });
+  });
+
+  // Recount cleanly
+  dispDone = 0; dispTotal = 0;
+  regionKeys.forEach(rk => {
+    cert.regions[rk].managers.forEach(mgr => {
+      const include = activeProgRegion === "all" || mgr.name === activeProgRegion;
+      if(include) mgr.flms.forEach(f => { dispDone += f.done; dispTotal += f.total; });
+    });
+  });
+
+  const dispPct = dispTotal > 0 ? Math.round(dispDone / dispTotal * 100) : 0;
+  const pctColor = dispPct >= 80 ? "#2E7D32" : dispPct >= 40 ? "#0097A7" : dispPct > 0 ? "#F59E0B" : "#9E9E9E";
+
+  const card = document.createElement("div");
+  card.className = "cert-card";
+
+  // Header
+  const hdr = document.createElement("div");
+  hdr.className = "cert-card-hdr";
+  hdr.innerHTML = `
+    <div class="cert-hdr-left">
+      <div class="cert-card-title">${cert.name}</div>
+      <div class="cert-card-desc">${cert.desc}</div>
+    </div>
+    <a class="cert-card-link" href="${cert.url}" target="_blank" rel="noopener">▶ ${cert.urlLabel}</a>`;
+  card.appendChild(hdr);
+
+  // Aggregate bar
+  const agg = document.createElement("div");
+  agg.className = "cert-agg";
+  agg.innerHTML = `
+    <div class="cert-agg-stat"><span class="cert-agg-num" style="color:${pctColor}">${dispPct}%</span><span class="cert-agg-lbl">Complete</span></div>
+    <div class="cert-agg-divider"></div>
+    <div class="cert-agg-stat"><span class="cert-agg-num">${dispDone}</span><span class="cert-agg-lbl">Done</span></div>
+    <div class="cert-agg-divider"></div>
+    <div class="cert-agg-stat"><span class="cert-agg-num">${dispTotal - dispDone}</span><span class="cert-agg-lbl">Pending</span></div>
+    <div class="cert-agg-divider"></div>
+    <div class="cert-agg-stat"><span class="cert-agg-num">${dispTotal}</span><span class="cert-agg-lbl">Enrolled</span></div>
+    <div class="cert-agg-divider"></div>
+    <div class="cert-agg-bar-wrap">
+      <div class="cert-agg-bar-lbl"><span>APAC cohort progress</span><strong>${dispPct}%</strong></div>
+      <div class="cert-agg-bar-track"><div class="cert-agg-bar-fill" style="width:${dispPct}%;background:${pctColor}"></div></div>
+    </div>`;
+  card.appendChild(agg);
+
+  // Regions + manager accordion
+  const regionsEl = document.createElement("div");
+  regionsEl.className = "cert-regions";
+
+  regionKeys.forEach(rk => {
+    const reg = cert.regions[rk];
+    const managersToShow = reg.managers.filter(m => activeProgRegion === "all" || m.name === activeProgRegion);
+    if(managersToShow.length === 0) return;
+
+    managersToShow.forEach(mgr => {
+      const mgrDone  = mgr.flms.reduce((s,f)=>s+f.done, 0);
+      const mgrTotal = mgr.flms.reduce((s,f)=>s+f.total, 0);
+      const mgrPct   = mgrTotal > 0 ? Math.round(mgrDone/mgrTotal*100) : 0;
+      const mgrColor = mgrPct >= 80 ? "#2E7D32" : mgrPct >= 40 ? "#0097A7" : mgrPct > 0 ? "#F59E0B" : "#9E9E9E";
+
+      const block = document.createElement("div");
+      block.className = "cert-region-block";
+
+      // Region header (manager level)
+      const regionHdr = document.createElement("div");
+      regionHdr.className = "cert-region-hdr";
+      regionHdr.innerHTML = `
+        <div class="cert-region-dot" style="background:${mgr.color}"></div>
+        <div class="cert-region-name">${mgr.name} <span style="font-size:11px;font-weight:400;color:var(--gray-m)">— ${reg.label}</span></div>
+        <div class="cert-region-stats">${mgrDone}/${mgrTotal}</div>
+        <div class="cert-region-mini-bar"><div class="cert-region-mini-fill" style="width:${mgrPct}%;background:${mgrColor}"></div></div>
+        <div class="cert-region-pct" style="color:${mgrColor}">${mgrPct}%</div>
+        <div class="cert-region-chevron">▶</div>`;
+
+      const regionBody = document.createElement("div");
+      regionBody.className = "cert-region-body";
+
+      // FLM blocks inside manager
+      mgr.flms.forEach(flm => {
+        const flmPct   = flm.total > 0 ? Math.round(flm.done/flm.total*100) : 0;
+        const flmColor = flmPct === 100 ? "#2E7D32" : flmPct >= 50 ? "#0097A7" : flmPct > 0 ? "#F59E0B" : "#9E9E9E";
+        const bgColor  = flmPct === 100 ? "#E8F5E9" : flmPct >= 50 ? "var(--teal-l)" : flmPct > 0 ? "#FFFBEB" : "var(--gray-l)";
+
+        const flmBlock = document.createElement("div");
+        flmBlock.className = "flm-block";
+
+        const flmHdr = document.createElement("div");
+        flmHdr.className = "flm-hdr";
+        flmHdr.style.background = bgColor;
+        flmHdr.innerHTML = `
+          <div class="flm-name">${flm.name}</div>
+          <div class="flm-nums">${flm.done}/${flm.total} reps</div>
+          <div class="flm-mini-bar"><div class="flm-mini-fill" style="width:${flmPct}%;background:${flmColor}"></div></div>
+          <div class="flm-pct-badge" style="background:${flmColor}1a;color:${flmColor}">${flmPct}%</div>
+          <div class="flm-chevron">▶</div>`;
+
+        const flmBody = document.createElement("div");
+        flmBody.className = "flm-body";
+
+        // Completed reps
+        if(flm.completed.length > 0){
+          const doneLabel = document.createElement("div");
+          doneLabel.className = "flm-rep-section-lbl";
+          doneLabel.style.color = "#2E7D32";
+          doneLabel.textContent = `✓ Completed (${flm.completed.length})`;
+          flmBody.appendChild(doneLabel);
+          const doneChips = document.createElement("div");
+          doneChips.className = "flm-reps";
+          flm.completed.forEach(r => {
+            const chip = document.createElement("span");
+            chip.className = "rep-chip rep-chip-done";
+            chip.textContent = r;
+            doneChips.appendChild(chip);
+          });
+          flmBody.appendChild(doneChips);
+        }
+
+        // Pending reps
+        if(flm.pending.length > 0){
+          const pendLabel = document.createElement("div");
+          pendLabel.className = "flm-rep-section-lbl";
+          pendLabel.style.color = "#BF360C";
+          pendLabel.textContent = `○ Pending (${flm.pending.length})`;
+          flmBody.appendChild(pendLabel);
+          const pendChips = document.createElement("div");
+          pendChips.className = "flm-reps";
+          flm.pending.forEach(r => {
+            const chip = document.createElement("span");
+            chip.className = "rep-chip rep-chip-pending";
+            chip.textContent = r;
+            pendChips.appendChild(chip);
+          });
+          flmBody.appendChild(pendChips);
+        }
+
+        // Toggle FLM open/close
+        flmHdr.onclick = () => {
+          const isOpen = flmBody.classList.contains("open");
+          flmBody.classList.toggle("open", !isOpen);
+          flmHdr.classList.toggle("open", !isOpen);
+        };
+
+        flmBlock.appendChild(flmHdr);
+        flmBlock.appendChild(flmBody);
+        regionBody.appendChild(flmBlock);
+      });
+
+      // Toggle region open/close
+      regionHdr.onclick = () => {
+        const isOpen = regionBody.classList.contains("open");
+        regionBody.classList.toggle("open", !isOpen);
+        regionHdr.classList.toggle("open", !isOpen);
+      };
+
+      block.appendChild(regionHdr);
+      block.appendChild(regionBody);
+      regionsEl.appendChild(block);
+    });
+  });
+
+  card.appendChild(regionsEl);
+
+  // Trend chart
+  if(cert.trend && cert.trend.length > 0){
+    const chartWrap = document.createElement("div");
+    chartWrap.className = "cert-chart-wrap";
+    const maxCumul = cert.trend[cert.trend.length - 1].cumulative;
+    const targetVal = dispTotal;
+    const barsHtml = cert.trend.map(pt => {
+      const h = Math.max(3, Math.round(pt.cumulative / targetVal * 62));
+      return `<div class="chart-bar-wrap">
+        <div class="chart-bar" style="height:${h}px"><div class="chart-bar-val">${pt.cumulative}</div></div>
+        <div class="chart-bar-lbl">${pt.week}</div>
+      </div>`;
+    }).join("");
+    const targetPx = 62;
+    chartWrap.innerHTML = `
+      <div class="cert-chart-hdr">📈 Cumulative completions</div>
+      <div class="cert-chart" style="padding-bottom:20px">
+        ${barsHtml}
+        <div class="chart-target-line" style="bottom:20px">
+          <span class="chart-target-lbl">Target: ${targetVal}</span>
+        </div>
+      </div>`;
+    card.appendChild(chartWrap);
+  } else if(cert.trend === null){
+    const note = document.createElement("div");
+    note.style.cssText = "padding:10px 22px 14px;font-size:11.5px;color:var(--gray-m);border-top:1px solid var(--gray-l);";
+    note.textContent = "📅 Completion date trend unavailable for this export — upload a dated export to enable the trend chart.";
+    card.appendChild(note);
+  }
+
+  return card;
+}
+
+function applyProgRegion(region, btn){
+  activeProgRegion = region;
+  document.querySelectorAll("[data-prog-region]").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  buildProgressTab();
+}
+
 function switchView(view,btn){
   curView=view;
   document.querySelectorAll(".toggle-btn").forEach(b=>b.classList.remove("active")); btn.classList.add("active");
   document.getElementById("view-list").classList.toggle("active",view==="list");
   document.getElementById("view-cal").classList.toggle("active",view==="cal");
+  document.getElementById("view-od").classList.toggle("active",view==="od");
+  document.getElementById("view-progress").classList.toggle("active",view==="progress");
   document.getElementById("month-tabs-wrap").style.display=view==="list"?"":"none";
+  if(view==="od") buildODTab();
+  if(view==="progress") buildProgressTab();
 }
 function switchMonth(m,btn){
   curMonth=m;
