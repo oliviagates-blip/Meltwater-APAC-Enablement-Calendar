@@ -2100,7 +2100,10 @@ const CERTS = [
                 pending: ["Ameerah Suhaimi","Renee Ong"] },
               { name: "Linda Wang", done: 0, total: 16,
                 completed: [],
-                pending: ["Chloe Zhu","Cissie Wu","Clare Le","Claudia Luo","Evan Zhao","Fiona Gu","Jiaxin Deng","Kacey Hu","Kelvin Fok","Levy Li","Linda Wang","Liu Miao","Lucy Li","Natalie Kwok","Sandra Guo","Stella Chu"] }
+                pending: ["Chloe Zhu","Cissie Wu","Clare Le","Claudia Luo","Evan Zhao","Fiona Gu","Jiaxin Deng","Kacey Hu","Kelvin Fok","Levy Li","Linda Wang","Liu Miao","Lucy Li","Natalie Kwok","Sandra Guo","Stella Chu"] },
+              { name: "Kieren Strain", done: 0, total: 7,
+                completed: [],
+                pending: ["Catherine Innocenzi","Christina Coogan","Kieren Strain","Lizzie Cooper","Rachel Dam","Shae McGregor","Stuart Oldham"] }
             ]
           }
         ]
@@ -2137,10 +2140,19 @@ const CERTS = [
             flms: [
               { name: "Mike O'Neill", done: 0, total: 8,
                 completed: [],
-                pending: ["Eimear O'Shea","Graham Paterson","James Skene","Lucy Lawton","Matt Sutherland","Mike O'Neill","Patrick Smith","Xavier Richards"] },
-              { name: "Tim O'Rourke", done: 1, total: 14,
+                pending: ["Eimear O'Shea","Graham Paterson","Lucy Lawton","Matt Sutherland","Mike O'Neill","Patrick Smith","Xavier Richards","James Skene"] },
+              { name: "Patrick Smith", done: 0, total: 1,
+                completed: [],
+                pending: ["Patrick Smith"] },
+              { name: "James Skene", done: 1, total: 10,
+                completed: ["James Wanders"],
+                pending: ["Dan Murphy","Ethan Short","Fiona Ellese Pingkian","Indi Robertson","Jacob Buswell","James Skene","Kailee Kaufman","Ryan Lim","Thomas Hansen"] },
+              { name: "Tim O'Rourke", done: 1, total: 13,
                 completed: ["Rachelle San Pedro"],
-                pending: ["Almog Vernik","Jake Brudenell","Javie Sarmiento","Kieren Strain","Monica Bondoc","Myla Villano","Natalia Ballas","Ryozo Tanaka","Sherries Enriquez","Shivani Saluja","Tess Cullen","Theo McPeake","Tim O'Rourke"] }
+                pending: ["Almog Vernik","Jake Brudenell","Javie Sarmiento","Monica Bondoc","Myla Villano","Natalia Ballas","Sherries Enriquez","Shivani Saluja","Tess Cullen","Theo McPeake","Tim O'Rourke"] },
+              { name: "Tess Cullen", done: 0, total: 4,
+                completed: [],
+                pending: ["Emma Witting","Gabby Mason","Haruka Matsuzaki","Tess Cullen"] }
             ]
           }
         ]
@@ -2186,7 +2198,10 @@ const CERTS = [
                 pending: ["Hazel Lim","Renee Ong","Shalini Govindasamy","Yuan Pancho"] },
               { name: "Linda Wang", done: 1, total: 15,
                 completed: ["Evan Zhao"],
-                pending: ["Chloe Zhu","Cissie Wu","Clare Le","Fiona Gu","Jiaxin Deng","Kacey Hu","Kelvin Fok","Levy Li","Linda Wang","Liu Miao","Lucy Li","Natalie Kwok","Sandra Guo","Stella Chu"] }
+                pending: ["Chloe Zhu","Cissie Wu","Clare Le","Fiona Gu","Jiaxin Deng","Kacey Hu","Kelvin Fok","Levy Li","Linda Wang","Liu Miao","Lucy Li","Natalie Kwok","Sandra Guo","Stella Chu"] },
+              { name: "Kieren Strain", done: 0, total: 7,
+                completed: [],
+                pending: ["Catherine Innocenzi","Christina Coogan","Kieren Strain","Lizzie Cooper","Rachel Dam","Shae McGregor","Stuart Oldham"] }
             ]
           }
         ]
@@ -2223,9 +2238,18 @@ const CERTS = [
               { name: "Mike O'Neill", done: 1, total: 6,
                 completed: ["Eimear O'Shea"],
                 pending: ["Graham Paterson","Lucy Lawton","Matt Sutherland","Patrick Smith","Xavier Richards"] },
-              { name: "Tim O'Rourke", done: 0, total: 13,
+              { name: "Patrick Smith", done: 0, total: 1,
                 completed: [],
-                pending: ["Almog Vernik","Chloe Gouesclou","Jake Brudenell","Javie Sarmiento","Kieren Strain","Monica Bondoc","Myla Villano","Natalia Ballas","Rachelle San Pedro","Ryozo Tanaka","Sherries Enriquez","Shivani Saluja","Theo McPeake"] }
+                pending: ["Patrick Smith"] },
+              { name: "James Skene", done: 0, total: 9,
+                completed: [],
+                pending: ["Dan Murphy","Ethan Short","Fiona Ellese Pingkian","Indi Robertson","Jacob Buswell","James Wanders","Kailee Kaufman","Ryan Lim","Thomas Hansen"] },
+              { name: "Tim O'Rourke", done: 0, total: 12,
+                completed: [],
+                pending: ["Almog Vernik","Chloe Gouesclou","Jake Brudenell","Javie Sarmiento","Kieren Strain","Monica Bondoc","Myla Villano","Natalia Ballas","Rachelle San Pedro","Sherries Enriquez","Shivani Saluja","Theo McPeake"] },
+              { name: "Tess Cullen", done: 0, total: 6,
+                completed: [],
+                pending: ["Abbey Thompson","Cynthia Tian","Emma Witting","Gabby Mason","Haruka Matsuzaki","Jess Andrews"] }
             ]
           }
         ]
@@ -2233,6 +2257,8 @@ const CERTS = [
     }
   }
 ];
+
+/* ── PROGRESS TAB ── */
 
 /* ── PROGRESS TAB ── */
 let activeProgRegion = "all";
