@@ -2092,9 +2092,14 @@ const CERTS = [
               { name: "Dipak Mitra", done: 0, total: 6,
                 completed: [],
                 pending: ["Dipak Mitra","Gwen Ang","Iris Berces","Kamya Yadav","Keanna Chang","Patricia Victoria"] },
-              { name: "Joseph Latteri", done: 1, total: 6,
+              { name: "Joseph Latteri", done: 1, total: 14,
                 completed: ["Joseph Latteri"],
-                pending: ["Enika Liu","Nanami Hase","Shoko Enomoto","Shun Okai","Yuki Hirajo"] },
+                pending: ["Enika Liu","Nanami Hase","Shoko Enomoto","Yuki Hirajo"],
+                subflms: [
+                  { name: "Shun Okai", done: 0, total: 8,
+                    completed: [],
+                    pending: ["Chihiro Saito","Kozue Irei","Lisa Igarashi Vanderhoof","Mai Kobayashi","Mao Matsumoto","Shiori Masumitsu","Shizuku Takayama","Shun Okai"] }
+                ] },
               { name: "Hazel Lim", done: 2, total: 4,
                 completed: ["Hazel Lim","Shalini Govindasamy"],
                 pending: ["Ameerah Suhaimi","Renee Ong"] },
@@ -2187,9 +2192,14 @@ const CERTS = [
               { name: "Dipak Mitra", done: 3, total: 7,
                 completed: ["Gwen Ang","Iris Berces","Keanna Chang"],
                 pending: ["Dipak Mitra","Kamya Yadav","Patricia Victoria","Yashasvi Tandon"] },
-              { name: "Joseph Latteri", done: 0, total: 6,
+              { name: "Joseph Latteri", done: 0, total: 14,
                 completed: [],
-                pending: ["Enika Liu","Joseph Latteri","Nanami Hase","Shoko Enomoto","Shun Okai","Yuki Hirajo"] },
+                pending: ["Enika Liu","Joseph Latteri","Nanami Hase","Shoko Enomoto","Yuki Hirajo"],
+                subflms: [
+                  { name: "Shun Okai", done: 1, total: 8,
+                    completed: ["Shiori Masumitsu"],
+                    pending: ["Chihiro Saito","Kozue Irei","Lisa Igarashi Vanderhoof","Mai Kobayashi","Mao Matsumoto","Shizuku Takayama","Shun Okai"] }
+                ] },
               { name: "Hazel Lim", done: 0, total: 4,
                 completed: [],
                 pending: ["Hazel Lim","Renee Ong","Shalini Govindasamy","Yuan Pancho"] },
@@ -2425,6 +2435,45 @@ function buildCertCard(cert){
             pendChips.appendChild(chip);
           });
           flmBody.appendChild(pendChips);
+        }
+
+        // Sub-FLM blocks (e.g. Shun Okai under Joseph Latteri)
+        if(flm.subflms && flm.subflms.length > 0){
+          flm.subflms.forEach(sub => {
+            const subPct   = sub.total > 0 ? Math.round(sub.done/sub.total*100) : 0;
+            const subColor = subPct===100 ? "#2E7D32" : subPct>=50 ? "#0097A7" : subPct>0 ? "#F59E0B" : "#9E9E9E";
+            const subBg    = subPct===100 ? "#E8F5E9" : subPct>=50 ? "var(--teal-l)" : subPct>0 ? "#FFFBEB" : "var(--gray-l)";
+            const subBlock = document.createElement("div");
+            subBlock.className = "flm-block";
+            subBlock.style.cssText = "margin:10px 0 0 18px;border-left:3px solid var(--gray-b);border-radius:0 8px 8px 0;";
+            const subHdr = document.createElement("div");
+            subHdr.className = "flm-hdr";
+            subHdr.style.background = subBg;
+            subHdr.innerHTML = `
+              <div class="flm-name" style="font-size:12px;">↳ ${sub.name}</div>
+              <div class="flm-nums">${sub.done}/${sub.total} reps</div>
+              <div class="flm-mini-bar"><div class="flm-mini-fill" style="width:${subPct}%;background:${subColor}"></div></div>
+              <div class="flm-pct-badge" style="background:${subColor}1a;color:${subColor}">${subPct}%</div>
+              <div class="flm-chevron">▶</div>`;
+            const subBody = document.createElement("div");
+            subBody.className = "flm-body";
+            if(sub.completed.length > 0){
+              const dl = document.createElement("div"); dl.className="flm-rep-section-lbl"; dl.style.color="#2E7D32"; dl.textContent=`✓ Completed (${sub.completed.length})`; subBody.appendChild(dl);
+              const dc = document.createElement("div"); dc.className="flm-reps";
+              sub.completed.forEach(r=>{ const c=document.createElement("span"); c.className="rep-chip rep-chip-done"; c.textContent=r; dc.appendChild(c); });
+              subBody.appendChild(dc);
+            }
+            if(sub.pending.length > 0){
+              const pl = document.createElement("div"); pl.className="flm-rep-section-lbl"; pl.style.color="#BF360C"; pl.textContent=`○ Pending (${sub.pending.length})`; subBody.appendChild(pl);
+              const pc = document.createElement("div"); pc.className="flm-reps";
+              sub.pending.forEach(r=>{ const c=document.createElement("span"); c.className="rep-chip rep-chip-pending"; c.textContent=r; pc.appendChild(c); });
+              subBody.appendChild(pc);
+            }
+            subHdr.onclick = () => { const o=subBody.classList.contains("open"); subBody.classList.toggle("open",!o); subHdr.classList.toggle("open",!o); };
+            subBlock.appendChild(subHdr);
+            subBlock.appendChild(subBody);
+            flmBody.appendChild(subBlock);
+          });
         }
 
         // Toggle FLM open/close
