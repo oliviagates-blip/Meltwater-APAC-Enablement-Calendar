@@ -2443,7 +2443,7 @@ function buildCertCard(cert){
       const mgrDone  = mgr.flms.reduce((s,f)=>s+f.done, 0);
       const mgrTotal = mgr.flms.reduce((s,f)=>s+f.total, 0);
       const mgrPct   = mgrTotal > 0 ? Math.round(mgrDone/mgrTotal*100) : 0;
-      const mgrColor = mgrPct >= 80 ? "#2E7D32" : mgrPct >= 40 ? "#0097A7" : mgrPct > 0 ? "#F59E0B" : "#9E9E9E";
+      const mgrColor = mgrPct >= 80 ? "#2E7D32" : mgrPct >= 20 ? "#D97706" : "#C62828";
 
       const block = document.createElement("div");
       block.className = "cert-region-block";
@@ -2465,8 +2465,8 @@ function buildCertCard(cert){
       // FLM blocks inside manager
       mgr.flms.forEach(flm => {
         const flmPct   = flm.total > 0 ? Math.round(flm.done/flm.total*100) : 0;
-        const flmColor = flmPct === 100 ? "#2E7D32" : flmPct >= 50 ? "#0097A7" : flmPct > 0 ? "#F59E0B" : "#9E9E9E";
-        const bgColor  = flmPct === 100 ? "#E8F5E9" : flmPct >= 50 ? "var(--teal-l)" : flmPct > 0 ? "#FFFBEB" : "var(--gray-l)";
+        const flmColor = flmPct >= 80 ? "#2E7D32" : flmPct >= 20 ? "#D97706" : "#C62828";
+        const bgColor  = flmPct >= 80 ? "#E8F5E9" : flmPct >= 20 ? "#FFFBEB" : "#FFEBEE";
 
         const flmBlock = document.createElement("div");
         flmBlock.className = "flm-block";
@@ -2475,8 +2475,8 @@ function buildCertCard(cert){
         flmHdr.className = "flm-hdr";
         flmHdr.style.background = bgColor;
         flmHdr.innerHTML = `
-          <div class="flm-name">${flm.name}</div>
-          <div class="flm-nums">${flm.done}/${flm.total} reps</div>
+          <div class="flm-name" style="color:${flmColor}">${flm.name}</div>
+          <div class="flm-nums" style="color:${flmColor}99">${flm.done}/${flm.total} reps</div>
           <div class="flm-mini-bar"><div class="flm-mini-fill" style="width:${flmPct}%;background:${flmColor}"></div></div>
           <div class="flm-pct-badge" style="background:${flmColor}1a;color:${flmColor}">${flmPct}%</div>
           <div class="flm-chevron">▶</div>`;
@@ -2524,8 +2524,8 @@ function buildCertCard(cert){
         if(flm.subflms && flm.subflms.length > 0){
           flm.subflms.forEach(sub => {
             const subPct   = sub.total > 0 ? Math.round(sub.done/sub.total*100) : 0;
-            const subColor = subPct===100 ? "#2E7D32" : subPct>=50 ? "#0097A7" : subPct>0 ? "#F59E0B" : "#9E9E9E";
-            const subBg    = subPct===100 ? "#E8F5E9" : subPct>=50 ? "var(--teal-l)" : subPct>0 ? "#FFFBEB" : "var(--gray-l)";
+            const subColor = subPct>=80 ? "#2E7D32" : subPct>=20 ? "#D97706" : "#C62828";
+            const subBg    = subPct>=80 ? "#E8F5E9" : subPct>=20 ? "#FFFBEB" : "#FFEBEE";
             const subBlock = document.createElement("div");
             subBlock.className = "flm-block";
             subBlock.style.cssText = "margin:10px 0 0 18px;border-left:3px solid var(--gray-b);border-radius:0 8px 8px 0;";
@@ -2533,8 +2533,8 @@ function buildCertCard(cert){
             subHdr.className = "flm-hdr";
             subHdr.style.background = subBg;
             subHdr.innerHTML = `
-              <div class="flm-name" style="font-size:12px;">↳ ${sub.name}</div>
-              <div class="flm-nums">${sub.done}/${sub.total} reps</div>
+              <div class="flm-name" style="font-size:12px;color:${subColor}">↳ ${sub.name}</div>
+              <div class="flm-nums" style="color:${subColor}99">${sub.done}/${sub.total} reps</div>
               <div class="flm-mini-bar"><div class="flm-mini-fill" style="width:${subPct}%;background:${subColor}"></div></div>
               <div class="flm-pct-badge" style="background:${subColor}1a;color:${subColor}">${subPct}%</div>
               <div class="flm-chevron">▶</div>`;
