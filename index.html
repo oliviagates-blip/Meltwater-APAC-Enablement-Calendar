@@ -444,6 +444,16 @@ function renderListM3(){
 .od-tab-filter-row:last-child { border-bottom:none; }
 .od-tab-filter-lbl { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.7px; color:var(--gray-m); min-width:60px; flex-shrink:0; }
 
+.od-featured-shelf { margin-bottom:28px; }
+.od-featured-label { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.7px; color:var(--gray-m); margin-bottom:12px; display:flex; align-items:center; gap:6px; }
+.od-featured-label::after { content:''; flex:1; height:1px; background:var(--gray-l); }
+.od-featured-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(420px,1fr)); gap:18px; }
+.od-featured-card { background:white; border:2px solid var(--od-b); border-radius:16px; padding:24px 26px 20px; cursor:pointer; transition:transform .15s, box-shadow .15s; display:flex; flex-direction:column; position:relative; overflow:hidden; }
+.od-featured-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; }
+.od-featured-card:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(74,20,140,.14); border-color:var(--c-mkt); }
+.od-featured-card .od-grid-title { font-size:16px; margin-bottom:10px; }
+.od-featured-card .od-grid-desc { -webkit-line-clamp:4; font-size:13px; margin-bottom:16px; }
+.od-featured-badge { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; padding:3px 9px; border-radius:20px; background:#FFF8E1; color:#F57F17; border:1px solid #FFE082; margin-bottom:10px; width:fit-content; }
 .od-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
 .od-grid-card { background:white; border:1.5px solid var(--od-b); border-radius:14px; padding:18px 20px 16px; cursor:pointer; transition:transform .15s, box-shadow .15s; display:flex; flex-direction:column; position:relative; overflow:hidden; }
 .od-grid-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
@@ -710,6 +720,10 @@ function renderListM3(){
         <button class="filter-btn" data-od-role="FLM" onclick="applyODRoleFilter('FLM',this)">FLM & SLM</button>
         <button class="filter-btn" data-od-role="Sales Services" onclick="applyODRoleFilter('Sales Services',this)">Sales Services</button>
       </div>
+    </div>
+    <div class="od-featured-shelf" id="od-featured-shelf">
+      <div class="od-featured-label">✨ Recently Added</div>
+      <div class="od-featured-grid" id="od-featured-grid"></div>
     </div>
     <div class="od-results-count" id="od-results-count"></div>
     <div class="od-grid" id="od-tab-grid"></div>
@@ -1009,6 +1023,7 @@ const ON_DEMAND = [
   {
     id:"od12", name:"Pain Above the Noise & Champions Program | New Hires",
     team:"Role Excellence", area:"ALL APAC", aud:"ALL / ANY",
+    featured:true,
     desc:"Self-paced eLearning for new hires covering two core Meltwater skills: identifying the Pain Above the Noise and developing Champions. You'll work through scenarios with mock accounts, discuss experience with your manager and team, and practise verbalising these concepts in a no-pressure environment. Seat time: ~2 hours.",
     url:"https://meltwater.skillshood.com/huddle/471865?path_id=43974&focus_view=true", urlLabel:"Start on Skillshood",
     links:[{label:"Start on Skillshood", url:"https://meltwater.skillshood.com/huddle/471865?path_id=43974&focus_view=true"}]
@@ -2015,30 +2030,70 @@ let curView="list", curMonth=1;
 /* ── ON DEMAND TAB ── */
 let activeODTeam = "all", activeODRole = "all";
 
+function buildODLinks(od){
+  let linksHtml = "";
+  if(od.links && od.links.length){
+    const [first, ...rest] = od.links;
+    linksHtml += `<a class="od-grid-link od-grid-link-primary" href="${first.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${first.label}</a>`;
+    rest.forEach(l=>{
+      linksHtml += `<a class="od-grid-link od-grid-link-secondary" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">↗ ${l.label}</a>`;
+    });
+  } else if(od.url){
+    linksHtml = `<a class="od-grid-link od-grid-link-primary" href="${od.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${od.urlLabel}</a>`;
+  }
+  return linksHtml;
+}
+
 function buildODTab(){
   const grid = document.getElementById("od-tab-grid");
+  const featGrid = document.getElementById("od-featured-grid");
+  const shelf = document.getElementById("od-featured-shelf");
   if(!grid) return;
   grid.innerHTML = "";
-  ON_DEMAND.forEach(od=>{
+  if(featGrid) featGrid.innerHTML = "";
+
+  const featured = ON_DEMAND.filter(od=>od.featured);
+  const standard = ON_DEMAND.filter(od=>!od.featured);
+
+  // Featured shelf
+  if(featGrid && featured.length > 0){
+    shelf.style.display = "";
+    featured.forEach(od=>{
+      const teamKey = (TEAMS[od.team.trim()]||{key:"pe"}).key;
+      const teamColor = (TEAMS[od.team.trim()]||{color:"#0097A7"}).color;
+      const linksHtml = buildODLinks(od);
+      const card = document.createElement("div");
+      card.className = "od-featured-card";
+      card.dataset.team = od.team;
+      card.dataset.aud = od.aud||"ALL / ANY";
+      card.dataset.featured = "true";
+      card.onclick = ()=>openModalOD(od.id);
+      card.innerHTML = `
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:${teamColor};border-radius:16px 16px 0 0;"></div>
+        <div class="od-featured-badge">✨ New</div>
+        <div class="od-grid-card-top">
+          <span class="od-grid-tag chip chip-${teamKey}">${od.team}</span>
+        </div>
+        <div class="od-grid-title">${od.name}</div>
+        <div class="od-grid-desc">${od.desc}</div>
+        <div class="od-grid-meta">📍 ${od.area||"ALL APAC"} &nbsp;·&nbsp; 👤 ${od.aud||"ALL / ANY"}</div>
+        <div class="od-grid-links">${linksHtml}</div>
+      `;
+      featGrid.appendChild(card);
+    });
+  } else if(shelf){
+    shelf.style.display = "none";
+  }
+
+  // Standard grid
+  standard.forEach(od=>{
     const teamKey = (TEAMS[od.team.trim()]||{key:"pe"}).key;
     const teamColor = (TEAMS[od.team.trim()]||{color:"#0097A7"}).color;
-    // Build links HTML
-    let linksHtml = "";
-    if(od.links && od.links.length){
-      const [first, ...rest] = od.links;
-      linksHtml += `<a class="od-grid-link od-grid-link-primary" href="${first.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${first.label}</a>`;
-      rest.forEach(l=>{
-        linksHtml += `<a class="od-grid-link od-grid-link-secondary" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">↗ ${l.label}</a>`;
-      });
-    } else if(od.url){
-      linksHtml = `<a class="od-grid-link od-grid-link-primary" href="${od.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ ${od.urlLabel}</a>`;
-    }
+    const linksHtml = buildODLinks(od);
     const card = document.createElement("div");
     card.className = "od-grid-card";
     card.dataset.team = od.team;
     card.dataset.aud = od.aud||"ALL / ANY";
-    card.style.setProperty("--card-team-color", teamColor);
-    card.querySelector = card.querySelector; // noop
     card.onclick = ()=>openModalOD(od.id);
     card.innerHTML = `
       <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${teamColor};border-radius:14px 14px 0 0;"></div>
@@ -2056,7 +2111,7 @@ function buildODTab(){
 }
 
 function applyODFilters(){
-  const cards = document.querySelectorAll(".od-grid-card");
+  const cards = document.querySelectorAll(".od-grid-card, .od-featured-card");
   let visible = 0;
   cards.forEach(card=>{
     const team = card.dataset.team||"" ;
