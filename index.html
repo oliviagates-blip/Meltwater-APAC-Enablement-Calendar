@@ -599,7 +599,7 @@ function renderListM3(){
       <button class="toggle-btn active" onclick="switchView('list',this)">📋 List View</button>
       <button class="toggle-btn" onclick="switchView('cal',this)">📅 Calendar View</button>
       <button class="toggle-btn" onclick="switchView('od',this)">▶ On Demand</button>
-      <button class="toggle-btn" onclick="switchView('progress',this)">📊 Progress</button>
+      <button class="toggle-btn" onclick="switchView('progress',this)">📊 eLearnings</button>
     </div>
     <div class="updated-label">Last updated: <strong id="lbl-updated"></strong></div>
   </div>
@@ -860,14 +860,14 @@ const CONFIG = {
   month2Label: "May 2026",
   month3Label: "July 2026",
   year: 2026,
-  lastUpdated: "11 June 2026",
+  lastUpdated: "25 June 2026",
   pageTitle: "APAC Program Hub · Jun–Jul 2026",
   organisedByLabel: "Upcoming Training This Month",
-  stat_m1_total: 18,   // 14 scheduled + 4 TBC
-  stat_m1_done:  0,
+  stat_m1_total: 20,   // 16 scheduled + 4 TBC
+  stat_m1_done:  2,
   stat_m2_total: 17,   // All completed
   stat_m2_tbc:   0,
-  stat_m3_total: 10,   // July preview
+  stat_m3_total: 12,   // July preview
 };
 
 /* ════════════════════════════════════════════════════════════════════
@@ -1002,6 +1002,21 @@ const ON_DEMAND = [
       {label:"NAM Session Recording", url:"https://drive.google.com/file/d/1qP9loWSJjN9ztga6JghSUnc7pV9kb-tn/view?usp=drive_link"}
     ]
   },
+  {
+    id:"od11", name:"The GEO Playbook | mCommunity Course",
+    team:"Product Enablement", area:"ALL APAC", aud:"ALL / ANY",
+    featured:true,
+    desc:"Master Generative Engine Optimization (GEO) and learn how AI platforms discover, interpret, and recommend brands. Diagnose visibility challenges, build authority, and create a practical GEO strategy for long-term AI visibility. Available on mCommunity Academy.",
+    url:"https://academy.meltwater.com/courses/geo-playbook", urlLabel:"Start Course (mCommunity)",
+    links:[{label:"Start Course (mCommunity Academy)", url:"https://academy.meltwater.com/courses/geo-playbook"}]
+  },
+  {
+    id:"od12", name:"Pain Above the Noise & Champions Program | New Hires",
+    team:"Role Excellence", area:"ALL APAC", aud:"ALL / ANY",
+    desc:"Self-paced eLearning for new hires covering two core Meltwater skills: identifying the Pain Above the Noise and developing Champions. You'll work through scenarios with mock accounts, discuss experience with your manager and team, and practise verbalising these concepts in a no-pressure environment. Seat time: ~2 hours.",
+    url:"https://meltwater.skillshood.com/huddle/471865?path_id=43974&focus_view=true", urlLabel:"Start on Skillshood",
+    links:[{label:"Start on Skillshood", url:"https://meltwater.skillshood.com/huddle/471865?path_id=43974&focus_view=true"}]
+  },
 ];/* ════════════════════════════════════════════════════════════════════
    ██  EVENT DATA — REPLACE THIS ARRAY EACH MONTH  ██
    ════════════════════════════════════════════════════════════════════
@@ -1064,31 +1079,31 @@ const EVENTS = [
    desc:"Wellness session exploring psychological drivers behind spending and saving habits — why some save for tomorrow while others live for today, how to spot unhelpful financial patterns, and seven actionable tools to reshape spending behaviours.",
    links:[{label:"Register (GoToWebinar)", url:"https://attendee.gotowebinar.com/register/768894433080441944"}]},
 
-  {id:7, month:6, day:16, tbc:false, done:false, featured:true,
+  {id:7, month:6, day:16, tbc:false, done:false, featured:false,
    name:"Explore >E+ | Part 1", short:"Explore >E+ Pt 1",
    team:"Product Enablement", area:"ALL APAC", aud:"Client Success, Enterprise, Growth Executive, Sales Services",
    desc:"Part 1 of the Explore to Explore+ enablement series — equipping CS, Enterprise, Growth Executive, and Sales Services teams with the knowledge, messaging, and confidence to drive Explore+ upgrades across their book of business.",
    links:[]},
 
-  {id:8, month:6, day:17, tbc:false, done:false, featured:true,
+  {id:8, month:6, day:17, tbc:false, done:false, featured:false,
    name:"Explore >E+ | Part 2", short:"Explore >E+ Pt 2",
    team:"Product Enablement", area:"ALL APAC", aud:"Client Success, Enterprise, Growth Executive, Sales Services",
    desc:"Part 2 of the Explore to Explore+ series — building on Part 1 with deeper product knowledge, objection handling, and applied deal scenarios to accelerate Explore+ conversion across all relevant segments.",
    links:[]},
 
-  {id:9, month:6, day:17, tbc:false, done:false, featured:false,
+  {id:9, month:6, day:17, tbc:false, done:true, featured:false,
    name:"[PH] Marketers Meetup", short:"[PH] Marketers Meetup",
    team:"APAC Marketing", area:"Philippines", aud:"N/A (External event)",
    desc:"Customer-facing Marketers Meetup in the Philippines — networking, peer insights, and a showcase of how Meltwater supports modern marketing teams.",
    links:[]},
 
-  {id:10, month:6, day:18, tbc:false, done:false, featured:false,
+  {id:10, month:6, day:18, tbc:false, done:true, featured:false,
    name:"[PH] Gov Workshop", short:"[PH] Gov Workshop",
    team:"APAC Marketing", area:"Philippines", aud:"N/A (External event)",
    desc:"Targeted workshop for Philippine government sector clients and prospects — covering Meltwater solutions relevant to public sector communications and media monitoring needs.",
    links:[]},
 
-  {id:11, month:6, day:30, tbc:false, done:false, featured:true,
+  {id:11, month:6, day:30, tbc:false, done:false, featured:false,
    name:"Business Outcomes: Certification", short:"Business Outcomes Cert",
    team:"Role Excellence", area:"ALL APAC", aud:"Client Acquisition, Client Success, Enterprise, Growth Executive",
    desc:"The final certification of the Q1 2026 Business Outcomes Training program — available for CA, CS, Enterprise, and Growth Executive roles on Skillshood. Complete this to formally certify your Business Outcomes skills.",
@@ -1104,6 +1119,18 @@ const EVENTS = [
    name:"MCP eLearning | Pre-work", short:"MCP eLearning Pre-work",
    team:"Product Enablement", area:"ALL APAC", aud:"ALL / ANY",
    desc:"Pre-work eLearning ahead of the MCP Sales Enablement session — equipping APAC teams with the foundational knowledge of Meltwater's MCP integration before the live enablement session in July.",
+   links:[]},
+
+  {id:20, month:6, day:24, tbc:false, done:false, featured:false,
+   name:"APAC Webinar: Trust in the Age of Generative AI", short:"Webinar: Trust & GenAI",
+   team:"APAC Marketing", area:"ALL APAC", aud:"N/A (External event)",
+   desc:"APAC Marketing webinar exploring trust, credibility, and brand reputation in the era of Generative AI — a customer-facing event open across all APAC markets.",
+   links:[]},
+
+  {id:21, month:6, day:25, tbc:false, done:false, featured:true,
+   name:"Town Hall — John Box", short:"Town Hall: John Box",
+   team:"Executive", area:"ALL APAC", aud:"ALL / ANY",
+   desc:"All-APAC town hall hosted by John Box — covering regional business updates, strategic direction, and key priorities. All APAC roles welcome.",
    links:[]},
 
   /* JUNE TBC */
@@ -1198,6 +1225,18 @@ const EVENTS = [
    name:"MCP Sales Enablement", short:"MCP Enablement",
    team:"Product Enablement", area:"ALL APAC", aud:"ALL / ANY",
    desc:"Product Enablement on Meltwater's MCP (Model Context Protocol) integration — equipping all APAC roles to identify opportunities, articulate value, and discuss MCP with clients. Builds on the MCP eLearning pre-work from June.",
+   links:[]},
+
+  {id:49, month:7, day:22, tbc:false, done:false, featured:false,
+   name:"[AUNZ] CMO Summit — Gold Coast", short:"[AUNZ] CMO Summit",
+   team:"APAC Marketing", area:"Australia", aud:"N/A (External event)",
+   desc:"CMO Summit Gold Coast — senior marketing leaders sharing strategies to accelerate brand growth, strengthen customer acquisition and loyalty, and respond to shifting consumer expectations. Topics include omnichannel campaigns, AI and personalisation, data-driven ROI, and emerging technology. Runs 22-23 July 2026.",
+   links:[{label:"CMO Summit Event Page", url:"https://www.marcusevans.com/summit/cmoanz/jul26/"}]},
+
+  {id:80, month:7, day:24, tbc:false, done:false, featured:false,
+   name:"[CN] 1:Few Auto Workshop", short:"[CN] Auto Workshop",
+   team:"APAC Marketing", area:"China", aud:"ALL / ANY",
+   desc:"Meltwater-owned 1:Few Auto Workshop in China, in partnership with the Auto Association — inviting target prospects and customers from 8-10 Chinese auto brands going global. Speakers drawn from International Business divisions of SAIC Motor and Geely Group.",
    links:[]},
 
   /* ══ AUGUST (month=8 — future, not displayed yet) ══════════════════════= */
@@ -2080,7 +2119,7 @@ const CERTS = [
                 pending: ["Christina Yu","Daisy Sun","Denise Choi","Minsi Fan","Senjie Zhu","Timothy Leung","Verena Liu","Vivian Xie","Wee Hong Melvin Chng"] },
               { name: "Ramnath Bojeesh", done: 2, total: 20,
                 completed: ["Angela Seng","Shobhit Uppal"],
-                pending: ["Abhishek Anand","Akanksha Tripathi","Alicia Chiang","Amanda Lim","Andrei Ona","David Joshua Chen","Gino Dayanghirang","Hui Lin","Jessica Shah","Kimberley Ng","Kiran Moryani","Liza Wee","Rachel Hong","Ramnath Bojeesh","Sanchi Shukla","Sanya Sadique","Vincent Widjaja","Yugal Gautam"] }
+                pending: ["Abhishek Anand","Akanksha Tripathi","Alicia Chiang","Amanda Lim","Andrei Ona","David Joshua Chen","Gino Dayanghirang","Hui Lin","Jessica Shah","Kimberley Ng","Kiran Moryani","Liza Wee","Rachel Hong","Ramnath Bojeesh","Sanchi Shukla","Sanya Sadique","Vincent Widjaja","Yugal Gautam"] },
             ]
           },
           {
@@ -2092,25 +2131,25 @@ const CERTS = [
               { name: "Dipak Mitra", done: 0, total: 6,
                 completed: [],
                 pending: ["Dipak Mitra","Gwen Ang","Iris Berces","Kamya Yadav","Keanna Chang","Patricia Victoria"] },
-              { name: "Joseph Latteri", done: 1, total: 14,
-                completed: ["Joseph Latteri"],
-                pending: ["Enika Liu","Nanami Hase","Shoko Enomoto","Yuki Hirajo"],
+              { name: "Joseph Latteri", done: 10, total: 13,
+                completed: ["Enika Liu","Joseph Latteri","Shoko Enomoto","Yuki Hirajo"],
+                pending: ["Nanami Hase"],
                 subflms: [
-                  { name: "Shun Okai", done: 0, total: 8,
-                    completed: [],
-                    pending: ["Chihiro Saito","Kozue Irei","Lisa Igarashi Vanderhoof","Mai Kobayashi","Mao Matsumoto","Shiori Masumitsu","Shizuku Takayama","Shun Okai"] }
+                  { name: "Shun Okai", done: 6, total: 8,
+                    completed: ["Chihiro Saito","Kozue Irei","Lisa Igarashi Vanderhoof","Shiori Masumitsu","Shizuku Takayama","Shun Okai"],
+                    pending: ["Mai Kobayashi","Mao Matsumoto"] }
                 ] },
-              { name: "Hazel Lim", done: 2, total: 4,
-                completed: ["Hazel Lim","Shalini Govindasamy"],
-                pending: ["Ameerah Suhaimi","Renee Ong"] },
-              { name: "Linda Wang", done: 0, total: 16,
-                completed: [],
-                pending: ["Chloe Zhu","Cissie Wu","Clare Le","Claudia Luo","Evan Zhao","Fiona Gu","Jiaxin Deng","Kacey Hu","Kelvin Fok","Levy Li","Linda Wang","Liu Miao","Lucy Li","Natalie Kwok","Sandra Guo","Stella Chu"] },
+              { name: "Hazel Lim", done: 3, total: 4,
+                completed: ["Ameerah Suhaimi","Hazel Lim","Shalini Govindasamy"],
+                pending: ["Renee Ong"] },
+              { name: "Linda Wang", done: 9, total: 16,
+                completed: ["Chloe Zhu","Cissie Wu","Claudia Luo","Kacey Hu","Kelvin Fok","Linda Wang","Liu Miao","Lucy Li","Stella Chu"],
+                pending: ["Clare Le","Evan Zhao","Fiona Gu","Jiaxin Deng","Levy Li","Natalie Kwok","Sandra Guo"] },
               { name: "Kieren Strain", done: 0, total: 7,
                 completed: [],
-                pending: ["Catherine Innocenzi","Christina Coogan","Kieren Strain","Lizzie Cooper","Rachel Dam","Shae McGregor","Stuart Oldham"] }
+                pending: ["Catherine Innocenzi","Christina Coogan","Kieren Strain","Lizzie Cooper","Rachel Dam","Shae McGregor","Stuart Oldham"] },
             ]
-          }
+          },
         ]
       },
       "Japan": {
@@ -2122,19 +2161,41 @@ const CERTS = [
               { name: "Yohei Izumi", done: 1, total: 7,
                 completed: ["Ayumi Mantoku"],
                 pending: ["Gabriel Pradipta David Galvano","Jake Burrows","Kana Harada","Norihide Kaseda","Tomoya Maekawa","Yohei Izumi"] },
-              { name: "Hiroyoshi Nakagawa", done: 0, total: 1, completed: [], pending: ["Hiroyoshi Nakagawa"] },
-              { name: "Iyo Yamasaki",       done: 0, total: 1, completed: [], pending: ["Iyo Yamasaki"] },
-              { name: "Jieun Oh",           done: 0, total: 1, completed: [], pending: ["Jieun Oh"] },
-              { name: "Masanori Uehara",    done: 0, total: 1, completed: [], pending: ["Masanori Uehara"] },
-              { name: "Momo Miyazaki",      done: 1, total: 1, completed: ["Momo Miyazaki"], pending: [] },
-              { name: "Reona Tanaka",       done: 0, total: 1, completed: [], pending: ["Reona Tanaka"] },
-              { name: "Ryo Takahashi",      done: 0, total: 1, completed: [], pending: ["Ryo Takahashi"] },
-              { name: "Ryozo Tanaka",       done: 0, total: 1, completed: [], pending: ["Ryozo Tanaka"] },
-              { name: "Satoru Kamibayashi", done: 0, total: 1, completed: [], pending: ["Satoru Kamibayashi"] },
-              { name: "Shuhei Goto",        done: 0, total: 1, completed: [], pending: ["Shuhei Goto"] },
-              { name: "Takumine Matsuo",    done: 0, total: 1, completed: [], pending: ["Takumine Matsuo"] }
+              { name: "Hiroyoshi Nakagawa", done: 0, total: 1,
+                completed: [],
+                pending: ["Hiroyoshi Nakagawa"] },
+              { name: "Iyo Yamasaki", done: 0, total: 1,
+                completed: [],
+                pending: ["Iyo Yamasaki"] },
+              { name: "Jieun Oh", done: 0, total: 1,
+                completed: [],
+                pending: ["Jieun Oh"] },
+              { name: "Masanori Uehara", done: 0, total: 1,
+                completed: [],
+                pending: ["Masanori Uehara"] },
+              { name: "Momo Miyazaki", done: 1, total: 1,
+                completed: ["Momo Miyazaki"],
+                pending: [] },
+              { name: "Reona Tanaka", done: 0, total: 1,
+                completed: [],
+                pending: ["Reona Tanaka"] },
+              { name: "Ryo Takahashi", done: 0, total: 1,
+                completed: [],
+                pending: ["Ryo Takahashi"] },
+              { name: "Ryozo Tanaka", done: 0, total: 1,
+                completed: [],
+                pending: ["Ryozo Tanaka"] },
+              { name: "Satoru Kamibayashi", done: 0, total: 1,
+                completed: [],
+                pending: ["Satoru Kamibayashi"] },
+              { name: "Shuhei Goto", done: 0, total: 1,
+                completed: [],
+                pending: ["Shuhei Goto"] },
+              { name: "Takumine Matsuo", done: 0, total: 1,
+                completed: [],
+                pending: ["Takumine Matsuo"] },
             ]
-          }
+          },
         ]
       },
       "Australia": {
@@ -2145,20 +2206,20 @@ const CERTS = [
             flms: [
               { name: "Mike O'Neill", done: 0, total: 8,
                 completed: [],
-                pending: ["Eimear O'Shea","Graham Paterson","Lucy Lawton","Matt Sutherland","Mike O'Neill","Patrick Smith","Xavier Richards","James Skene"] },
+                pending: ["Eimear O'Shea","Graham Paterson","James Skene","Lucy Lawton","Matt Sutherland","Mike O'Neill","Patrick Smith","Xavier Richards"] },
               { name: "James Skene", done: 1, total: 10,
                 completed: ["James Wanders"],
                 pending: ["Dan Murphy","Ethan Short","Fiona Ellese Pingkian","Indi Robertson","Jacob Buswell","James Skene","Kailee Kaufman","Ryan Lim","Thomas Hansen"] },
-              { name: "Tim O'Rourke", done: 1, total: 13,
+              { name: "Tim O'Rourke", done: 1, total: 12,
                 completed: ["Rachelle San Pedro"],
                 pending: ["Almog Vernik","Jake Brudenell","Javie Sarmiento","Monica Bondoc","Myla Villano","Natalia Ballas","Sherries Enriquez","Shivani Saluja","Tess Cullen","Theo McPeake","Tim O'Rourke"] },
-              { name: "Tess Cullen", done: 0, total: 4,
+              { name: "Tess Cullen", done: 0, total: 7,
                 completed: [],
-                pending: ["Emma Witting","Gabby Mason","Haruka Matsuzaki","Tess Cullen"] }
+                pending: ["Abbey Thompson","Cynthia Tian","Emma Witting","Gabby Mason","Haruka Matsuzaki","Jess Andrews","Tess Cullen"] },
             ]
-          }
+          },
         ]
-      }
+      },
     }
   },
   {
@@ -2175,42 +2236,37 @@ const CERTS = [
           {
             name: "Mimrah Mahmood", color: "#0097A7",
             flms: [
-              { name: "Wee Hong Melvin Chng", done: 1, total: 8,
+              { name: "Wee Hong Melvin Chng", done: 1, total: 9,
                 completed: ["Vivian Xie"],
-                pending: ["Christina Yu","Daisy Sun","Denise Choi","Minsi Fan","Senjie Zhu","Verena Liu","Wee Hong Melvin Chng"] },
+                pending: ["Christina Yu","Daisy Sun","Denise Choi","Minsi Fan","Senjie Zhu","Timothy Leung","Verena Liu","Wee Hong Melvin Chng"] },
               { name: "Ramnath Bojeesh", done: 3, total: 20,
                 completed: ["Kiran Moryani","Rachel Hong","Shobhit Uppal"],
-                pending: ["Abhishek Anand","Akanksha Tripathi","Alicia Chiang","Amanda Lim","Andrei Ona","Angela Seng","David Joshua Chen","Gino Dayanghirang","Hui Lin","Jessica Shah","Kimberley Ng","Liza Wee","Ramnath Bojeesh","Sanchi Shukla","Sanya Sadique","Vincent Widjaja","Yugal Gautam"] }
+                pending: ["Abhishek Anand","Akanksha Tripathi","Alicia Chiang","Amanda Lim","Andrei Ona","Angela Seng","David Joshua Chen","Gino Dayanghirang","Hui Lin","Jessica Shah","Kimberley Ng","Liza Wee","Ramnath Bojeesh","Sanchi Shukla","Sanya Sadique","Vincent Widjaja","Yugal Gautam"] },
             ]
           },
           {
             name: "Shasank Mohapatra", color: "#3949AB",
             flms: [
-              { name: "Amanda Shaw", done: 0, total: 2,
+              { name: "Amanda Shaw", done: 0, total: 6,
                 completed: [],
-                pending: ["Amanda Shaw","Ankhiyan Ranjan"] },
-              { name: "Dipak Mitra", done: 3, total: 7,
+                pending: ["Aimi Hatayama","Amanda Shaw","Ankhiyan Ranjan","Hana Yoshida","Jannelle Leong","Ma Concepcion Zapanta"] },
+              { name: "Dipak Mitra", done: 3, total: 6,
                 completed: ["Gwen Ang","Iris Berces","Keanna Chang"],
-                pending: ["Dipak Mitra","Kamya Yadav","Patricia Victoria","Yashasvi Tandon"] },
-              { name: "Joseph Latteri", done: 0, total: 14,
-                completed: [],
-                pending: ["Enika Liu","Joseph Latteri","Nanami Hase","Shoko Enomoto","Yuki Hirajo"],
-                subflms: [
-                  { name: "Shun Okai", done: 1, total: 8,
-                    completed: ["Shiori Masumitsu"],
-                    pending: ["Chihiro Saito","Kozue Irei","Lisa Igarashi Vanderhoof","Mai Kobayashi","Mao Matsumoto","Shizuku Takayama","Shun Okai"] }
-                ] },
+                pending: ["Dipak Mitra","Kamya Yadav","Patricia Victoria"] },
+              { name: "Joseph Latteri", done: 1, total: 5,
+                completed: ["Enika Liu"],
+                pending: ["Joseph Latteri","Nanami Hase","Shoko Enomoto","Yuki Hirajo"] },
               { name: "Hazel Lim", done: 0, total: 4,
                 completed: [],
-                pending: ["Hazel Lim","Renee Ong","Shalini Govindasamy","Yuan Pancho"] },
-              { name: "Linda Wang", done: 1, total: 15,
+                pending: ["Ameerah Suhaimi","Hazel Lim","Renee Ong","Shalini Govindasamy"] },
+              { name: "Linda Wang", done: 1, total: 16,
                 completed: ["Evan Zhao"],
-                pending: ["Chloe Zhu","Cissie Wu","Clare Le","Fiona Gu","Jiaxin Deng","Kacey Hu","Kelvin Fok","Levy Li","Linda Wang","Liu Miao","Lucy Li","Natalie Kwok","Sandra Guo","Stella Chu"] },
+                pending: ["Chloe Zhu","Cissie Wu","Clare Le","Claudia Luo","Fiona Gu","Jiaxin Deng","Kacey Hu","Kelvin Fok","Levy Li","Linda Wang","Liu Miao","Lucy Li","Natalie Kwok","Sandra Guo","Stella Chu"] },
               { name: "Kieren Strain", done: 0, total: 7,
                 completed: [],
-                pending: ["Catherine Innocenzi","Christina Coogan","Kieren Strain","Lizzie Cooper","Rachel Dam","Shae McGregor","Stuart Oldham"] }
+                pending: ["Catherine Innocenzi","Christina Coogan","Kieren Strain","Lizzie Cooper","Rachel Dam","Shae McGregor","Stuart Oldham"] },
             ]
-          }
+          },
         ]
       },
       "Japan": {
@@ -2219,21 +2275,44 @@ const CERTS = [
           {
             name: "Masayuki Akada", color: "#AD1457",
             flms: [
-              { name: "Yohei Izumi", done: 1, total: 6,
+              { name: "Yohei Izumi", done: 1, total: 7,
                 completed: ["Tomoya Maekawa"],
-                pending: ["Ayumi Mantoku","Gabriel Pradipta David Galvano","Jake Burrows","Kana Harada","Norihide Kaseda"] },
-              { name: "Hiroyoshi Nakagawa", done: 0, total: 1, completed: [], pending: ["Hiroyoshi Nakagawa"] },
-              { name: "Iyo Yamasaki",       done: 1, total: 1, completed: ["Iyo Yamasaki"], pending: [] },
-              { name: "Jieun Oh",           done: 0, total: 1, completed: [], pending: ["Jieun Oh"] },
-              { name: "Masanori Uehara",    done: 1, total: 1, completed: ["Masanori Uehara"], pending: [] },
-              { name: "Momo Miyazaki",      done: 1, total: 1, completed: ["Momo Miyazaki"], pending: [] },
-              { name: "Reona Tanaka",       done: 0, total: 1, completed: [], pending: ["Reona Tanaka"] },
-              { name: "Ryo Takahashi",      done: 1, total: 1, completed: ["Ryo Takahashi"], pending: [] },
-              { name: "Ryozo Tanaka",       done: 0, total: 1, completed: [], pending: ["Ryozo Tanaka"] },
-              { name: "Satoru Kamibayashi", done: 0, total: 1, completed: [], pending: ["Satoru Kamibayashi"] },
-              { name: "Takumine Matsuo",    done: 0, total: 1, completed: [], pending: ["Takumine Matsuo"] }
+                pending: ["Ayumi Mantoku","Gabriel Pradipta David Galvano","Jake Burrows","Kana Harada","Norihide Kaseda","Yohei Izumi"] },
+              { name: "Hiroyoshi Nakagawa", done: 0, total: 1,
+                completed: [],
+                pending: ["Hiroyoshi Nakagawa"] },
+              { name: "Iyo Yamasaki", done: 1, total: 1,
+                completed: ["Iyo Yamasaki"],
+                pending: [] },
+              { name: "Jieun Oh", done: 0, total: 1,
+                completed: [],
+                pending: ["Jieun Oh"] },
+              { name: "Masanori Uehara", done: 1, total: 1,
+                completed: ["Masanori Uehara"],
+                pending: [] },
+              { name: "Momo Miyazaki", done: 1, total: 1,
+                completed: ["Momo Miyazaki"],
+                pending: [] },
+              { name: "Reona Tanaka", done: 0, total: 1,
+                completed: [],
+                pending: ["Reona Tanaka"] },
+              { name: "Ryo Takahashi", done: 1, total: 1,
+                completed: ["Ryo Takahashi"],
+                pending: [] },
+              { name: "Ryozo Tanaka", done: 0, total: 1,
+                completed: [],
+                pending: ["Ryozo Tanaka"] },
+              { name: "Satoru Kamibayashi", done: 0, total: 1,
+                completed: [],
+                pending: ["Satoru Kamibayashi"] },
+              { name: "Shuhei Goto", done: 0, total: 1,
+                completed: [],
+                pending: ["Shuhei Goto"] },
+              { name: "Takumine Matsuo", done: 0, total: 1,
+                completed: [],
+                pending: ["Takumine Matsuo"] },
             ]
-          }
+          },
         ]
       },
       "Australia": {
@@ -2242,22 +2321,22 @@ const CERTS = [
           {
             name: "Ross Candido", color: "#2E7D32",
             flms: [
-              { name: "Mike O'Neill", done: 1, total: 6,
+              { name: "Mike O'Neill", done: 1, total: 8,
                 completed: ["Eimear O'Shea"],
-                pending: ["Graham Paterson","Lucy Lawton","Matt Sutherland","Patrick Smith","Xavier Richards"] },
-              { name: "James Skene", done: 0, total: 9,
+                pending: ["Graham Paterson","James Skene","Lucy Lawton","Matt Sutherland","Mike O'Neill","Patrick Smith","Xavier Richards"] },
+              { name: "James Skene", done: 0, total: 10,
                 completed: [],
-                pending: ["Dan Murphy","Ethan Short","Fiona Ellese Pingkian","Indi Robertson","Jacob Buswell","James Wanders","Kailee Kaufman","Ryan Lim","Thomas Hansen"] },
+                pending: ["Dan Murphy","Ethan Short","Fiona Ellese Pingkian","Indi Robertson","Jacob Buswell","James Skene","James Wanders","Kailee Kaufman","Ryan Lim","Thomas Hansen"] },
               { name: "Tim O'Rourke", done: 0, total: 12,
                 completed: [],
-                pending: ["Almog Vernik","Chloe Gouesclou","Jake Brudenell","Javie Sarmiento","Kieren Strain","Monica Bondoc","Myla Villano","Natalia Ballas","Rachelle San Pedro","Sherries Enriquez","Shivani Saluja","Theo McPeake"] },
-              { name: "Tess Cullen", done: 0, total: 6,
+                pending: ["Almog Vernik","Jake Brudenell","Javie Sarmiento","Monica Bondoc","Myla Villano","Natalia Ballas","Rachelle San Pedro","Sherries Enriquez","Shivani Saluja","Tess Cullen","Theo McPeake","Tim O'Rourke"] },
+              { name: "Tess Cullen", done: 0, total: 7,
                 completed: [],
-                pending: ["Abbey Thompson","Cynthia Tian","Emma Witting","Gabby Mason","Haruka Matsuzaki","Jess Andrews"] }
+                pending: ["Abbey Thompson","Cynthia Tian","Emma Witting","Gabby Mason","Haruka Matsuzaki","Jess Andrews","Tess Cullen"] },
             ]
-          }
+          },
         ]
-      }
+      },
     }
   }
 ];
