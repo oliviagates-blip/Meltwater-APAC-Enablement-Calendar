@@ -674,10 +674,6 @@ function renderListM3(){
 
   <!-- ══════════ PROGRESS TAB ══════════ -->
   <div id="view-progress" class="panel">
-    <div class="prog-intro">
-      <div class="prog-intro-icon">📊</div>
-      <div class="prog-intro-text"><strong>Certification Progress — APAC</strong><br>Tracking completion across the Mimrah Mahmood, Shasank Mohapatra, Ross Candido, and Masayuki Akada cohorts. Use the filter to view a specific region's teams. Data last updated: <strong>11 June 2026</strong>.</div>
-    </div>
     <div class="prog-filter-bar">
       <span class="prog-filter-lbl">🔍 Filter by manager</span>
       <div class="prog-filter-btns">
@@ -2105,7 +2101,8 @@ const CERTS = [
     trend: [
       { week: "Apr 16", cumulative: 2 },
       { week: "Jun 05", cumulative: 6 },
-      { week: "Jun 10", cumulative: 8 }
+      { week: "Jun 10", cumulative: 8 },
+      { week: "Jun 25", cumulative: 28 }
     ],
     regions: {
       "Enterprise": {
@@ -2228,7 +2225,9 @@ const CERTS = [
     desc: "Builds foundational knowledge of Meltwater's API offering — what it is, how clients use it, and how to identify and progress API-related opportunities across all GTM roles.",
     url: "https://meltwater.skillshood.com/paths/43506",
     urlLabel: "Open on Skillshood",
-    trend: null,
+    trend: [
+      { week: "Jun 25", cumulative: 16 }
+    ],
     regions: {
       "Enterprise": {
         label: "Enterprise", color: "#0097A7",
@@ -2253,9 +2252,14 @@ const CERTS = [
               { name: "Dipak Mitra", done: 3, total: 6,
                 completed: ["Gwen Ang","Iris Berces","Keanna Chang"],
                 pending: ["Dipak Mitra","Kamya Yadav","Patricia Victoria"] },
-              { name: "Joseph Latteri", done: 1, total: 5,
+              { name: "Joseph Latteri", done: 2, total: 13,
                 completed: ["Enika Liu"],
-                pending: ["Joseph Latteri","Nanami Hase","Shoko Enomoto","Yuki Hirajo"] },
+                pending: ["Joseph Latteri","Nanami Hase","Shoko Enomoto","Yuki Hirajo"],
+                subflms: [
+                  { name: "Shun Okai", done: 1, total: 8,
+                    completed: ["Shiori Masumitsu"],
+                    pending: ["Chihiro Saito","Kozue Irei","Lisa Igarashi Vanderhoof","Mai Kobayashi","Mao Matsumoto","Shizuku Takayama","Shun Okai"] }
+                ] },
               { name: "Hazel Lim", done: 0, total: 4,
                 completed: [],
                 pending: ["Ameerah Suhaimi","Hazel Lim","Renee Ong","Shalini Govindasamy"] },
@@ -2586,30 +2590,20 @@ function buildCertCard(cert){
   if(cert.trend && cert.trend.length > 0){
     const chartWrap = document.createElement("div");
     chartWrap.className = "cert-chart-wrap";
-    const maxCumul = cert.trend[cert.trend.length - 1].cumulative;
-    const targetVal = dispTotal;
+    const maxCumul = Math.max(...cert.trend.map(p => p.cumulative));
     const barsHtml = cert.trend.map(pt => {
-      const h = Math.max(3, Math.round(pt.cumulative / targetVal * 62));
+      const h = Math.max(4, Math.round(pt.cumulative / maxCumul * 62));
       return `<div class="chart-bar-wrap">
         <div class="chart-bar" style="height:${h}px"><div class="chart-bar-val">${pt.cumulative}</div></div>
         <div class="chart-bar-lbl">${pt.week}</div>
       </div>`;
     }).join("");
-    const targetPx = 62;
     chartWrap.innerHTML = `
-      <div class="cert-chart-hdr">📈 Cumulative completions</div>
+      <div class="cert-chart-hdr">📈 Cumulative completions <span style="font-weight:400;font-size:11px;color:var(--gray-m);margin-left:6px;">as of ${cert.trend[cert.trend.length-1].week}</span></div>
       <div class="cert-chart" style="padding-bottom:20px">
         ${barsHtml}
-        <div class="chart-target-line" style="bottom:20px">
-          <span class="chart-target-lbl">Target: ${targetVal}</span>
-        </div>
       </div>`;
     card.appendChild(chartWrap);
-  } else if(cert.trend === null){
-    const note = document.createElement("div");
-    note.style.cssText = "padding:10px 22px 14px;font-size:11.5px;color:var(--gray-m);border-top:1px solid var(--gray-l);";
-    note.textContent = "📅 Completion date trend unavailable for this export — upload a dated export to enable the trend chart.";
-    card.appendChild(note);
   }
 
   return card;
