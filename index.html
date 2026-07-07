@@ -426,6 +426,13 @@ function renderListM3(){
 .cal-ev-name { display:block; font-weight:600; }
 .cal-ev-sub  { display:block; font-size:9px; opacity:.85; margin-top:1px; }
 
+/* APAC Marketing events are lower-priority on the calendar — render smaller & muted
+   (light tint instead of solid fill, no sub-line) so other teams' events stand out. */
+.cal-ev.cal-mkt { background:var(--l-mkt); color:var(--t-mkt); border:1px solid #E1BEE7; font-size:9px; font-weight:500; padding:1px 4px !important; opacity:.9; }
+.cal-ev.cal-mkt .cal-ev-name { font-weight:500; }
+.cal-ev.cal-mkt .cal-ev-sub { display:none; }
+.cal-ev.cal-mkt:hover { filter:none; opacity:1; border-color:var(--c-mkt); }
+
 /* ── CAL FILTER PANEL (same visual as list view) ── */
 .cal-filter-panel { margin-bottom:20px; display:flex; flex-direction:column; gap:8px; }
 
@@ -583,7 +590,7 @@ function renderListM3(){
 <div class="header">
   <div>
     <div class="hdr-eyebrow">Meltwater · APAC Enablement</div>
-    <div class="hdr-title">Program Hub — <span id="hdr-months"></span></div>
+    <div class="hdr-title">Q3 Enablement Programs</div>
   </div>
   <div class="logo-wrap">
     <div class="logo-mark">M</div>
@@ -658,7 +665,7 @@ function renderListM3(){
       </div>
     </div>
 
-    <!-- ── Month 2: May (archive) ── -->
+    <!-- ── Month 2: June (archive) ── -->
     <div id="list-m2" class="panel">
       <div class="archive-notice">📦 Archive &nbsp;—&nbsp; <strong id="lbl-m2-archive"></strong>. All events shown for reference.</div>
       <div id="org-by-m2"></div>
@@ -792,10 +799,10 @@ function renderListM3(){
     </div>
     <div class="cal-sec-divider"></div>
 
-    <!-- July (preview, upcoming) -->
+    <!-- August (preview, upcoming) -->
     <div class="cal-month-wrap" id="cal-wrap-july">
       <div class="cal-month-hdr">
-        <div class="cal-month-title" style="color:var(--teal);">July 2026 — Preview</div>
+        <div class="cal-month-title" style="color:var(--teal);">August 2026 — Preview</div>
         <div class="cal-month-sub" id="cal-sub-july">5 upcoming programs</div>
       </div>
       <div class="cal-mf" id="cal-mf-july"></div>
@@ -803,7 +810,7 @@ function renderListM3(){
 
     <div class="cal-sec-divider"></div>
 
-    <!-- May (month 2) — archived, greyed -->
+    <!-- June (month 2) — archived, greyed -->
     <div class="cal-month-wrap archived" id="cal-wrap-m2">
       <div class="cal-month-hdr">
         <div class="cal-month-title" id="cal-title-m2"></div>
@@ -863,21 +870,21 @@ function renderListM3(){
    ════════════════════════════════════════════════════════════════════ */
 
 const CONFIG = {
-  month1: 6,                          // Current month
-  month2: 5,                          // Archive month
-  month3: 7,                          // Preview month (next month)
-  month1Label: "June 2026",
-  month2Label: "May 2026",
-  month3Label: "July 2026",
+  month1: 7,                          // Current month
+  month2: 6,                          // Archive month
+  month3: 8,                          // Preview month (next month)
+  month1Label: "July 2026",
+  month2Label: "June 2026",
+  month3Label: "August 2026",
   year: 2026,
-  lastUpdated: "25 June 2026",
-  pageTitle: "APAC Program Hub · Jun–Jul 2026",
+  lastUpdated: "07 July 2026",
+  pageTitle: "Q3 Enablement Programs",
   organisedByLabel: "Upcoming Training This Month",
-  stat_m1_total: 20,   // 16 scheduled + 4 TBC
-  stat_m1_done:  2,
-  stat_m2_total: 17,   // All completed
-  stat_m2_tbc:   0,
-  stat_m3_total: 12,   // July preview
+  stat_m1_total: 13,   // July, all scheduled
+  stat_m1_done:  0,
+  stat_m2_total: 20,   // June archive
+  stat_m2_tbc:   4,
+  stat_m3_total: 5,    // August preview
 };
 
 /* ════════════════════════════════════════════════════════════════════
@@ -885,19 +892,15 @@ const CONFIG = {
    Format: [month, day, "Office 🌴 Holiday name"]
    ════════════════════════════════════════════════════════════════════ */
 const PUBLIC_HOLIDAYS = [
-  /* ── MAY (month2 archive) ── */
-  [5,1,  "Shanghai 🌴 Labour Day"],
-  [5,25, "Hong Kong 🌴 Buddha's Birthday"],
-  [5,27, "Singapore 🌴 Hari Raya Haji"],
-  /* ── JUNE (month1 current) ── */
+  /* ── JUNE (month2 archive) ── */
   [6,1,  "Singapore 🌴 Vesak Day (sub)"],
   [6,8,  "Melbourne 🌴 Sydney 🌴 King's Birthday"],
   [6,19, "Shanghai 🌴 Hong Kong 🌴 Dragon Boat Festival"],
   [6,20, "Shanghai 🌴 Dragon Boat Festival"],
-  /* ── JULY (for future use) ── */
+  /* ── JULY (month1 current) ── */
   [7,1,  "Hong Kong 🌴 SAR Establishment Day"],
   [7,20, "Tokyo 🌴 Marine Day"],
-  /* ── AUGUST ── */
+  /* ── AUGUST (month3 preview) ── */
   [8,9,  "Singapore 🌴 National Day"],
   [8,11, "Tokyo 🌴 Mountain Day"],
   [8,15, "India 🌴 Independence Day"],
@@ -1053,7 +1056,7 @@ const ON_DEMAND = [
    }
    ════════════════════════════════════════════════════════════════════ */
 const EVENTS = [
-  /* ══ JUNE (month1 — current) ══════════════════════════════════════ */
+  /* ══ JUNE (month2 — archive) ══════════════════════════════════════ */
   {id:1, month:6, day:4,  tbc:false, done:false, featured:false,
    name:"LifeLabs Session 4: Effective 1:1s", short:"LifeLabs: 1:1s",
    team:"Role Excellence", area:"ALL APAC", aud:"FLM & SLM",
@@ -1177,7 +1180,7 @@ const EVENTS = [
    desc:"Strengths-based development session for the Australian BDR team — exploring how to identify and leverage individual strengths to improve performance, resilience, and team collaboration. Date TBC.",
    links:[]},
 
-  /* ══ JULY (month3 — preview) ════════════════════════════════════= */
+  /* ══ JULY (month1 — current) ════════════════════════════════════= */
   {id:40, month:7, day:2,  tbc:false, done:false, featured:false,
    name:"[IN] CMO Circle Mumbai", short:"[IN] CMO Circle",
    team:"APAC Marketing", area:"India", aud:"N/A (External event)",
@@ -1256,7 +1259,7 @@ const EVENTS = [
    desc:"Monthly Product Pulse — a comprehensive overview of all updates and new features released in the past month, expert tips and tricks, an in-depth review of a specific feature, and a sneak peek at the upcoming product roadmap.",
    links:[]},
 
-  /* ══ AUGUST (month=8 — future, not displayed yet) ══════════════════════= */
+  /* ══ AUGUST (month3 — preview) ══════════════════════════════════════ */
   {id:70, month:8, day:12, tbc:false, done:false, featured:false,
    name:"Session 4: Talent Lifecycle in a Multi-gen Workforce", short:"Talent Lifecycle",
    team:"People Team", area:"ALL APAC", aud:"ALL / ANY",
@@ -1292,112 +1295,6 @@ const EVENTS = [
    name:"Inclusive Leadership", short:"Inclusive Leadership",
    team:"People Team", area:"ALL APAC", aud:"ALL / ANY",
    desc:"People Team session on inclusive leadership — building the mindsets, behaviours, and practical tools to lead diverse and high-performing teams across APAC.",
-   links:[]},
-
-  /* ══ MAY (month2 — archive, all completed) ══════════════════════= */
-  {id:50, month:5, day:4,  tbc:false, done:true, featured:false,
-   name:"LifeLabs Session 2: Feedback", short:"LifeLabs: Feedback",
-   team:"Role Excellence", area:"ALL APAC", aud:"FLM & SLM",
-   desc:"Second session in the LifeLabs series for FLMs and SLMs — focused on giving and receiving effective feedback. Covers the frameworks and muscle-memory needed to make feedback a regular, impactful part of team culture.",
-   links:[]},
-
-  {id:51, month:5, day:5,  tbc:false, done:true, featured:false,
-   name:"Blackbird.AI Enablement Session", short:"Blackbird.AI",
-   team:"Partnerships", area:"ALL APAC", aud:"ALL / ANY",
-   desc:"Reintroduction of Blackbird.AI — covering narrative and risk intelligence, CIB detection, GTM products, and how APAC teams can engage clients. Key for Public Sector, Defence, and BFSI accounts. Recording available On Demand.",
-   links:[]},
-
-  {id:52, month:5, day:6,  tbc:false, done:true, featured:false,
-   name:"APAC Town Hall | David Hickey", short:"APAC Town Hall",
-   team:"Executive, People Team", area:"ALL APAC", aud:"ALL / ANY",
-   desc:"All-APAC town hall hosted by David Hickey covering regional business updates, strategic direction for Q2, key priorities, and open Q&A.",
-   links:[]},
-
-  {id:53, month:5, day:13, tbc:false, done:true, featured:false,
-   name:"Building Your Team Foundation — Leaders", short:"Team Foundation",
-   team:"People Team", area:"ALL APAC", aud:"FLM & SLM",
-   desc:"LifeLabs session for FLMs and SLMs on the core building blocks of high-performing teams — trust, accountability structures, and psychological safety.",
-   links:[]},
-
-  {id:54, month:5, day:14, tbc:false, done:true, featured:false,
-   name:"Health Score 2.0 | FLMs", short:"HS2.0 | FLMs",
-   team:"Role Excellence", area:"ALL APAC", aud:"FLM & SLM",
-   desc:"Health Score 2.0 enablement for FLMs and SLMs — the updated framework, what to look for in team accounts, and how to coach ICs on applying the new health signals in their day-to-day work.",
-   links:[]},
-
-  {id:55, month:5, day:15, tbc:false, done:true, featured:false,
-   name:"Deskercise! Taking Care of your Body", short:"Deskercise!",
-   team:"People Team", area:"ALL APAC", aud:"ALL / ANY",
-   desc:"People Team wellbeing session on the physical impact of sedentary work habits — practical desk-friendly exercises and movement strategies to support physical health throughout the workday.",
-   links:[]},
-
-  {id:56, month:5, day:18, tbc:false, done:true, featured:false,
-   name:"LifeLabs Session 3: Productivity", short:"LifeLabs: Productivity",
-   team:"Role Excellence", area:"ALL APAC", aud:"FLM & SLM",
-   desc:"Third LifeLabs session for FLMs and SLMs — focused on productivity frameworks and how people leaders can build high-output habits in themselves and their teams.",
-   links:[]},
-
-  {id:57, month:5, day:19, tbc:false, done:true, featured:false,
-   name:"CAB | Sydney", short:"CAB Sydney (Mira)",
-   team:"Executive", area:"Australia", aud:"N/A (External event)",
-   desc:"Mira Customer Advisory Board at 1 Farrer Place, Sydney — executive-level forum for strategic product feedback and co-creation with key Australian clients. Part of Sydney CAB week 19-20 May.",
-   links:[]},
-
-  {id:58, month:5, day:19, tbc:false, done:true, featured:false,
-   name:"Women in Tech | Q2", short:"Women in Tech Q2",
-   team:"Culture", area:"ALL APAC", aud:"ALL / ANY",
-   desc:"Quarterly Culture initiative for women across APAC — peer learning, open conversation, and community building.",
-   links:[]},
-
-  {id:59, month:5, day:20, tbc:false, done:true, featured:false,
-   name:"CAB | Listening & Monitoring", short:"CAB L&M",
-   team:"Executive", area:"Australia", aud:"N/A (External event)",
-   desc:"ES Listening & Monitoring Customer Advisory Board at 1 Farrer Place, Sydney — focused on the L&M use case with senior client participation. Part of Sydney CAB week 19-20 May.",
-   links:[]},
-
-  {id:60, month:5, day:20, tbc:false, done:true, featured:false,
-   name:"Time Management & Prioritization — CS", short:"Time Management CS",
-   team:"People Team", area:"Singapore, India", aud:"Client Success",
-   desc:"People Team session for Client Success teams in Singapore and India — practical time management and prioritization frameworks to help CS reps manage growing books of business more effectively.",
-   links:[]},
-
-  {id:61, month:5, day:21, tbc:false, done:true, featured:false,
-   name:"[SG] Campaign360", short:"[SG] Campaign360",
-   team:"APAC Marketing", area:"Singapore", aud:"N/A (External event)",
-   desc:"Customer-facing event in Singapore as part of APAC Marketing's regional activation calendar. Campaign360 brings together marketing leaders to share strategies and Meltwater capabilities.",
-   links:[{label:"Event Page", url:"https://www.campaign360.asia/event/b2002ab5-d2d6-4cac-9949-845dd935f6e6/HOME"}]},
-
-  {id:62, month:5, day:22, tbc:false, done:true, featured:false,
-   name:"Culture Training for BDR Outreach", short:"Culture Training: BDR",
-   team:"People Team", area:"India, Singapore", aud:"BDR",
-   desc:"People Team session for BDR teams in India and Singapore — covering cultural intelligence and culturally-aware outreach strategies to improve effectiveness when prospecting across diverse APAC markets.",
-   links:[]},
-
-  {id:63, month:5, day:26, tbc:false, done:true, featured:false,
-   name:"Health Score 2.0 | CS Run Through", short:"HS2.0 | CS",
-   team:"Role Excellence", area:"ALL APAC", aud:"Client Success",
-   desc:"Health Score 2.0 run-through for Client Success teams — covering the updated account health scoring framework, key signals, and playbooks for proactive account management across all CS sub-divisions.",
-   links:[]},
-
-  {id:64, month:5, day:26, tbc:false, done:true, featured:false,
-   name:"AI Enablement Part 1: Landscape", short:"AI Enablement Pt 1",
-   team:"Role Excellence", area:"ALL APAC", aud:"ALL / ANY",
-   desc:"FLM-led session recorded by Anthony Cousins — covering the current AI landscape, how it's reshaping client needs, and what it means for Meltwater's positioning. Recommended for replay within your office.",
-   links:[
-     {label:"Watch Recording (Zoom)", url:"https://meltwater.zoom.us/rec/share/iV9bVb4lRi6Vwyfx1d6tuq6-F3f-QZyyTKJTsG0KCuDjEf_cxFOX3IwjpzbcZcR2.XtKGhY7mOIXWcfpH"},
-     {label:"Slide Deck", url:"https://docs.google.com/presentation/d/11rAIsW5DXpvbfp6LjXE6YcK8ajXE9egQTgsd8Ebcmdk/edit?usp=sharing"}
-   ]},
-
-  {id:65, month:5, day:27, tbc:false, done:true, featured:false,
-   name:"[JP] Champion Circle", short:"[JP] Champion Circle",
-   team:"APAC Marketing", area:"Japan", aud:"N/A (External event)",
-   desc:"Japan Customer Advisory event — Champion Circle gathers power users and key client stakeholders for peer learning, product feedback, and community building.",
-   links:[]},
-
-  {id:66, month:5, day:27, tbc:false, done:true, featured:false,
-   name:"Strengths Session — Best of Us", short:"Strengths Session",
-   team:"People Team", area:"Japan", aud:"Client Success",
-   desc:"Strengths-based development session for Client Success teams in Japan — exploring how to identify and leverage individual strengths to improve client relationships and team performance.",
    links:[]},
 
 ];/* ════════════════════════════════════════════════════════════════════
@@ -2154,254 +2051,1411 @@ function applyODRoleFilter(role, btn){
    ══════════════════════════════════════════════════════════ */
 const CERTS = [
   {
-    id: "biz-outcomes",
-    name: "Business Outcomes Certification",
-    desc: "Equips GTM reps to articulate customer business outcomes, align Meltwater value to commercial goals, and approach renewal and expansion conversations with a business-case mindset.",
-    url: "https://meltwater.skillshood.com/paths/44582",
-    urlLabel: "Open on Skillshood",
-    trend: [
-      { week: "Apr 16", cumulative: 2 },
-      { week: "Jun 05", cumulative: 6 },
-      { week: "Jun 10", cumulative: 8 },
-      { week: "Jun 25", cumulative: 28 }
+    "id": "biz-outcomes",
+    "name": "Business Outcomes Certification",
+    "desc": "Equips GTM reps to articulate customer business outcomes, align Meltwater value to commercial goals, and approach renewal and expansion conversations with a business-case mindset.",
+    "url": "https://meltwater.skillshood.com/paths/44582",
+    "urlLabel": "Open on Skillshood",
+    "trend": [
+      {
+        "week": "Apr 16",
+        "cumulative": 2
+      },
+      {
+        "week": "Jun 05",
+        "cumulative": 6
+      },
+      {
+        "week": "Jun 10",
+        "cumulative": 8
+      },
+      {
+        "week": "Jun 25",
+        "cumulative": 28
+      },
+      {
+        "week": "Jul 02",
+        "cumulative": 30
+      },
+      {
+        "week": "Jul 07",
+        "cumulative": 31
+      }
     ],
-    regions: {
+    "regions": {
       "Enterprise": {
-        label: "Enterprise", color: "#0097A7",
-        managers: [
+        "label": "Enterprise",
+        "color": "#0097A7",
+        "managers": [
           {
-            name: "Mimrah Mahmood", color: "#0097A7",
-            flms: [
-              { name: "Wee Hong Melvin Chng", done: 0, total: 9,
-                completed: [],
-                pending: ["Christina Yu","Daisy Sun","Denise Choi","Minsi Fan","Senjie Zhu","Timothy Leung","Verena Liu","Vivian Xie","Wee Hong Melvin Chng"] },
-              { name: "Ramnath Bojeesh", done: 2, total: 20,
-                completed: ["Angela Seng","Shobhit Uppal"],
-                pending: ["Abhishek Anand","Akanksha Tripathi","Alicia Chiang","Amanda Lim","Andrei Ona","David Joshua Chen","Gino Dayanghirang","Hui Lin","Jessica Shah","Kimberley Ng","Kiran Moryani","Liza Wee","Rachel Hong","Ramnath Bojeesh","Sanchi Shukla","Sanya Sadique","Vincent Widjaja","Yugal Gautam"] },
+            "name": "Mimrah Mahmood",
+            "color": "#0097A7",
+            "flms": [
+              {
+                "name": "Wee Hong Melvin Chng",
+                "done": 0,
+                "total": 9,
+                "completed": [],
+                "pending": [
+                  "Christina Yu",
+                  "Daisy Sun",
+                  "Denise Choi",
+                  "Minsi Fan",
+                  "Senjie Zhu",
+                  "Timothy Leung",
+                  "Verena Liu",
+                  "Vivian Xie",
+                  "Wee Hong Melvin Chng"
+                ]
+              },
+              {
+                "name": "Ramnath Bojeesh",
+                "done": 2,
+                "total": 18,
+                "completed": [
+                  "Angela Seng",
+                  "Shobhit Uppal"
+                ],
+                "pending": [
+                  "Abhishek Anand",
+                  "Alicia Chiang",
+                  "Amanda Lim",
+                  "Andrei Ona",
+                  "David Joshua Chen",
+                  "Gino Dayanghirang",
+                  "Hui Lin",
+                  "Jessica Shah",
+                  "Kimberley Ng",
+                  "Kiran Moryani",
+                  "Liza Wee",
+                  "Rachel Hong",
+                  "Ramnath Bojeesh",
+                  "Sanchi Shukla",
+                  "Sanya Sadique",
+                  "Vincent Widjaja"
+                ],
+                "subflms": [
+                  {
+                    "name": "Akanksha Tripathi",
+                    "done": 0,
+                    "total": 1,
+                    "completed": [],
+                    "pending": [
+                      "Akanksha Tripathi"
+                    ]
+                  }
+                ]
+              }
             ]
           },
           {
-            name: "Shasank Mohapatra", color: "#3949AB",
-            flms: [
-              { name: "Amanda Shaw", done: 0, total: 6,
-                completed: [],
-                pending: ["Aimi Hatayama","Amanda Shaw","Ankhiyan Ranjan","Hana Yoshida","Jannelle Leong","Ma Concepcion Zapanta"] },
-              { name: "Dipak Mitra", done: 0, total: 6,
-                completed: [],
-                pending: ["Dipak Mitra","Gwen Ang","Iris Berces","Kamya Yadav","Keanna Chang","Patricia Victoria"] },
-              { name: "Joseph Latteri", done: 10, total: 13,
-                completed: ["Enika Liu","Joseph Latteri","Shoko Enomoto","Yuki Hirajo"],
-                pending: ["Nanami Hase"],
-                subflms: [
-                  { name: "Shun Okai", done: 6, total: 8,
-                    completed: ["Chihiro Saito","Kozue Irei","Lisa Igarashi Vanderhoof","Shiori Masumitsu","Shizuku Takayama","Shun Okai"],
-                    pending: ["Mai Kobayashi","Mao Matsumoto"] }
-                ] },
-              { name: "Hazel Lim", done: 3, total: 4,
-                completed: ["Ameerah Suhaimi","Hazel Lim","Shalini Govindasamy"],
-                pending: ["Renee Ong"] },
-              { name: "Linda Wang", done: 9, total: 16,
-                completed: ["Chloe Zhu","Cissie Wu","Claudia Luo","Kacey Hu","Kelvin Fok","Linda Wang","Liu Miao","Lucy Li","Stella Chu"],
-                pending: ["Clare Le","Evan Zhao","Fiona Gu","Jiaxin Deng","Levy Li","Natalie Kwok","Sandra Guo"] },
-              { name: "Kieren Strain", done: 0, total: 7,
-                completed: [],
-                pending: ["Catherine Innocenzi","Christina Coogan","Kieren Strain","Lizzie Cooper","Rachel Dam","Shae McGregor","Stuart Oldham"] },
+            "name": "Shasank Mohapatra",
+            "color": "#3949AB",
+            "flms": [
+              {
+                "name": "Amanda Shaw",
+                "done": 0,
+                "total": 6,
+                "completed": [],
+                "pending": [
+                  "Aimi Hatayama",
+                  "Amanda Shaw",
+                  "Ankhiyan Ranjan",
+                  "Hana Yoshida",
+                  "Jannelle Leong",
+                  "Ma Concepcion Zapanta"
+                ]
+              },
+              {
+                "name": "Dipak Mitra",
+                "done": 0,
+                "total": 6,
+                "completed": [],
+                "pending": [
+                  "Dipak Mitra",
+                  "Gwen Ang",
+                  "Iris Berces",
+                  "Kamya Yadav",
+                  "Keanna Chang",
+                  "Patricia Victoria"
+                ]
+              },
+              {
+                "name": "Joseph Latteri",
+                "done": 4,
+                "total": 5,
+                "completed": [
+                  "Enika Liu",
+                  "Joseph Latteri",
+                  "Shoko Enomoto",
+                  "Yuki Hirajo"
+                ],
+                "pending": [
+                  "Nanami Hase"
+                ],
+                "subflms": [
+                  {
+                    "name": "Shun Okai",
+                    "done": 6,
+                    "total": 8,
+                    "completed": [
+                      "Chihiro Saito",
+                      "Kozue Irei",
+                      "Lisa Igarashi Vanderhoof",
+                      "Shiori Masumitsu",
+                      "Shizuku Takayama",
+                      "Shun Okai"
+                    ],
+                    "pending": [
+                      "Mai Kobayashi",
+                      "Mao Matsumoto"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Hazel Lim",
+                "done": 3,
+                "total": 3,
+                "completed": [
+                  "Ameerah Suhaimi",
+                  "Hazel Lim",
+                  "Shalini Govindasamy"
+                ],
+                "pending": []
+              },
+              {
+                "name": "Linda Wang",
+                "done": 10,
+                "total": 16,
+                "completed": [
+                  "Chloe Zhu",
+                  "Cissie Wu",
+                  "Claudia Luo",
+                  "Fiona Gu",
+                  "Kacey Hu",
+                  "Kelvin Fok",
+                  "Linda Wang",
+                  "Liu Miao",
+                  "Lucy Li",
+                  "Stella Chu"
+                ],
+                "pending": [
+                  "Clare Le",
+                  "Evan Zhao",
+                  "Jiaxin Deng",
+                  "Levy Li",
+                  "Natalie Kwok",
+                  "Sandra Guo"
+                ]
+              },
+              {
+                "name": "Kieren Strain",
+                "done": 0,
+                "total": 3,
+                "completed": [],
+                "pending": [
+                  "Catherine Innocenzi",
+                  "Kieren Strain",
+                  "Stuart Oldham"
+                ]
+              },
+              {
+                "name": "George Hany Zikry Abdelmalek",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "George Hany Zikry Abdelmalek"
+                ]
+              },
+              {
+                "name": "Jeremiah Dagcutan",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Jeremiah Dagcutan"
+                ]
+              },
+              {
+                "name": "Miki Hamakawa",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Miki Hamakawa"
+                ]
+              },
+              {
+                "name": "Nagarjuna Reddy",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Nagarjuna Reddy"
+                ]
+              },
+              {
+                "name": "Rinni Chibber",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Rinni Chibber"
+                ]
+              },
+              {
+                "name": "Tamaki Yoshikiyo",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Tamaki Yoshikiyo"
+                ]
+              }
             ]
-          },
+          }
         ]
       },
       "Japan": {
-        label: "Japan", color: "#AD1457",
-        managers: [
+        "label": "Japan",
+        "color": "#AD1457",
+        "managers": [
           {
-            name: "Masayuki Akada", color: "#AD1457",
-            flms: [
-              { name: "Yohei Izumi", done: 1, total: 7,
-                completed: ["Ayumi Mantoku"],
-                pending: ["Gabriel Pradipta David Galvano","Jake Burrows","Kana Harada","Norihide Kaseda","Tomoya Maekawa","Yohei Izumi"] },
-              { name: "Hiroyoshi Nakagawa", done: 0, total: 1,
-                completed: [],
-                pending: ["Hiroyoshi Nakagawa"] },
-              { name: "Iyo Yamasaki", done: 0, total: 1,
-                completed: [],
-                pending: ["Iyo Yamasaki"] },
-              { name: "Jieun Oh", done: 0, total: 1,
-                completed: [],
-                pending: ["Jieun Oh"] },
-              { name: "Masanori Uehara", done: 0, total: 1,
-                completed: [],
-                pending: ["Masanori Uehara"] },
-              { name: "Momo Miyazaki", done: 1, total: 1,
-                completed: ["Momo Miyazaki"],
-                pending: [] },
-              { name: "Reona Tanaka", done: 0, total: 1,
-                completed: [],
-                pending: ["Reona Tanaka"] },
-              { name: "Ryo Takahashi", done: 0, total: 1,
-                completed: [],
-                pending: ["Ryo Takahashi"] },
-              { name: "Ryozo Tanaka", done: 0, total: 1,
-                completed: [],
-                pending: ["Ryozo Tanaka"] },
-              { name: "Satoru Kamibayashi", done: 0, total: 1,
-                completed: [],
-                pending: ["Satoru Kamibayashi"] },
-              { name: "Shuhei Goto", done: 0, total: 1,
-                completed: [],
-                pending: ["Shuhei Goto"] },
-              { name: "Takumine Matsuo", done: 0, total: 1,
-                completed: [],
-                pending: ["Takumine Matsuo"] },
+            "name": "Masayuki Akada",
+            "color": "#AD1457",
+            "flms": [
+              {
+                "name": "Yohei Izumi",
+                "done": 3,
+                "total": 6,
+                "completed": [
+                  "Ayumi Mantoku",
+                  "Norihide Kaseda",
+                  "Yohei Izumi"
+                ],
+                "pending": [
+                  "Gabriel Pradipta David Galvano",
+                  "Kana Harada",
+                  "Tomoya Maekawa"
+                ],
+                "subflms": [
+                  {
+                    "name": "Jake Burrows",
+                    "done": 0,
+                    "total": 3,
+                    "completed": [],
+                    "pending": [
+                      "Jake Burrows",
+                      "Younkyung Jeon",
+                      "Yuji Sasaki"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Hiroyoshi Nakagawa",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Hiroyoshi Nakagawa"
+                ]
+              },
+              {
+                "name": "Iyo Yamasaki",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Iyo Yamasaki"
+                ]
+              },
+              {
+                "name": "Jieun Oh",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Jieun Oh"
+                ]
+              },
+              {
+                "name": "Masanori Uehara",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Masanori Uehara"
+                ]
+              },
+              {
+                "name": "Momo Miyazaki",
+                "done": 1,
+                "total": 1,
+                "completed": [
+                  "Momo Miyazaki"
+                ],
+                "pending": []
+              },
+              {
+                "name": "Reona Tanaka",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Reona Tanaka"
+                ]
+              },
+              {
+                "name": "Ryo Takahashi",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Ryo Takahashi"
+                ]
+              },
+              {
+                "name": "Satoru Kamibayashi",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Satoru Kamibayashi"
+                ]
+              },
+              {
+                "name": "Shuhei Goto",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Shuhei Goto"
+                ]
+              },
+              {
+                "name": "Takumine Matsuo",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Takumine Matsuo"
+                ]
+              }
             ]
-          },
+          }
         ]
       },
       "Australia": {
-        label: "Australia", color: "#2E7D32",
-        managers: [
+        "label": "Australia",
+        "color": "#2E7D32",
+        "managers": [
           {
-            name: "Ross Candido", color: "#2E7D32",
-            flms: [
-              { name: "Mike O'Neill", done: 0, total: 8,
-                completed: [],
-                pending: ["Eimear O'Shea","Graham Paterson","James Skene","Lucy Lawton","Matt Sutherland","Mike O'Neill","Patrick Smith","Xavier Richards"] },
-              { name: "James Skene", done: 1, total: 10,
-                completed: ["James Wanders"],
-                pending: ["Dan Murphy","Ethan Short","Fiona Ellese Pingkian","Indi Robertson","Jacob Buswell","James Skene","Kailee Kaufman","Ryan Lim","Thomas Hansen"] },
-              { name: "Tim O'Rourke", done: 1, total: 12,
-                completed: ["Rachelle San Pedro"],
-                pending: ["Almog Vernik","Jake Brudenell","Javie Sarmiento","Monica Bondoc","Myla Villano","Natalia Ballas","Sherries Enriquez","Shivani Saluja","Tess Cullen","Theo McPeake","Tim O'Rourke"] },
-              { name: "Tess Cullen", done: 0, total: 7,
-                completed: [],
-                pending: ["Abbey Thompson","Cynthia Tian","Emma Witting","Gabby Mason","Haruka Matsuzaki","Jess Andrews","Tess Cullen"] },
+            "name": "Ross Candido",
+            "color": "#2E7D32",
+            "flms": [
+              {
+                "name": "Mike O'Neill",
+                "done": 0,
+                "total": 6,
+                "completed": [],
+                "pending": [
+                  "Eimear O'Shea",
+                  "Graham Paterson",
+                  "Lucy Lawton",
+                  "Mike O'Neill",
+                  "Patrick Smith",
+                  "Xavier Richards"
+                ],
+                "subflms": [
+                  {
+                    "name": "Matt Sutherland",
+                    "done": 0,
+                    "total": 1,
+                    "completed": [],
+                    "pending": [
+                      "Matt Sutherland"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "James Skene",
+                "done": 1,
+                "total": 7,
+                "completed": [
+                  "James Wanders"
+                ],
+                "pending": [
+                  "Fiona Ellese Pingkian",
+                  "Indi Robertson",
+                  "Jacob Buswell",
+                  "James Skene",
+                  "Kailee Kaufman",
+                  "Thomas Hansen"
+                ]
+              },
+              {
+                "name": "Tim O'Rourke",
+                "done": 1,
+                "total": 12,
+                "completed": [
+                  "Rachelle San Pedro"
+                ],
+                "pending": [
+                  "Almog Vernik",
+                  "Jake Brudenell",
+                  "Javie Sarmiento",
+                  "Monica Bondoc",
+                  "Myla Villano",
+                  "Natalia Ballas",
+                  "Shen Haig",
+                  "Sherries Enriquez",
+                  "Shivani Saluja",
+                  "Theo McPeake",
+                  "Tim O'Rourke"
+                ]
+              },
+              {
+                "name": "Tess Cullen",
+                "done": 0,
+                "total": 4,
+                "completed": [],
+                "pending": [
+                  "Emma Witting",
+                  "Gabby Mason",
+                  "Haruka Matsuzaki",
+                  "Tess Cullen"
+                ]
+              }
             ]
-          },
+          }
         ]
-      },
+      }
     }
   },
   {
-    id: "api-foundations",
-    name: "API Foundations: Understanding the Framework",
-    desc: "Builds foundational knowledge of Meltwater's API offering — what it is, how clients use it, and how to identify and progress API-related opportunities across all GTM roles.",
-    url: "https://meltwater.skillshood.com/paths/43506",
-    urlLabel: "Open on Skillshood",
-    trend: [
-      { week: "Jun 25", cumulative: 16 }
+    "id": "api-foundations",
+    "name": "API Foundations: Understanding the Framework",
+    "desc": "Builds foundational knowledge of Meltwater's API offering \u2014 what it is, how clients use it, and how to identify and progress API-related opportunities across all GTM roles.",
+    "url": "https://meltwater.skillshood.com/paths/43506",
+    "urlLabel": "Open on Skillshood",
+    "trend": [
+      {
+        "week": "Jun 25",
+        "cumulative": 16
+      },
+      {
+        "week": "Jul 02",
+        "cumulative": 9
+      },
+      {
+        "week": "Jul 07",
+        "cumulative": 9
+      }
     ],
-    regions: {
+    "regions": {
       "Enterprise": {
-        label: "Enterprise", color: "#0097A7",
-        managers: [
+        "label": "Enterprise",
+        "color": "#0097A7",
+        "managers": [
           {
-            name: "Mimrah Mahmood", color: "#0097A7",
-            flms: [
-              { name: "Wee Hong Melvin Chng", done: 1, total: 9,
-                completed: ["Vivian Xie"],
-                pending: ["Christina Yu","Daisy Sun","Denise Choi","Minsi Fan","Senjie Zhu","Timothy Leung","Verena Liu","Wee Hong Melvin Chng"] },
-              { name: "Ramnath Bojeesh", done: 3, total: 20,
-                completed: ["Kiran Moryani","Rachel Hong","Shobhit Uppal"],
-                pending: ["Abhishek Anand","Akanksha Tripathi","Alicia Chiang","Amanda Lim","Andrei Ona","Angela Seng","David Joshua Chen","Gino Dayanghirang","Hui Lin","Jessica Shah","Kimberley Ng","Liza Wee","Ramnath Bojeesh","Sanchi Shukla","Sanya Sadique","Vincent Widjaja","Yugal Gautam"] },
+            "name": "Mimrah Mahmood",
+            "color": "#0097A7",
+            "flms": [
+              {
+                "name": "Wee Hong Melvin Chng",
+                "done": 1,
+                "total": 1,
+                "completed": [
+                  "Vivian Xie"
+                ],
+                "pending": []
+              },
+              {
+                "name": "Ramnath Bojeesh",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Alicia Chiang"
+                ],
+                "subflms": [
+                  {
+                    "name": "Akanksha Tripathi",
+                    "done": 0,
+                    "total": 2,
+                    "completed": [],
+                    "pending": [
+                      "Ashish Tiwari",
+                      "Rachel Tan"
+                    ]
+                  }
+                ]
+              }
             ]
           },
           {
-            name: "Shasank Mohapatra", color: "#3949AB",
-            flms: [
-              { name: "Amanda Shaw", done: 0, total: 6,
-                completed: [],
-                pending: ["Aimi Hatayama","Amanda Shaw","Ankhiyan Ranjan","Hana Yoshida","Jannelle Leong","Ma Concepcion Zapanta"] },
-              { name: "Dipak Mitra", done: 3, total: 6,
-                completed: ["Gwen Ang","Iris Berces","Keanna Chang"],
-                pending: ["Dipak Mitra","Kamya Yadav","Patricia Victoria"] },
-              { name: "Joseph Latteri", done: 2, total: 13,
-                completed: ["Enika Liu"],
-                pending: ["Joseph Latteri","Nanami Hase","Shoko Enomoto","Yuki Hirajo"],
-                subflms: [
-                  { name: "Shun Okai", done: 1, total: 8,
-                    completed: ["Shiori Masumitsu"],
-                    pending: ["Chihiro Saito","Kozue Irei","Lisa Igarashi Vanderhoof","Mai Kobayashi","Mao Matsumoto","Shizuku Takayama","Shun Okai"] }
-                ] },
-              { name: "Hazel Lim", done: 0, total: 4,
-                completed: [],
-                pending: ["Ameerah Suhaimi","Hazel Lim","Renee Ong","Shalini Govindasamy"] },
-              { name: "Linda Wang", done: 1, total: 16,
-                completed: ["Evan Zhao"],
-                pending: ["Chloe Zhu","Cissie Wu","Clare Le","Claudia Luo","Fiona Gu","Jiaxin Deng","Kacey Hu","Kelvin Fok","Levy Li","Linda Wang","Liu Miao","Lucy Li","Natalie Kwok","Sandra Guo","Stella Chu"] },
-              { name: "Kieren Strain", done: 0, total: 7,
-                completed: [],
-                pending: ["Catherine Innocenzi","Christina Coogan","Kieren Strain","Lizzie Cooper","Rachel Dam","Shae McGregor","Stuart Oldham"] },
+            "name": "Shasank Mohapatra",
+            "color": "#3949AB",
+            "flms": [
+              {
+                "name": "Amanda Shaw",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Ankhiyan Ranjan"
+                ]
+              },
+              {
+                "name": "Dipak Mitra",
+                "done": 2,
+                "total": 3,
+                "completed": [
+                  "Gwen Ang",
+                  "Iris Berces"
+                ],
+                "pending": [
+                  "Yashasvi Tandon"
+                ]
+              },
+              {
+                "name": "Joseph Latteri",
+                "done": 0,
+                "total": 5,
+                "completed": [],
+                "pending": [
+                  "Enika Liu",
+                  "Joseph Latteri",
+                  "Nanami Hase",
+                  "Shoko Enomoto",
+                  "Yuki Hirajo"
+                ],
+                "subflms": [
+                  {
+                    "name": "Shun Okai",
+                    "done": 1,
+                    "total": 6,
+                    "completed": [
+                      "Shizuku Takayama"
+                    ],
+                    "pending": [
+                      "Chihiro Saito",
+                      "Kozue Irei",
+                      "Lisa Igarashi Vanderhoof",
+                      "Shiori Masumitsu",
+                      "Shun Okai"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Hazel Lim",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Hazel Lim"
+                ]
+              },
+              {
+                "name": "Linda Wang",
+                "done": 2,
+                "total": 10,
+                "completed": [
+                  "Claudia Luo",
+                  "Evan Zhao"
+                ],
+                "pending": [
+                  "Cissie Wu",
+                  "Fiona Gu",
+                  "Kacey Hu",
+                  "Kelvin Fok",
+                  "Linda Wang",
+                  "Liu Miao",
+                  "Lucy Li",
+                  "Stella Chu"
+                ]
+              },
+              {
+                "name": "Kieren Strain",
+                "done": 0,
+                "total": 2,
+                "completed": [],
+                "pending": [
+                  "Kieren Strain",
+                  "Rachel Dam"
+                ]
+              },
+              {
+                "name": "Nagarjuna Reddy",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Nagarjuna Reddy"
+                ]
+              }
             ]
-          },
+          }
         ]
       },
       "Japan": {
-        label: "Japan", color: "#AD1457",
-        managers: [
+        "label": "Japan",
+        "color": "#AD1457",
+        "managers": [
           {
-            name: "Masayuki Akada", color: "#AD1457",
-            flms: [
-              { name: "Yohei Izumi", done: 1, total: 7,
-                completed: ["Tomoya Maekawa"],
-                pending: ["Ayumi Mantoku","Gabriel Pradipta David Galvano","Jake Burrows","Kana Harada","Norihide Kaseda","Yohei Izumi"] },
-              { name: "Hiroyoshi Nakagawa", done: 0, total: 1,
-                completed: [],
-                pending: ["Hiroyoshi Nakagawa"] },
-              { name: "Iyo Yamasaki", done: 1, total: 1,
-                completed: ["Iyo Yamasaki"],
-                pending: [] },
-              { name: "Jieun Oh", done: 0, total: 1,
-                completed: [],
-                pending: ["Jieun Oh"] },
-              { name: "Masanori Uehara", done: 1, total: 1,
-                completed: ["Masanori Uehara"],
-                pending: [] },
-              { name: "Momo Miyazaki", done: 1, total: 1,
-                completed: ["Momo Miyazaki"],
-                pending: [] },
-              { name: "Reona Tanaka", done: 0, total: 1,
-                completed: [],
-                pending: ["Reona Tanaka"] },
-              { name: "Ryo Takahashi", done: 1, total: 1,
-                completed: ["Ryo Takahashi"],
-                pending: [] },
-              { name: "Ryozo Tanaka", done: 0, total: 1,
-                completed: [],
-                pending: ["Ryozo Tanaka"] },
-              { name: "Satoru Kamibayashi", done: 0, total: 1,
-                completed: [],
-                pending: ["Satoru Kamibayashi"] },
-              { name: "Shuhei Goto", done: 0, total: 1,
-                completed: [],
-                pending: ["Shuhei Goto"] },
-              { name: "Takumine Matsuo", done: 0, total: 1,
-                completed: [],
-                pending: ["Takumine Matsuo"] },
+            "name": "Masayuki Akada",
+            "color": "#AD1457",
+            "flms": [
+              {
+                "name": "Yohei Izumi",
+                "done": 0,
+                "total": 2,
+                "completed": [],
+                "pending": [
+                  "Norihide Kaseda",
+                  "Tomoya Maekawa"
+                ],
+                "subflms": [
+                  {
+                    "name": "Jake Burrows",
+                    "done": 0,
+                    "total": 0,
+                    "completed": [],
+                    "pending": []
+                  }
+                ]
+              },
+              {
+                "name": "Iyo Yamasaki",
+                "done": 1,
+                "total": 1,
+                "completed": [
+                  "Iyo Yamasaki"
+                ],
+                "pending": []
+              },
+              {
+                "name": "Momo Miyazaki",
+                "done": 1,
+                "total": 1,
+                "completed": [
+                  "Momo Miyazaki"
+                ],
+                "pending": []
+              }
             ]
-          },
+          }
         ]
       },
       "Australia": {
-        label: "Australia", color: "#2E7D32",
-        managers: [
+        "label": "Australia",
+        "color": "#2E7D32",
+        "managers": [
           {
-            name: "Ross Candido", color: "#2E7D32",
-            flms: [
-              { name: "Mike O'Neill", done: 1, total: 8,
-                completed: ["Eimear O'Shea"],
-                pending: ["Graham Paterson","James Skene","Lucy Lawton","Matt Sutherland","Mike O'Neill","Patrick Smith","Xavier Richards"] },
-              { name: "James Skene", done: 0, total: 10,
-                completed: [],
-                pending: ["Dan Murphy","Ethan Short","Fiona Ellese Pingkian","Indi Robertson","Jacob Buswell","James Skene","James Wanders","Kailee Kaufman","Ryan Lim","Thomas Hansen"] },
-              { name: "Tim O'Rourke", done: 0, total: 12,
-                completed: [],
-                pending: ["Almog Vernik","Jake Brudenell","Javie Sarmiento","Monica Bondoc","Myla Villano","Natalia Ballas","Rachelle San Pedro","Sherries Enriquez","Shivani Saluja","Tess Cullen","Theo McPeake","Tim O'Rourke"] },
-              { name: "Tess Cullen", done: 0, total: 7,
-                completed: [],
-                pending: ["Abbey Thompson","Cynthia Tian","Emma Witting","Gabby Mason","Haruka Matsuzaki","Jess Andrews","Tess Cullen"] },
+            "name": "Ross Candido",
+            "color": "#2E7D32",
+            "flms": [
+              {
+                "name": "Mike O'Neill",
+                "done": 1,
+                "total": 1,
+                "completed": [
+                  "Eimear O'Shea"
+                ],
+                "pending": [],
+                "subflms": [
+                  {
+                    "name": "Matt Sutherland",
+                    "done": 0,
+                    "total": 0,
+                    "completed": [],
+                    "pending": []
+                  }
+                ]
+              },
+              {
+                "name": "James Skene",
+                "done": 0,
+                "total": 3,
+                "completed": [],
+                "pending": [
+                  "Dan Murphy",
+                  "Ethan Short",
+                  "Ryan Lim"
+                ]
+              },
+              {
+                "name": "Tim O'Rourke",
+                "done": 0,
+                "total": 2,
+                "completed": [],
+                "pending": [
+                  "Myla Villano",
+                  "Rachelle San Pedro"
+                ]
+              },
+              {
+                "name": "Tess Cullen",
+                "done": 0,
+                "total": 3,
+                "completed": [],
+                "pending": [
+                  "Abbey Thompson",
+                  "Cynthia Tian",
+                  "Jess Andrews"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "mcp-foundations",
+    "name": "MCP Foundations",
+    "desc": "Builds foundational knowledge of Meltwater's MCP (Model Context Protocol) integration \u2014 what it is, how clients use it, and how to identify and progress MCP-related opportunities across all GTM roles.",
+    "url": "PLACEHOLDER_MCP_SKILLSHOOD_URL",
+    "urlLabel": "Open on Skillshood",
+    "trend": [
+      {
+        "week": "Jul 02",
+        "cumulative": 11
+      },
+      {
+        "week": "Jul 07",
+        "cumulative": 17
+      }
+    ],
+    "regions": {
+      "Enterprise": {
+        "label": "Enterprise",
+        "color": "#0097A7",
+        "managers": [
+          {
+            "name": "Mimrah Mahmood",
+            "color": "#0097A7",
+            "flms": [
+              {
+                "name": "Wee Hong Melvin Chng",
+                "done": 0,
+                "total": 3,
+                "completed": [],
+                "pending": [
+                  "Christina Yu",
+                  "Denise Choi",
+                  "Wee Hong Melvin Chng"
+                ]
+              },
+              {
+                "name": "Ramnath Bojeesh",
+                "done": 4,
+                "total": 8,
+                "completed": [
+                  "Alicia Chiang",
+                  "Angela Seng",
+                  "Kiran Moryani",
+                  "Shobhit Uppal"
+                ],
+                "pending": [
+                  "Andrei Ona",
+                  "Kimberley Ng",
+                  "Rachel Hong",
+                  "Ramnath Bojeesh"
+                ],
+                "subflms": [
+                  {
+                    "name": "Akanksha Tripathi",
+                    "done": 0,
+                    "total": 3,
+                    "completed": [],
+                    "pending": [
+                      "Anirudh Muralidhara",
+                      "Ashish Tiwari",
+                      "Rachel Tan"
+                    ]
+                  }
+                ]
+              }
             ]
           },
+          {
+            "name": "Shasank Mohapatra",
+            "color": "#3949AB",
+            "flms": [
+              {
+                "name": "Amanda Shaw",
+                "done": 0,
+                "total": 7,
+                "completed": [],
+                "pending": [
+                  "Aimi Hatayama",
+                  "Amanda Shaw",
+                  "Ankhiyan Ranjan",
+                  "Hana Yoshida",
+                  "Jannelle Leong",
+                  "Ma Concepcion Zapanta",
+                  "Sabhari Bala"
+                ]
+              },
+              {
+                "name": "Dipak Mitra",
+                "done": 1,
+                "total": 8,
+                "completed": [
+                  "Gwen Ang"
+                ],
+                "pending": [
+                  "Dipak Mitra",
+                  "Iris Berces",
+                  "Kamya Yadav",
+                  "Keanna Chang",
+                  "Patricia Victoria",
+                  "Shivani Parasher",
+                  "Yashasvi Tandon"
+                ]
+              },
+              {
+                "name": "Joseph Latteri",
+                "done": 1,
+                "total": 5,
+                "completed": [
+                  "Yuki Hirajo"
+                ],
+                "pending": [
+                  "Enika Liu",
+                  "Joseph Latteri",
+                  "Nanami Hase",
+                  "Shoko Enomoto"
+                ],
+                "subflms": [
+                  {
+                    "name": "Shun Okai",
+                    "done": 0,
+                    "total": 8,
+                    "completed": [],
+                    "pending": [
+                      "Chihiro Saito",
+                      "Kozue Irei",
+                      "Lisa Igarashi Vanderhoof",
+                      "Mai Kobayashi",
+                      "Mao Matsumoto",
+                      "Shiori Masumitsu",
+                      "Shizuku Takayama",
+                      "Shun Okai"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Hazel Lim",
+                "done": 3,
+                "total": 4,
+                "completed": [
+                  "Ameerah Suhaimi",
+                  "Hazel Lim",
+                  "Shalini Govindasamy"
+                ],
+                "pending": [
+                  "Yuan Pancho"
+                ]
+              },
+              {
+                "name": "Linda Wang",
+                "done": 4,
+                "total": 16,
+                "completed": [
+                  "Fiona Gu",
+                  "Kacey Hu",
+                  "Kelvin Fok",
+                  "Stella Chu"
+                ],
+                "pending": [
+                  "Chloe Zhu",
+                  "Cissie Wu",
+                  "Clare Le",
+                  "Claudia Luo",
+                  "Evan Zhao",
+                  "Jiaxin Deng",
+                  "Levy Li",
+                  "Linda Wang",
+                  "Liu Miao",
+                  "Lucy Li",
+                  "Natalie Kwok",
+                  "Sandra Guo"
+                ]
+              },
+              {
+                "name": "Kieren Strain",
+                "done": 1,
+                "total": 2,
+                "completed": [
+                  "Kieren Strain"
+                ],
+                "pending": [
+                  "Catherine Innocenzi"
+                ]
+              },
+              {
+                "name": "Aayushi Mittal",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Aayushi Mittal"
+                ]
+              },
+              {
+                "name": "George Hany Zikry Abdelmalek",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "George Hany Zikry Abdelmalek"
+                ]
+              },
+              {
+                "name": "Jeremiah Dagcutan",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Jeremiah Dagcutan"
+                ]
+              },
+              {
+                "name": "Miki Hamakawa",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Miki Hamakawa"
+                ]
+              },
+              {
+                "name": "Nagarjuna Reddy",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Nagarjuna Reddy"
+                ]
+              },
+              {
+                "name": "Rinni Chibber",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Rinni Chibber"
+                ]
+              },
+              {
+                "name": "Tamaki Yoshikiyo",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Tamaki Yoshikiyo"
+                ]
+              }
+            ]
+          }
         ]
       },
+      "Japan": {
+        "label": "Japan",
+        "color": "#AD1457",
+        "managers": [
+          {
+            "name": "Masayuki Akada",
+            "color": "#AD1457",
+            "flms": [
+              {
+                "name": "Yohei Izumi",
+                "done": 1,
+                "total": 3,
+                "completed": [
+                  "Tomoya Maekawa"
+                ],
+                "pending": [
+                  "Ayumi Mantoku",
+                  "Norihide Kaseda"
+                ],
+                "subflms": [
+                  {
+                    "name": "Jake Burrows",
+                    "done": 0,
+                    "total": 2,
+                    "completed": [],
+                    "pending": [
+                      "Jake Burrows",
+                      "Yuji Sasaki"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Hiroyoshi Nakagawa",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Hiroyoshi Nakagawa"
+                ]
+              },
+              {
+                "name": "Iyo Yamasaki",
+                "done": 1,
+                "total": 1,
+                "completed": [
+                  "Iyo Yamasaki"
+                ],
+                "pending": []
+              },
+              {
+                "name": "Ryo Takahashi",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Ryo Takahashi"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "Australia": {
+        "label": "Australia",
+        "color": "#2E7D32",
+        "managers": [
+          {
+            "name": "Ross Candido",
+            "color": "#2E7D32",
+            "flms": [
+              {
+                "name": "Mike O'Neill",
+                "done": 0,
+                "total": 5,
+                "completed": [],
+                "pending": [
+                  "Eimear O'Shea",
+                  "Graham Paterson",
+                  "Lucy Lawton",
+                  "Patrick Smith",
+                  "Xavier Richards"
+                ],
+                "subflms": [
+                  {
+                    "name": "Matt Sutherland",
+                    "done": 0,
+                    "total": 0,
+                    "completed": [],
+                    "pending": []
+                  }
+                ]
+              },
+              {
+                "name": "James Skene",
+                "done": 0,
+                "total": 5,
+                "completed": [],
+                "pending": [
+                  "Dan Murphy",
+                  "Ethan Short",
+                  "Kailee Kaufman",
+                  "Ryan Lim",
+                  "Thomas Hansen"
+                ]
+              },
+              {
+                "name": "Tess Cullen",
+                "done": 1,
+                "total": 1,
+                "completed": [
+                  "Abbey Thompson"
+                ],
+                "pending": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "patn-course",
+    "name": "Pain Above the Noise & Champions Program",
+    "desc": "Self-paced eLearning for new hires covering two core Meltwater skills: identifying the Pain Above the Noise and developing Champions. Works through scenarios with mock accounts, discussion with manager and team, and practising verbalising these concepts in a no-pressure environment.",
+    "url": "https://meltwater.skillshood.com/huddle/471865?path_id=43974&focus_view=true",
+    "urlLabel": "Start on Skillshood",
+    "trend": [
+      {
+        "week": "Jul 07",
+        "cumulative": 0
+      }
+    ],
+    "regions": {
+      "Enterprise": {
+        "label": "Enterprise",
+        "color": "#0097A7",
+        "managers": [
+          {
+            "name": "Mimrah Mahmood",
+            "color": "#0097A7",
+            "flms": [
+              {
+                "name": "Wee Hong Melvin Chng",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Vivian Xie"
+                ]
+              },
+              {
+                "name": "Ramnath Bojeesh",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Alicia Chiang"
+                ],
+                "subflms": [
+                  {
+                    "name": "Akanksha Tripathi",
+                    "done": 0,
+                    "total": 2,
+                    "completed": [],
+                    "pending": [
+                      "Ashish Tiwari",
+                      "Rachel Tan"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Shasank Mohapatra",
+            "color": "#3949AB",
+            "flms": [
+              {
+                "name": "Amanda Shaw",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Ankhiyan Ranjan"
+                ]
+              },
+              {
+                "name": "Dipak Mitra",
+                "done": 0,
+                "total": 3,
+                "completed": [],
+                "pending": [
+                  "Gwen Ang",
+                  "Iris Berces",
+                  "Yashasvi Tandon"
+                ]
+              },
+              {
+                "name": "Joseph Latteri",
+                "done": 0,
+                "total": 5,
+                "completed": [],
+                "pending": [
+                  "Enika Liu",
+                  "Joseph Latteri",
+                  "Nanami Hase",
+                  "Shoko Enomoto",
+                  "Yuki Hirajo"
+                ],
+                "subflms": [
+                  {
+                    "name": "Shun Okai",
+                    "done": 0,
+                    "total": 6,
+                    "completed": [],
+                    "pending": [
+                      "Chihiro Saito",
+                      "Kozue Irei",
+                      "Lisa Igarashi Vanderhoof",
+                      "Shiori Masumitsu",
+                      "Shizuku Takayama",
+                      "Shun Okai"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Hazel Lim",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Hazel Lim"
+                ]
+              },
+              {
+                "name": "Linda Wang",
+                "done": 0,
+                "total": 10,
+                "completed": [],
+                "pending": [
+                  "Cissie Wu",
+                  "Claudia Luo",
+                  "Evan Zhao",
+                  "Fiona Gu",
+                  "Kacey Hu",
+                  "Kelvin Fok",
+                  "Linda Wang",
+                  "Liu Miao",
+                  "Lucy Li",
+                  "Stella Chu"
+                ]
+              },
+              {
+                "name": "Kieren Strain",
+                "done": 0,
+                "total": 2,
+                "completed": [],
+                "pending": [
+                  "Kieren Strain",
+                  "Rachel Dam"
+                ]
+              },
+              {
+                "name": "Nagarjuna Reddy",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Nagarjuna Reddy"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "Japan": {
+        "label": "Japan",
+        "color": "#AD1457",
+        "managers": [
+          {
+            "name": "Masayuki Akada",
+            "color": "#AD1457",
+            "flms": [
+              {
+                "name": "Yohei Izumi",
+                "done": 0,
+                "total": 2,
+                "completed": [],
+                "pending": [
+                  "Norihide Kaseda",
+                  "Tomoya Maekawa"
+                ],
+                "subflms": [
+                  {
+                    "name": "Jake Burrows",
+                    "done": 0,
+                    "total": 0,
+                    "completed": [],
+                    "pending": []
+                  }
+                ]
+              },
+              {
+                "name": "Iyo Yamasaki",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Iyo Yamasaki"
+                ]
+              },
+              {
+                "name": "Momo Miyazaki",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Momo Miyazaki"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "Australia": {
+        "label": "Australia",
+        "color": "#2E7D32",
+        "managers": [
+          {
+            "name": "Ross Candido",
+            "color": "#2E7D32",
+            "flms": [
+              {
+                "name": "Mike O'Neill",
+                "done": 0,
+                "total": 1,
+                "completed": [],
+                "pending": [
+                  "Eimear O'Shea"
+                ],
+                "subflms": [
+                  {
+                    "name": "Matt Sutherland",
+                    "done": 0,
+                    "total": 0,
+                    "completed": [],
+                    "pending": []
+                  }
+                ]
+              },
+              {
+                "name": "James Skene",
+                "done": 0,
+                "total": 3,
+                "completed": [],
+                "pending": [
+                  "Dan Murphy",
+                  "Ethan Short",
+                  "Ryan Lim"
+                ]
+              },
+              {
+                "name": "Tim O'Rourke",
+                "done": 0,
+                "total": 2,
+                "completed": [],
+                "pending": [
+                  "Myla Villano",
+                  "Rachelle San Pedro"
+                ]
+              },
+              {
+                "name": "Tess Cullen",
+                "done": 0,
+                "total": 3,
+                "completed": [],
+                "pending": [
+                  "Abbey Thompson",
+                  "Cynthia Tian",
+                  "Jess Andrews"
+                ]
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 ];
@@ -2706,7 +3760,7 @@ function switchMonth(m,btn){
 
   /* ── Wire CONFIG to UI ─────────────────────────────────── */
   document.title = CONFIG.pageTitle;
-  document.getElementById("hdr-months").textContent    = CONFIG.month1Label + " & " + CONFIG.month3Label;
+  // hdr-title is now static "Q3 Enablement Programs" — no dynamic month injection needed
   document.getElementById("lbl-updated").textContent   = CONFIG.lastUpdated;
   document.getElementById("footer-date").textContent   = CONFIG.lastUpdated;
 
@@ -2758,7 +3812,7 @@ function switchMonth(m,btn){
   buildCalMF("cal-mf-m1",   CONFIG.year, CONFIG.month1, false);
   // July — preview (full colour, no week highlight since future month)
   buildCalMF("cal-mf-july", CONFIG.year, CONFIG.month3, false);
-  // May — archived (greyed)
+  // June — archived (greyed)
   buildCalMF("cal-mf-m2",   CONFIG.year, CONFIG.month2, true);
 
   buildCalTBC();
