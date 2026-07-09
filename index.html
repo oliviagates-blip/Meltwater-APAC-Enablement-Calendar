@@ -880,7 +880,7 @@ const CONFIG = {
   lastUpdated: "09 July 2026",
   pageTitle: "Q3 Enablement Programs",
   organisedByLabel: "Upcoming Training This Month",
-  stat_m1_total: 18,   // July, all scheduled + TBC
+  stat_m1_total: 17,   // July, all scheduled + TBC
   stat_m1_done:  1,
   stat_m2_total: 18,   // June archive
   stat_m2_tbc:   1,
@@ -1292,21 +1292,6 @@ const EVENTS = [
     "links": []
   },
   {
-    "id": 12,
-    "month": 7,
-    "day": 99,
-    "tbc": true,
-    "done": false,
-    "featured": false,
-    "name": "Global Cision Take-Down",
-    "short": "Cision Take-Down",
-    "team": "Role Excellence",
-    "area": "ALL APAC",
-    "aud": "Client Acquisition, Growth Executive",
-    "desc": "Global competitive enablement equipping Client Acquisition and Growth Executive teams to actively displace Cision in active deals, renewals, and new business. Led by Johnny Vance's team \u2014 SPIFF details to follow. Date TBC.",
-    "links": []
-  },
-  {
     "id": 13,
     "month": 6,
     "day": 18,
@@ -1689,8 +1674,8 @@ const EVENTS = [
   {
     "id": 84,
     "month": 7,
-    "day": 99,
-    "tbc": true,
+    "day": 7,
+    "tbc": false,
     "done": false,
     "featured": false,
     "name": "Insights Services: Claude & Cowork Soft Launch",
@@ -1698,7 +1683,7 @@ const EVENTS = [
     "team": "Role Excellence",
     "area": "ALL APAC",
     "aud": "Post-Sales Services",
-    "desc": "Soft launch eLearning introducing Claude and Cowork to the Insights Services team \u2014 covering core use cases and how to start applying them in day-to-day work. Date TBC.",
+    "desc": "Soft launch eLearning introducing Claude and Cowork to the Insights Services team \u2014 covering core use cases and how to start applying them in day-to-day work.",
     "links": []
   },
   {
@@ -1789,7 +1774,7 @@ const TEAMS = {
   "Culture":            {key:"cult",color:"#AD1457", emoji:"🌈"},
   "Partnerships":       {key:"ptnr",color:"#D84315", emoji:"🔗"}
 };
-const TEAM_ORDER = ["Product Enablement","Role Excellence","APAC Marketing","People Team","Executive","Partnerships","Culture"];
+const TEAM_ORDER = ["Product Enablement","Role Excellence","People Team","Executive","Partnerships","Culture","APAC Marketing"];
 
 function tkey(t){ return (TEAMS[t.trim()]||{key:"pe"}).key; }
 function tcolor(t){ return (TEAMS[t.trim()]||{color:"#0097A7"}).color; }
