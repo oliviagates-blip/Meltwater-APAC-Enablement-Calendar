@@ -870,21 +870,21 @@ function renderListM3(){
    ════════════════════════════════════════════════════════════════════ */
 
 const CONFIG = {
-  month1: 7,                          // Current month
-  month2: 6,                          // Archive month
-  month3: 8,                          // Preview month (next month)
-  month1Label: "July 2026",
-  month2Label: "June 2026",
-  month3Label: "August 2026",
+  month1: 8,                          // Current month
+  month2: 7,                          // Archive month
+  month3: 9,                          // Preview month (next month)
+  month1Label: "August 2026",
+  month2Label: "July 2026",
+  month3Label: "September 2026",
   year: 2026,
-  lastUpdated: "28 July 2026",
+  lastUpdated: "31 July 2026",
   pageTitle: "Q3 Enablement Programs",
   organisedByLabel: "Upcoming Training This Month",
-  stat_m1_total: 19,   // July, all scheduled + TBC
+  stat_m1_total: 17,   // August, all scheduled + TBC
   stat_m1_done:  0,
-  stat_m2_total: 19,   // June archive
-  stat_m2_tbc:   1,
-  stat_m3_total: 17,   // August preview
+  stat_m2_total: 19,   // July archive
+  stat_m2_tbc:   5,
+  stat_m3_total: 10,   // September preview
 };
 
 /* ════════════════════════════════════════════════════════════════════
@@ -892,19 +892,19 @@ const CONFIG = {
    Format: [month, day, "Office 🌴 Holiday name"]
    ════════════════════════════════════════════════════════════════════ */
 const PUBLIC_HOLIDAYS = [
-  /* ── JUNE (month2 archive) ── */
+  /* ── JUNE (removed from display window) ── */
   [6,1,  "Singapore 🌴 Vesak Day (sub)"],
   [6,8,  "Melbourne 🌴 Sydney 🌴 King's Birthday"],
   [6,19, "Shanghai 🌴 Hong Kong 🌴 Dragon Boat Festival"],
   [6,20, "Shanghai 🌴 Dragon Boat Festival"],
-  /* ── JULY (month1 current) ── */
+  /* ── JULY (month2 archive) ── */
   [7,1,  "Hong Kong 🌴 SAR Establishment Day"],
   [7,20, "Tokyo 🌴 Marine Day"],
-  /* ── AUGUST (month3 preview) ── */
+  /* ── AUGUST (month1 current) ── */
   [8,9,  "Singapore 🌴 National Day"],
   [8,11, "Tokyo 🌴 Mountain Day"],
   [8,15, "India 🌴 Independence Day"],
-  /* ── SEPTEMBER ── */
+  /* ── SEPTEMBER (month3 preview) ── */
   [9,21, "Tokyo 🌴 Respect for Aged Day"],
   [9,23, "Tokyo 🌴 Autumnal Equinox"],
   [9,25, "Melbourne 🌴 AFL Grand Final (TBC)"],
@@ -1068,7 +1068,7 @@ const EVENTS = [
     "team": "Role Excellence",
     "area": "ALL APAC",
     "aud": "FLM & SLM",
-    "desc": "Fourth session in the LifeLabs series for FLMs and SLMs \u2014 focused on running effective 1:1 meetings. Covers how to use 1:1s as a strategic tool for coaching, accountability, and building trust with direct reports.",
+    "desc": "Fourth session in the LifeLabs series for FLMs and SLMs — focused on running effective 1:1 meetings. Covers how to use 1:1s as a strategic tool for coaching, accountability, and building trust with direct reports.",
     "links": []
   },
   {
@@ -1083,7 +1083,7 @@ const EVENTS = [
     "team": "Product Enablement",
     "area": "ALL APAC",
     "aud": "ALL / ANY",
-    "desc": "Launch enablement session for the new MyTelescope partnership \u2014 covering what MyTelescope is, the GTM motion, and how APAC teams can engage clients. All APAC roles welcome.",
+    "desc": "Launch enablement session for the new MyTelescope partnership — covering what MyTelescope is, the GTM motion, and how APAC teams can engage clients. All APAC roles welcome.",
     "links": []
   },
   {
@@ -1093,12 +1093,12 @@ const EVENTS = [
     "tbc": false,
     "done": true,
     "featured": false,
-    "name": "Session 2: The Art of Delegation \u2014 Leaders",
+    "name": "Session 2: The Art of Delegation — Leaders",
     "short": "Art of Delegation",
     "team": "People Team",
     "area": "ALL APAC",
     "aud": "FLM & SLM",
-    "desc": "LifeLabs session 2 for people leaders on mastering the practice of delegation \u2014 covering the mindset shifts, practical frameworks, and skill-building needed to develop team capability while freeing up leader bandwidth.",
+    "desc": "LifeLabs session 2 for people leaders on mastering the practice of delegation — covering the mindset shifts, practical frameworks, and skill-building needed to develop team capability while freeing up leader bandwidth.",
     "links": []
   },
   {
@@ -1113,7 +1113,7 @@ const EVENTS = [
     "team": "Role Excellence",
     "area": "ALL APAC",
     "aud": "Sales Services",
-    "desc": "Health Score 2.0 enablement for Implementation Managers in Sales Services (275 \u2014 On-Boarding & Adoption). Covers IM-specific workflows, health signals, and handoff processes within the updated Health Score 2.0 framework.",
+    "desc": "Health Score 2.0 enablement for Implementation Managers in Sales Services (275 — On-Boarding & Adoption). Covers IM-specific workflows, health signals, and handoff processes within the updated Health Score 2.0 framework.",
     "links": []
   },
   {
@@ -1128,7 +1128,7 @@ const EVENTS = [
     "team": "Product Enablement",
     "area": "ALL APAC",
     "aud": "ALL / ANY",
-    "desc": "Monthly Product Pulse \u2014 a comprehensive overview of all updates and new features released in the past month, expert tips and tricks, an in-depth review of a specific feature, and a sneak peek at the upcoming product roadmap.",
+    "desc": "Monthly Product Pulse — a comprehensive overview of all updates and new features released in the past month, expert tips and tricks, an in-depth review of a specific feature, and a sneak peek at the upcoming product roadmap.",
     "links": []
   },
   {
@@ -1143,7 +1143,7 @@ const EVENTS = [
     "team": "People Team",
     "area": "ALL APAC",
     "aud": "ALL / ANY",
-    "desc": "Wellness session exploring psychological drivers behind spending and saving habits \u2014 why some save for tomorrow while others live for today, how to spot unhelpful financial patterns, and seven actionable tools to reshape spending behaviours.",
+    "desc": "Wellness session exploring psychological drivers behind spending and saving habits — why some save for tomorrow while others live for today, how to spot unhelpful financial patterns, and seven actionable tools to reshape spending behaviours.",
     "links": [
       {
         "label": "Register (GoToWebinar)",
@@ -1163,7 +1163,7 @@ const EVENTS = [
     "team": "Product Enablement",
     "area": "ALL APAC",
     "aud": "Client Success, Enterprise, Growth Executive, Sales Services",
-    "desc": "Part 1 of the Explore to Explore+ enablement series \u2014 equipping CS, Enterprise, Growth Executive, and Sales Services teams with the knowledge, messaging, and confidence to drive Explore+ upgrades across their book of business.",
+    "desc": "Part 1 of the Explore to Explore+ enablement series — equipping CS, Enterprise, Growth Executive, and Sales Services teams with the knowledge, messaging, and confidence to drive Explore+ upgrades across their book of business.",
     "links": []
   },
   {
@@ -1178,7 +1178,7 @@ const EVENTS = [
     "team": "Product Enablement",
     "area": "ALL APAC",
     "aud": "Client Success, Enterprise, Growth Executive, Sales Services",
-    "desc": "Part 2 of the Explore to Explore+ series \u2014 building on Part 1 with deeper product knowledge, objection handling, and applied deal scenarios to accelerate Explore+ conversion across all relevant segments.",
+    "desc": "Part 2 of the Explore to Explore+ series — building on Part 1 with deeper product knowledge, objection handling, and applied deal scenarios to accelerate Explore+ conversion across all relevant segments.",
     "links": []
   },
   {
@@ -1193,7 +1193,7 @@ const EVENTS = [
     "team": "APAC Marketing",
     "area": "Singapore",
     "aud": "N/A (External event)",
-    "desc": "Customer-facing Marketers Meetup in the Philippines \u2014 networking, peer insights, and a showcase of how Meltwater supports modern marketing teams.",
+    "desc": "Customer-facing Marketers Meetup in the Philippines — networking, peer insights, and a showcase of how Meltwater supports modern marketing teams.",
     "links": []
   },
   {
@@ -1208,7 +1208,7 @@ const EVENTS = [
     "team": "APAC Marketing",
     "area": "Singapore",
     "aud": "N/A (External event)",
-    "desc": "Targeted workshop for Philippine government sector clients and prospects \u2014 covering Meltwater solutions relevant to public sector communications and media monitoring needs.",
+    "desc": "Targeted workshop for Philippine government sector clients and prospects — covering Meltwater solutions relevant to public sector communications and media monitoring needs.",
     "links": []
   },
   {
@@ -1223,7 +1223,7 @@ const EVENTS = [
     "team": "Role Excellence",
     "area": "ALL APAC",
     "aud": "Client Acquisition, Client Success, Enterprise, Growth Executive",
-    "desc": "The final certification of the Q1 2026 Business Outcomes Training program \u2014 available for CA, CS, Enterprise, and Growth Executive roles on Skillshood. Complete this to formally certify your Business Outcomes skills.",
+    "desc": "The final certification of the Q1 2026 Business Outcomes Training program — available for CA, CS, Enterprise, and Growth Executive roles on Skillshood. Complete this to formally certify your Business Outcomes skills.",
     "links": [
       {
         "label": "Certification Path (Skillshood)",
@@ -1243,7 +1243,7 @@ const EVENTS = [
     "team": "Role Excellence",
     "area": "ALL APAC",
     "aud": "FLM & SLM",
-    "desc": "APAC kick-off session for the AI Committees initiative \u2014 equipping FLMs and SLMs to lead structured AI conversations across their teams. Covers the committee framework, roles, and how to drive adoption of AI habits in day-to-day workflows.",
+    "desc": "APAC kick-off session for the AI Committees initiative — equipping FLMs and SLMs to lead structured AI conversations across their teams. Covers the committee framework, roles, and how to drive adoption of AI habits in day-to-day workflows.",
     "links": []
   },
   {
@@ -1258,7 +1258,7 @@ const EVENTS = [
     "team": "Product Enablement",
     "area": "ALL APAC",
     "aud": "ALL / ANY",
-    "desc": "Pre-work eLearning ahead of the MCP Sales Enablement session \u2014 equipping APAC teams with the foundational knowledge of Meltwater's MCP integration before the live enablement session in July.",
+    "desc": "Pre-work eLearning ahead of the MCP Sales Enablement session — equipping APAC teams with the foundational knowledge of Meltwater's MCP integration before the live enablement session in July.",
     "links": []
   },
   {
@@ -1273,7 +1273,7 @@ const EVENTS = [
     "team": "APAC Marketing",
     "area": "ALL APAC",
     "aud": "N/A (External event)",
-    "desc": "APAC Marketing webinar exploring trust, credibility, and brand reputation in the era of Generative AI \u2014 a customer-facing event open across all APAC markets.",
+    "desc": "APAC Marketing webinar exploring trust, credibility, and brand reputation in the era of Generative AI — a customer-facing event open across all APAC markets.",
     "links": []
   },
   {
@@ -1283,12 +1283,12 @@ const EVENTS = [
     "tbc": false,
     "done": true,
     "featured": true,
-    "name": "Town Hall \u2014 John Box",
+    "name": "Town Hall — John Box",
     "short": "Town Hall: John Box",
     "team": "Executive",
     "area": "ALL APAC",
     "aud": "ALL / ANY",
-    "desc": "All-APAC town hall hosted by John Box \u2014 covering regional business updates, strategic direction, and key priorities. All APAC roles welcome.",
+    "desc": "All-APAC town hall hosted by John Box — covering regional business updates, strategic direction, and key priorities. All APAC roles welcome.",
     "links": []
   },
   {
@@ -1303,7 +1303,7 @@ const EVENTS = [
     "team": "Role Excellence",
     "area": "ALL APAC",
     "aud": "Sales Services, Enterprise",
-    "desc": "Post-sales enablement on advanced query methodology \u2014 covering Boolean best practices, search optimisation, and hands-on techniques for Sales Services and Enterprise teams. Date TBC.",
+    "desc": "Post-sales enablement on advanced query methodology — covering Boolean best practices, search optimisation, and hands-on techniques for Sales Services and Enterprise teams. Date TBC.",
     "links": []
   },
   {
@@ -1318,7 +1318,7 @@ const EVENTS = [
     "team": "Product Enablement",
     "area": "ALL APAC",
     "aud": "Enterprise",
-    "desc": "Product Enablement on Embeddings-as-a-Service (EaaS) \u2014 equipping Enterprise teams to identify EaaS-fit accounts, articulate the value proposition, and progress opportunities through the sales cycle. Date TBC.",
+    "desc": "Product Enablement on Embeddings-as-a-Service (EaaS) — equipping Enterprise teams to identify EaaS-fit accounts, articulate the value proposition, and progress opportunities through the sales cycle. Date TBC.",
     "links": []
   },
   {
@@ -1328,12 +1328,12 @@ const EVENTS = [
     "tbc": true,
     "done": false,
     "featured": false,
-    "name": "Aus CS Soft Skills \u2014 Conflict Resolution",
+    "name": "Aus CS Soft Skills — Conflict Resolution",
     "short": "Aus CS Conflict Res",
     "team": "Role Excellence",
     "area": "Australia",
     "aud": "Client Success",
-    "desc": "Role Excellence session for Australian Client Success teams on conflict resolution \u2014 practical techniques for navigating difficult client conversations, de-escalation, and turning challenging situations into stronger relationships. Date TBC.",
+    "desc": "Role Excellence session for Australian Client Success teams on conflict resolution — practical techniques for navigating difficult client conversations, de-escalation, and turning challenging situations into stronger relationships. Date TBC.",
     "links": []
   },
   {
@@ -1343,12 +1343,12 @@ const EVENTS = [
     "tbc": false,
     "done": true,
     "featured": false,
-    "name": "Strengths Session \u2014 Best of Us",
+    "name": "Strengths Session — Best of Us",
     "short": "Strengths Session",
     "team": "People Team",
     "area": "Australia",
     "aud": "BDR",
-    "desc": "Strengths-based development session for the Australian BDR team \u2014 exploring how to identify and leverage individual strengths to improve performance, resilience, and team collaboration. Date TBC.",
+    "desc": "Strengths-based development session for the Australian BDR team — exploring how to identify and leverage individual strengths to improve performance, resilience, and team collaboration. Date TBC.",
     "links": []
   },
   {
@@ -1363,7 +1363,7 @@ const EVENTS = [
     "team": "APAC Marketing",
     "area": "India",
     "aud": "N/A (External event)",
-    "desc": "APAC Marketing's CMO Circle event in Mumbai \u2014 a senior-level customer engagement forum bringing together CMOs and marketing leaders in the Indian market to share insights and explore Meltwater solutions.",
+    "desc": "APAC Marketing's CMO Circle event in Mumbai — a senior-level customer engagement forum bringing together CMOs and marketing leaders in the Indian market to share insights and explore Meltwater solutions.",
     "links": []
   },
   {
@@ -1371,14 +1371,14 @@ const EVENTS = [
     "month": 7,
     "day": 8,
     "tbc": false,
-    "done": false,
+    "done": true,
     "featured": false,
-    "name": "Session 3: Career & Succession \u2014 Leaders",
+    "name": "Session 3: Career & Succession — Leaders",
     "short": "Career & Succession",
     "team": "People Team",
     "area": "ALL APAC",
     "aud": "FLM & SLM",
-    "desc": "Third session in the LifeLabs leaders series for FLMs and SLMs \u2014 focused on career planning and succession. Covers how people leaders can have meaningful career conversations, develop talent pipelines, and plan for team continuity.",
+    "desc": "Third session in the LifeLabs leaders series for FLMs and SLMs — focused on career planning and succession. Covers how people leaders can have meaningful career conversations, develop talent pipelines, and plan for team continuity.",
     "links": []
   },
   {
@@ -1393,14 +1393,14 @@ const EVENTS = [
     "team": "APAC Marketing",
     "area": "Singapore",
     "aud": "N/A (External event)",
-    "desc": "Government-focused workshop in Singapore \u2014 targeting public sector clients and prospects with Meltwater solutions relevant to government communications, media monitoring, and stakeholder engagement.",
+    "desc": "Government-focused workshop in Singapore — targeting public sector clients and prospects with Meltwater solutions relevant to government communications, media monitoring, and stakeholder engagement.",
     "links": []
   },
   {
     "id": 43,
     "month": 8,
-    "day": 18,
-    "tbc": false,
+    "day": 99,
+    "tbc": true,
     "done": false,
     "featured": false,
     "name": "Post-LifeLabs: FLM Enablement Track",
@@ -1408,7 +1408,7 @@ const EVENTS = [
     "team": "Role Excellence",
     "area": "ALL APAC",
     "aud": "FLM & SLM",
-    "desc": "A dedicated FLM Enablement Track following the completion of the LifeLabs series \u2014 designed to help FLMs and SLMs embed the frameworks from LifeLabs into their day-to-day management practice with structured reinforcement and accountability.",
+    "desc": "A dedicated FLM Enablement Track following the completion of the LifeLabs series — designed to help FLMs and SLMs embed the frameworks from LifeLabs into their day-to-day management practice with structured reinforcement and accountability.",
     "links": []
   },
   {
@@ -1416,14 +1416,14 @@ const EVENTS = [
     "month": 7,
     "day": 17,
     "tbc": false,
-    "done": false,
+    "done": true,
     "featured": false,
     "name": "Informed or Infirmed?",
     "short": "Informed or Infirmed?",
     "team": "People Team",
     "area": "ALL APAC",
     "aud": "ALL / ANY",
-    "desc": "People Team session \u2014 details to be confirmed. Stay tuned for an agenda update closer to the date.",
+    "desc": "People Team session — details to be confirmed. Stay tuned for an agenda update closer to the date.",
     "links": []
   },
   {
@@ -1431,14 +1431,14 @@ const EVENTS = [
     "month": 7,
     "day": 14,
     "tbc": false,
-    "done": false,
+    "done": true,
     "featured": false,
     "name": "Aus QR",
     "short": "Aus QR",
     "team": "Executive",
     "area": "Australia",
     "aud": "FLM & SLM",
-    "desc": "Australia Quarterly Review \u2014 FLM & SLM session for the Australian region. Covers performance review, pipeline health, and strategic priorities for the quarter.",
+    "desc": "Australia Quarterly Review — FLM & SLM session for the Australian region. Covers performance review, pipeline health, and strategic priorities for the quarter.",
     "links": []
   },
   {
@@ -1446,14 +1446,14 @@ const EVENTS = [
     "month": 7,
     "day": 15,
     "tbc": false,
-    "done": false,
+    "done": true,
     "featured": false,
     "name": "Japan QR",
     "short": "Japan QR",
     "team": "Executive",
     "area": "Japan",
     "aud": "FLM & SLM",
-    "desc": "Japan Quarterly Review \u2014 FLM & SLM session for the Japan region. Covers performance review, pipeline health, and strategic priorities for the quarter.",
+    "desc": "Japan Quarterly Review — FLM & SLM session for the Japan region. Covers performance review, pipeline health, and strategic priorities for the quarter.",
     "links": []
   },
   {
@@ -1461,14 +1461,14 @@ const EVENTS = [
     "month": 7,
     "day": 16,
     "tbc": false,
-    "done": false,
+    "done": true,
     "featured": false,
     "name": "SEA QR",
     "short": "SEA QR",
     "team": "Executive",
-    "area": "India, Singapore",
+    "area": "India, Malaysia, Indonesia, Singapore, Philippines",
     "aud": "FLM & SLM",
-    "desc": "SEA Quarterly Review \u2014 FLM & SLM session covering India, Malaysia, Indonesia, Singapore, and the Philippines. Covers performance review, pipeline health, and strategic priorities for the quarter.",
+    "desc": "SEA Quarterly Review — FLM & SLM session covering India, Malaysia, Indonesia, Singapore, and the Philippines. Covers performance review, pipeline health, and strategic priorities for the quarter.",
     "links": []
   },
   {
@@ -1476,14 +1476,14 @@ const EVENTS = [
     "month": 7,
     "day": 17,
     "tbc": false,
-    "done": false,
+    "done": true,
     "featured": false,
     "name": "China ES QR",
     "short": "China ES QR",
     "team": "Executive",
-    "area": "China",
+    "area": "Greater China",
     "aud": "FLM & SLM",
-    "desc": "China Enterprise Solutions Quarterly Review \u2014 FLM & SLM session for Greater China. Covers performance review, pipeline health, and strategic priorities for the quarter.",
+    "desc": "China Enterprise Solutions Quarterly Review — FLM & SLM session for Greater China. Covers performance review, pipeline health, and strategic priorities for the quarter.",
     "links": []
   },
   {
@@ -1498,7 +1498,7 @@ const EVENTS = [
     "team": "Product Enablement",
     "area": "ALL APAC",
     "aud": "ALL / ANY",
-    "desc": "Product Enablement on Meltwater's MCP (Model Context Protocol) integration \u2014 equipping all APAC roles to identify opportunities, articulate value, and discuss MCP with clients. Builds on the MCP eLearning pre-work from June.",
+    "desc": "Product Enablement on Meltwater's MCP (Model Context Protocol) integration — equipping all APAC roles to identify opportunities, articulate value, and discuss MCP with clients. Builds on the MCP eLearning pre-work from June.",
     "links": []
   },
   {
@@ -1508,12 +1508,12 @@ const EVENTS = [
     "tbc": false,
     "done": false,
     "featured": false,
-    "name": "[AUNZ] CMO Summit \u2014 Gold Coast",
+    "name": "[AUNZ] CMO Summit — Gold Coast",
     "short": "[AUNZ] CMO Summit",
     "team": "APAC Marketing",
     "area": "Australia",
     "aud": "N/A (External event)",
-    "desc": "CMO Summit Gold Coast \u2014 senior marketing leaders sharing strategies to accelerate brand growth, strengthen customer acquisition and loyalty, and respond to shifting consumer expectations. Topics include omnichannel campaigns, AI and personalisation, data-driven ROI, and emerging technology. Runs 22-23 July 2026.",
+    "desc": "CMO Summit Gold Coast — senior marketing leaders sharing strategies to accelerate brand growth, strengthen customer acquisition and loyalty, and respond to shifting consumer expectations. Topics include omnichannel campaigns, AI and personalisation, data-driven ROI, and emerging technology. Runs 22-23 July 2026.",
     "links": [
       {
         "label": "CMO Summit Event Page",
@@ -1533,7 +1533,7 @@ const EVENTS = [
     "team": "APAC Marketing",
     "area": "China",
     "aud": "ALL / ANY",
-    "desc": "Meltwater-owned 1:Few Auto Workshop in China, in partnership with the Auto Association \u2014 inviting target prospects and customers from 8-10 Chinese auto brands going global. Speakers drawn from International Business divisions of SAIC Motor and Geely Group.",
+    "desc": "Meltwater-owned 1:Few Auto Workshop in China, in partnership with the Auto Association — inviting target prospects and customers from 8-10 Chinese auto brands going global. Speakers drawn from International Business divisions of SAIC Motor and Geely Group.",
     "links": []
   },
   {
@@ -1548,7 +1548,7 @@ const EVENTS = [
     "team": "Product Marketing",
     "area": "ALL APAC",
     "aud": "ALL / ANY",
-    "desc": "Monthly Product Pulse \u2014 a comprehensive overview of all updates and new features released in the past month, expert tips and tricks, an in-depth review of a specific feature, and a sneak peek at the upcoming product roadmap.",
+    "desc": "Monthly Product Pulse — a comprehensive overview of all updates and new features released in the past month, expert tips and tricks, an in-depth review of a specific feature, and a sneak peek at the upcoming product roadmap.",
     "links": []
   },
   {
@@ -1563,7 +1563,7 @@ const EVENTS = [
     "team": "People Team",
     "area": "ALL APAC",
     "aud": "ALL / ANY",
-    "desc": "Fourth session in the People Team leaders series \u2014 focused on understanding and managing talent across a multi-generational workforce. Covers how to attract, develop, and retain talent across different generational cohorts.",
+    "desc": "Fourth session in the People Team leaders series — focused on understanding and managing talent across a multi-generational workforce. Covers how to attract, develop, and retain talent across different generational cohorts.",
     "links": []
   },
   {
@@ -1573,12 +1573,12 @@ const EVENTS = [
     "tbc": false,
     "done": false,
     "featured": false,
-    "name": "[APAC ex AUNZ] Meltwater Summit on Tour \u2014 Asia",
+    "name": "[APAC ex AUNZ] Meltwater Summit on Tour — Asia",
     "short": "Summit on Tour: Asia",
     "team": "APAC Marketing",
     "area": "Singapore, ALL APAC",
     "aud": "N/A (External event)",
-    "desc": "Meltwater Summit on Tour \u2014 Asia edition. A flagship customer event bringing together marketing and communications leaders across APAC (excluding AU/NZ) to explore Meltwater's latest innovations and hear from industry peers.",
+    "desc": "Meltwater Summit on Tour — Asia edition. A flagship customer event bringing together marketing and communications leaders across APAC (excluding AU/NZ) to explore Meltwater's latest innovations and hear from industry peers.",
     "links": []
   },
   {
@@ -1593,7 +1593,7 @@ const EVENTS = [
     "team": "APAC Marketing",
     "area": "China",
     "aud": "N/A (External event)",
-    "desc": "1:1 ABM-owned customer event in China targeting OPPO \u2014 focused on finding upsell and cross-sell opportunities through a bespoke, account-specific event format.",
+    "desc": "1:1 ABM-owned customer event in China targeting OPPO — focused on finding upsell and cross-sell opportunities through a bespoke, account-specific event format.",
     "links": []
   },
   {
@@ -1606,9 +1606,9 @@ const EVENTS = [
     "name": "[PH] National Retail Conference",
     "short": "[PH] Retail Conf",
     "team": "APAC Marketing",
-    "area": "Singapore",
+    "area": "Philippines",
     "aud": "N/A (External event)",
-    "desc": "Philippine National Retail Conference \u2014 APAC Marketing activation targeting retail sector clients and prospects in the Philippines. Runs 6-7 August 2026.",
+    "desc": "Philippine National Retail Conference — APAC Marketing activation targeting retail sector clients and prospects in the Philippines. Runs 6-7 August 2026.",
     "links": []
   },
   {
@@ -1638,7 +1638,7 @@ const EVENTS = [
     "team": "People Team",
     "area": "ALL APAC",
     "aud": "ALL / ANY",
-    "desc": "People Team session on inclusive leadership \u2014 building the mindsets, behaviours, and practical tools to lead diverse and high-performing teams across APAC.",
+    "desc": "People Team session on inclusive leadership — building the mindsets, behaviours, and practical tools to lead diverse and high-performing teams across APAC.",
     "links": []
   },
   {
@@ -1668,7 +1668,7 @@ const EVENTS = [
     "team": "Role Excellence",
     "area": "ALL APAC",
     "aud": "Post-Sales Services",
-    "desc": "Soft launch eLearning introducing Claude and Cowork to the Insights Services team \u2014 covering core use cases and how to start applying them in day-to-day work. Date TBC.",
+    "desc": "Soft launch eLearning introducing Claude and Cowork to the Insights Services team — covering core use cases and how to start applying them in day-to-day work. Date TBC.",
     "links": []
   },
   {
@@ -1708,12 +1708,12 @@ const EVENTS = [
     "tbc": false,
     "done": true,
     "featured": false,
-    "name": "Strengths Session \u2014 Best of Us",
+    "name": "Strengths Session — Best of Us",
     "short": "Strengths Session",
     "team": "People Team",
     "area": "India",
     "aud": "BDR",
-    "desc": "Strengths-based development session for the Indian BDR team \u2014 exploring how to identify and leverage individual strengths to improve performance, resilience, and team collaboration.",
+    "desc": "Strengths-based development session for the Indian BDR team — exploring how to identify and leverage individual strengths to improve performance, resilience, and team collaboration.",
     "links": []
   },
   {
@@ -1763,17 +1763,17 @@ const EVENTS = [
   },
   {
     "id": 91,
-    "month": 8,
-    "day": 99,
-    "tbc": true,
+    "month": 9,
+    "day": 4,
+    "tbc": false,
     "done": false,
     "featured": false,
-    "name": "AI Enablement Week (Likely Mid-August)",
+    "name": "AI Enablement Week",
     "short": "AI Enablement Week",
     "team": "Product Enablement",
     "area": "ALL APAC",
     "aud": "ALL / ANY",
-    "desc": "A dedicated week of AI enablement programming, likely mid-August. Date and agenda TBC.",
+    "desc": "A dedicated week of AI enablement programming for all APAC roles, running the week of September 4th.",
     "links": []
   },
   {
@@ -1803,7 +1803,7 @@ const EVENTS = [
     "team": "Role Excellence",
     "area": "ALL APAC",
     "aud": "BDR, Client Acquisition, Growth Executive",
-    "desc": "Role Excellence end-user training on ZoomInfo covering the latest feature updates \u2014 practical tips for BDR, Client Acquisition, and Growth Executive teams.",
+    "desc": "Role Excellence end-user training on ZoomInfo covering the latest feature updates — practical tips for BDR, Client Acquisition, and Growth Executive teams.",
     "links": []
   },
   {
@@ -1848,7 +1848,7 @@ const EVENTS = [
     "team": "Product Marketing",
     "area": "ALL APAC",
     "aud": "ALL / ANY",
-    "desc": "Monthly Product Pulse \u2014 a comprehensive overview of all updates and new features released in the past month, expert tips and tricks, an in-depth review of a specific feature, and a sneak peek at the upcoming product roadmap.",
+    "desc": "Monthly Product Pulse — a comprehensive overview of all updates and new features released in the past month, expert tips and tricks, an in-depth review of a specific feature, and a sneak peek at the upcoming product roadmap.",
     "links": []
   },
   {
@@ -1878,7 +1878,7 @@ const EVENTS = [
     "team": "Culture",
     "area": "ALL APAC",
     "aud": "ALL / ANY",
-    "desc": "All-APAC town hall hosted by Dave \u2014 covering regional business updates, strategic direction, and key priorities. All APAC roles welcome.",
+    "desc": "All-APAC town hall hosted by Dave — covering regional business updates, strategic direction, and key priorities. All APAC roles welcome.",
     "links": []
   },
   {
@@ -1983,7 +1983,7 @@ const EVENTS = [
     "team": "APAC Marketing",
     "area": "Japan",
     "aud": "ALL / ANY",
-    "desc": "APAC Marketing's CMO Circle event in Japan \u2014 a senior-level customer engagement forum bringing together CMOs and marketing leaders.",
+    "desc": "APAC Marketing's CMO Circle event in Japan — a senior-level customer engagement forum bringing together CMOs and marketing leaders.",
     "links": []
   },
   {
@@ -2014,6 +2014,36 @@ const EVENTS = [
     "area": "Japan",
     "aud": "ALL / ANY",
     "desc": "APAC Marketing webinar for Japanese Financial Services clients on SNS reputation risk management.",
+    "links": []
+  },
+  {
+    "id": 108,
+    "month": 8,
+    "day": 19,
+    "tbc": false,
+    "done": false,
+    "featured": false,
+    "name": "Snowflake MCP Manager Training",
+    "short": "Snowflake MCP: Managers",
+    "team": "Role Excellence",
+    "area": "ALL APAC",
+    "aud": "FLM & SLM",
+    "desc": "Manager-focused training on Snowflake's Model Context Protocol (MCP) integration — equipping FLMs and SLMs to support their teams through the rollout.",
+    "links": []
+  },
+  {
+    "id": 109,
+    "month": 9,
+    "day": 10,
+    "tbc": false,
+    "done": false,
+    "featured": false,
+    "name": "[JP] Champion Circle (Mid Market)",
+    "short": "[JP] Champion Circle",
+    "team": "APAC Marketing",
+    "area": "Japan",
+    "aud": "N/A (External event)",
+    "desc": "APAC Marketing client advocacy event for Japan Mid Market segment clients.",
     "links": []
   }
 ];/* ════════════════════════════════════════════════════════════════════
