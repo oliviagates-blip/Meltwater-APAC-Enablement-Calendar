@@ -799,13 +799,13 @@ function renderListM3(){
     </div>
     <div class="cal-sec-divider"></div>
 
-    <!-- August (preview, upcoming) -->
-    <div class="cal-month-wrap" id="cal-wrap-july">
+    <!-- Month 3 (preview, upcoming) -->
+    <div class="cal-month-wrap" id="cal-wrap-m3">
       <div class="cal-month-hdr">
-        <div class="cal-month-title" style="color:var(--teal);">August 2026 — Preview</div>
-        <div class="cal-month-sub" id="cal-sub-july">5 upcoming programs</div>
+        <div class="cal-month-title" id="cal-title-m3" style="color:var(--teal);"></div>
+        <div class="cal-month-sub" id="cal-sub-m3">5 upcoming programs</div>
       </div>
-      <div class="cal-mf" id="cal-mf-july"></div>
+      <div class="cal-mf" id="cal-mf-m3"></div>
     </div>
 
     <div class="cal-sec-divider"></div>
@@ -880,11 +880,11 @@ const CONFIG = {
   lastUpdated: "4 August 2026",
   pageTitle: "Q3 Enablement Programs",
   organisedByLabel: "Upcoming Training This Month",
-  stat_m1_total: 23,   // August, all scheduled + TBC
+  stat_m1_total: 22,   // August, all scheduled + TBC
   stat_m1_done:  0,
   stat_m2_total: 14,   // July archive
   stat_m2_tbc:   0,
-  stat_m3_total: 10,   // September preview
+  stat_m3_total: 11,   // September preview
 };
 
 /* ════════════════════════════════════════════════════════════════════
@@ -1453,9 +1453,9 @@ const EVENTS = [
   },
   {
     "id": 90,
-    "month": 8,
-    "day": 99,
-    "tbc": true,
+    "month": 9,
+    "day": 25,
+    "tbc": false,
     "done": false,
     "featured": false,
     "name": "MCP: How to Demo Session",
@@ -1728,12 +1728,12 @@ const EVENTS = [
     "tbc": false,
     "done": false,
     "featured": false,
-    "name": "CS Product Training: Series 1 of 3",
-    "short": "CS Product Training 1/3",
+    "name": "CS Use Case Training: Series 1 of 3 | Brand Trust & Reputation",
+    "short": "CS Use Case Training 1/3",
     "team": "Role Excellence",
     "area": "ALL APAC",
     "aud": "Client Success, Enterprise, Post-Sales Services",
-    "desc": "First session in a three-part Client Success product training series \u2014 covering core product knowledge for Client Success, Enterprise, and Post-Sales Services teams.",
+    "desc": "First session in a three-part Client Success Use Case Training series \u2014 Brand Trust & Reputation, covering core product knowledge for Client Success, Enterprise, and Post-Sales Services teams. (Renamed from 'CS Product Training: Series 1 of 3'.)",
     "links": []
   },
   {
@@ -1764,6 +1764,21 @@ const EVENTS = [
     "area": "Japan",
     "aud": "N/A (External event)",
     "desc": "Japan Champion Circle session for the Mid Market segment \u2014 an APAC Marketing customer event building advocacy and community among key accounts.",
+    "links": []
+  },
+  {
+    "id": 112,
+    "month": 9,
+    "day": 25,
+    "tbc": false,
+    "done": false,
+    "featured": false,
+    "name": "CS Use Case Training: Series 2 of 3 | Stakeholder Alignment & ROI",
+    "short": "CS Use Case Training 2/3",
+    "team": "Role Excellence",
+    "area": "ALL APAC",
+    "aud": "Client Success, Enterprise, Post-Sales Services",
+    "desc": "Second session in the three-part Client Success Use Case Training series \u2014 Stakeholder Alignment & ROI, continuing on from Series 1's Brand Trust & Reputation session.",
     "links": []
   }
 ];/* ════════════════════════════════════════════════════════════════════
@@ -6529,6 +6544,7 @@ function switchMonth(m,btn){
   // Calendar titles
   document.getElementById("cal-title-m1").textContent  = CONFIG.month1Label;
   document.getElementById("cal-title-m2").textContent  = CONFIG.month2Label;
+  const _catm3 = document.getElementById("cal-title-m3"); if(_catm3) _catm3.textContent = CONFIG.month3Label+" — Preview";
   const _n = document.getElementById("lbl-m2-cal-note"); if(_n) _n.textContent = CONFIG.month2Label;
 
   // Stat bar labels
@@ -6564,11 +6580,11 @@ function switchMonth(m,btn){
   }
 
   /* ── Build calendars ───────────────────────────────────── */
-  // June — current (full colour, current week highlighted)
+  // Month 1 — current (full colour, current week highlighted)
   buildCalMF("cal-mf-m1",   CONFIG.year, CONFIG.month1, false);
-  // July — preview (full colour, no week highlight since future month)
-  buildCalMF("cal-mf-july", CONFIG.year, CONFIG.month3, false);
-  // June — archived (greyed)
+  // Month 3 — preview (full colour, no week highlight since future month)
+  buildCalMF("cal-mf-m3",   CONFIG.year, CONFIG.month3, false);
+  // Month 2 — archived (greyed)
   buildCalMF("cal-mf-m2",   CONFIG.year, CONFIG.month2, true);
 
   buildCalTBC();
@@ -6581,8 +6597,8 @@ function switchMonth(m,btn){
   const m3count = EVENTS.filter(e=>e.month===CONFIG.month3&&!e.tbc).length;
   document.getElementById("cal-sub-m1").textContent = m1sched+" scheduled · "+m1tbc+" TBC";
   document.getElementById("cal-sub-m2").textContent = m2done+" completed";
-  const julySub = document.getElementById("cal-sub-july");
-  if(julySub) julySub.textContent = m3count+" upcoming programs — preview";
+  const m3Sub = document.getElementById("cal-sub-m3");
+  if(m3Sub) m3Sub.textContent = m3count+" upcoming programs — preview";
 
   /* ── Preview label in list-m3 ──────────────────────────── */
   const m3prev = document.getElementById("lbl-m3-preview");
